@@ -1,22 +1,142 @@
 #cabecalho{
-    width: 100%;
-    margin: auto;
-    background-image: url('imagem.webp');
-    height: 700px;
+    
+ background-image: url('imagens/transferir.jpg');
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-position: center ;
 }
+ .topo {
+    max-width: 80% ;
+
+ }
+
+ .dropdown-menu{
+    background-color: #4CC9F0;
+ }
+
+ .topo a{
+    color: #fff;
+    font-size: 14pt;
+ }
+
+ .esquerda a{
+    font-size: 16pt;
+ }
+
+ .topo ul a:hover,
+ .ativo {
+    padding-bottom: 0;
+    border-bottom: 2px solid #7BF1A8;
+    color: #4CC9F0;
+    transition: .5s;
+
+ }
+
   .esquerda {
     float: left;
     width: 50%; /* definir a largura */
   }
+  .esquerda a:hover {
+    color: #4CC9F0;
+
+  }
   
   .direita {
     float: right;
-    width: 50%; /* definir a largura */
+    width: 80%; /* definir a largura */
   }
+
+  .titulo{
+    height: 80vh;
+  }
+
+  .titulo,
+  .corpo {
+    max-width: 70%;
+    margin: 0 auto; /* para centralizar a div na página */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .corpo{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .titulo p {
+
+    background-color: #7BF1A8;
+    color: #fff ;
+    text-align: center;
+    padding: 5px ;
+    font-size: 16pt;
+  }
+
+  .titulo h2 {
+  
+    background-color: #fff;
+    color: #7BF1A8 ;
+  }
+ 
+  
+  .corpo h2{
+
+    background-color: #fff;
+    color: #7BF1A8 ;
+  }
+  .corpo p{
+
+    
+    color:#666666;
+    text-align: center;
+    padding: 5px ;
+    font-size: 16pt;
+  }
+  .atracoes {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+  justify-content: center; 
+    
+  }
+
+  .card{
+    flex-basis: 30%; 
+    display: flex;
+     margin: 10px;
+     border: none;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .my-button {
+    background-color: #7BF1A8;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .my-button:hover {
+    background-color:#4CC9F0 ;
+  }
+  
   .footer {
-    background-color: hwb(99 27% 24%);
+    background-color: #7BF1A8;
     padding: 30px 0;
     margin-top: 50px;
+    color: #fff;
   }
   
   .footer-content {
@@ -24,15 +144,7 @@
     margin-bottom: 30px;
   }
 
-  main {
-    display: flex;
-    justify-content: center;
-    margin: 50px 0;
-  }
   
-  img {
-    max-width: 100%;
-  }
   
   
   
