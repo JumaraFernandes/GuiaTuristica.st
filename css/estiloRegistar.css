@@ -1,0 +1,19 @@
+
+.corpo {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; 
+}
+
+.corpo .card{
+    margin: 10px;
+    align-items: center;
+    justify-items: center;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.corpo .cardAtivo{
+    border: 5px solid #7BF1A8;
+}

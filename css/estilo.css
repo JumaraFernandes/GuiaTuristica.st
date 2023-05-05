@@ -1,8 +1,11 @@
- #cabecalho{
-    background-color: #7BF1A8;
- }
-
-   .topo {
+#cabecalho{
+    
+ background-image: url('../imagens/transferir.jpg');
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-position: center ;
+}
+ .topo {
     max-width: 80% ;
 
  }
@@ -43,7 +46,11 @@
     width: 80%; /* definir a largura */
   }
 
-  .corpo {
+  .titulo{
+    height: 80vh;
+  }
+
+  .titulo {
     max-width: 70%;
     margin: 0 auto; /* para centralizar a div na página */
     display: flex;
@@ -51,14 +58,25 @@
     justify-content: center;
     align-items: center;
   }
-  .corpo{
-    margin-top: 20px;
-    margin-bottom: 20px;
+  
+  .titulo p {
+
+    background-color: #7BF1A8;
+    color: #fff ;
+    text-align: center;
+    padding: 5px ;
+    font-size: 16pt;
   }
 
-  .corpo h1{
-    background-color: #4CC9F0;
-    color:#7BF1A8;
+  .titulo h2 {
+  
+    background-color: #fff;
+    color: #7BF1A8 ;
+  }
+ 
+  
+  main{
+    margin: 50px 0 50px 0;
   }
 
   

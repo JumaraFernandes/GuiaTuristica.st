@@ -1,0 +1,63 @@
+.corpo {
+    max-width: 70%;
+    margin: 0 auto; /* para centralizar a div na página */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .corpo{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .corpo h2{
+
+    background-color: #fff;
+    color: #7BF1A8 ;
+  }
+  .corpo p{
+
+    
+    color:#666666;
+    text-align: center;
+    padding: 5px ;
+    font-size: 16pt;
+  }
+  .atracoes {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; 
+    
+  }
+
+  .card{
+    flex-basis: 30%; 
+    display: flex;
+     margin: 10px;
+     border: none;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .my-button {
+    background-color: #7BF1A8;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .my-button:hover {
+    background-color:#4CC9F0 ;
+  }
