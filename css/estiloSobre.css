@@ -1,5 +1,5 @@
  #cabecalho{
-    background-color: #7BF1A8;
+    background-color: #4CC9F0;
  }
 
    .topo {
@@ -69,6 +69,10 @@
   .footer-content {
     text-align: center;
     margin-bottom: 30px;
+  }
+
+  main h1{
+    color: #7BF1A8;
   }
   
   

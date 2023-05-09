@@ -1,12 +1,11 @@
 #cabecalho{
     
- background-image: url('../imagens/transferir.jpg');
  background-size: cover;
  background-repeat: no-repeat;
  background-position: center ;
 }
  .topo {
-    max-width: 80% ;
+    max-width: 80%;
 
  }
 
@@ -91,6 +90,7 @@
     text-align: center;
     margin-bottom: 30px;
   }
+ 
 
   
   

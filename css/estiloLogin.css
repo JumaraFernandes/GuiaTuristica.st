@@ -1,9 +1,12 @@
 body{
     height: 700px;
-    background: linear-gradient(#7BF1A8, #4CC9F0);
+    background: #7BF1A8;
 }
 
 form{
-    
+   margin: auto;
+    width: 600px;
     background-color: #fff;
+    padding: 50px;
+    border-radius: 30px;
 }

@@ -1,3 +1,11 @@
+
+#cabecalho{
+    
+  background-image: url('../imagens/transferir.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center ;
+ }
 .corpo {
     max-width: 70%;
     margin: 0 auto; /* para centralizar a div na página */

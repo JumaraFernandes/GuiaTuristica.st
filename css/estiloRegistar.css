@@ -1,4 +1,7 @@
 
+#cabecalho{
+    background-color: #4CC9F0;
+ }
 .corpo {
     margin: 0 auto;
     display: flex;
