@@ -74,6 +74,83 @@
   main h1{
     color: #7BF1A8;
   }
+
+
+   main{
+  margin: auto;
+  width: 80%;
+  background-color: #fff;
+  padding: 50px;
+   }
+
+   .tituloSobre{
+    text-align: center;
+    padding: 10px;
+   }
+
+   .tituloSobre span,
+   .lado span{
+    color: #9d9d9d;
+    font-size: 19px;
+    font-family: Playfair Display Flex, serif;
+   }
+
+   .tituloSobre h1{
+    color: #8bc34a;
+    font-size: 58px;
+    font-family: Playfair Display Flex, serif;
+   }
+
+   .tituloSobre p,
+   .lado p{
+    color: #666666;
+    font-size: 17px;
+    font-family: Metropolis, Metropolis-Fallback, sans-serif;
+   }
+
+  .lado {
+     display: flex;
+     color: #666666;
+    font-size: 17px;
+    font-family: Metropolis, Metropolis-Fallback, sans-serif;
+    text-align: right;
+  }
+
+  .lado div{
+    padding: 20px;
+  }
+
+  .lado h1{
+    color: #8bc34a;
+    font-size: 58px;
+    font-family: Playfair Display Flex, serif;
+
+  }
+
+  .lado a{
+    color:#666666;
+    font-size: 17px;
+    font-family: Metropolis, Metropolis-Fallback, sans-serif;
+    text-decoration: none;
+   font-weight: 700;
+    
+  }
+  .missaovisao h1{
+    color: #8bc34a;
+
+  }
+  .missaovisao p, li{
+    color:#666666;
+    font-size: 17px;
+    font-family: Metropolis, Metropolis-Fallback, sans-serif;
+    text-decoration: none;  
+
+   }
+
+   
+
+   
+     
   
   
   

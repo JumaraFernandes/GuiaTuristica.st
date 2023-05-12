@@ -1,4 +1,53 @@
 
+#cabecalho{
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-color: #7BF1A8;
+   }
+    .topo {
+       max-width: 80%;
+   
+    }
+   
+    .dropdown-menu{
+       background-color: #4CC9F0;
+    }
+   
+    .topo a{
+       color: #fff;
+       font-size: 14pt;
+    }
+   
+    .esquerda a{
+       font-size: 16pt;
+    }
+   
+    .topo ul a:hover,
+    .ativo {
+       padding-bottom: 0;
+       border-bottom: 2px solid #7BF1A8;
+       color: #4CC9F0;
+       transition: .5s;
+   
+    }
+   
+     .esquerda {
+       float: left;
+       width: 50%; /* definir a largura */
+     }
+     .esquerda a:hover {
+       color: #4CC9F0;
+   
+     }
+     
+     .direita {
+       float: right;
+       width: 80%; /* definir a largura */
+     }
+   
+
 #contact
 {
     margin-top: 10px;

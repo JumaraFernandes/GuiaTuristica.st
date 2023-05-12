@@ -1,0 +1,98 @@
+
+.corpo{
+    display: block;
+}
+
+.corpo h1{
+    text-align: center;
+    background-color: #fff;
+    color: #8bc34a;
+    font-family: Playfair Display Flex;
+    font-size: 58px;
+}
+
+#form
+{
+    width: 400px;
+    margin: 0 0 30px 200px;
+    border-radius: 50px;
+    padding: 50px;
+    outline: none;
+    font-size: 14pt;
+    background-color: #8bc34a;
+    display: block;
+}
+input::placeholder,
+textarea
+{
+    font-style: italic;
+}
+#form div input,
+form input[type="button"],
+form select,
+#enviar input,
+#enviar textarea,
+#enviar input[type="button"],
+#enviar select
+{
+    outline: none;
+    font-size: 13pt;
+    display: block;
+    padding: 10px;
+    border-radius: 20px;
+    width: 280px;
+    border: none;
+    margin-top: 5px;
+    background-color: rgba(13, 138, 161, 0.2);
+}
+
+/* Estilos para a seta do select */
+form select {
+    border-right: 15px solid transparent;
+  }
+  
+
+form input[type="button"],
+#enviar input[type="button"]
+{
+    background-color: #1B88A2;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+form input[type="button"]:hover
+{
+    opacity: .8;
+}
+form label
+{
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+form input[type="checkbox"]
+{
+    width: 20px;
+    height: 20px;
+    outline: none;
+    border: 2px solid black;
+    transition: .5s;
+    margin-right: 10px;
+}
+
+form input:checked[type="checkbox"]
+{
+    border-left: none;
+    border-top: none;   
+    width: 10px;
+    border-color: lawngreen;
+    transform: rotate(45deg);
+}
+#valEmail
+{
+    margin-bottom: 10px;
+    font-weight: 500;
+}  
+
+  
+

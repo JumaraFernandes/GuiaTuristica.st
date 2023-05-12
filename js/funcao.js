@@ -9,6 +9,30 @@
         if (card.id === tipo) {
           // Definir a borda para o cartão correspondente
           card.style.border = "5px solid #7BF1A8";
+
+
+          if(tipo === 'turista'){
+            document.getElementById('registoTurista').style.display = 'block';
+            document.getElementById('registoGuia').style.display = 'none';
+            document.getElementById('registoHotel').style.display = 'none';
+            document.getElementById('registoRestaurante').style.display = 'none';
+          } else if(tipo === 'guia'){
+            document.getElementById('registoTurista').style.display = 'none';
+            document.getElementById('registoGuia').style.display = 'block';
+            document.getElementById('registoHotel').style.display = 'none';
+            document.getElementById('registoRestaurante').style.display = 'none';
+          } else if(tipo === 'hotel'){
+            document.getElementById('registoTurista').style.display = 'none';
+            document.getElementById('registoGuia').style.display = 'none';
+            document.getElementById('registoHotel').style.display = 'block';
+            document.getElementById('registoRestaurante').style.display = 'none';
+          } else if(tipo === 'restaurante'){
+            document.getElementById('registoTurista').style.display = 'none';
+            document.getElementById('registoGuia').style.display = 'none';
+            document.getElementById('registoHotel').style.display = 'none';
+            document.getElementById('registoRestaurante').style.display = 'block';
+          }
+
         } else {
           // Remover a borda dos outros cartões
           card.style.border = "1px solid #000";
@@ -126,6 +150,6 @@ function submeter()
 
 
 
-
+ 
   
 

@@ -1,0 +1,15 @@
+.corpohl h1 ,h2{ 
+    
+    background-color: #fff;
+    color: #8bc34a; 
+    text-align: center;
+    margin-top: 50px;
+   
+
+
+}
+.corpohl p{
+    color: #666666;
+    font-family: Metropolis, Metropolis-Fallback, sans-serif;
+    font-size: 17px;
+}
