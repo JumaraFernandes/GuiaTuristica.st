@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -103,18 +104,11 @@
         </div>
       </div>
       
-      <div class="card" id="hotel" onclick="clictokRegis('hotel')">
+      <div class="card" id="parceiro" onclick="clictokRegis('parceiro')">
         <div class="card-body">
-          <h5 class="card-title">Hotel</h5>
-          <p class="card-text">Registro para hotéis</p>
+          <h5 class="card-title">Parceiro</h5>
+          <p class="card-text">Registro para Parceiro</p>
            
-        </div>
-      </div>
-      
-      <div class="card" id="restaurante" onclick="clictokRegis('restaurante')">
-        <div class="card-body">
-          <h5 class="card-title">Restaurante</h5>
-          <p class="card-text">Registro para restaurantes</p>
         </div>
       </div>
     </div>
@@ -123,16 +117,29 @@
           <div>
               <label for="nome">Nome: <input type="text" id="nome" placeholder="Nome"></label>
               <label for="email">Email: <input type="email" id="email" placeholder="Email" onblur="validarEmail()"></label>
+              <label for="telefone">Telefone: <input type="text" id="telefone" placeholder="telefone"></label>
               <div id="valEmail"></div>
+
               <div id="registoTurista">
                 <label for="dataEntrada">Data Nacimento: <input type="date" id="dataEntrada"></label>
-                <label for="numero">Nº passaport: <input type="text" id="numero" placeholder="numero"></label>
+                <label for="sexo">Sexo: </label>
+                <aside id="radioSexo">
+                  <label for="masculino">Masculino <input type="radio" id="masculino" name="sexo" value="masculino" checked></label>
+                  <label for="feminino">Feminino <input type="radio" id="feminino" name="sexo" value="feminino"></label>
+                </aside>
                 
+
               </div>
               <div id="registoGuia">
+                <label for="numIdentificacao">Nº Identificação: <input type="text" id="numIdentificacao" placeholder="Insira o seu Nº de Identificação"></label>
                 <label for="dataEntrada">Data Nacimento: <input type="date" id="dataEntrada"></label>
-                <label for="localidade">Localidade <input type="text" id="localidade" placeholder="localidade"></label>
+                <label for="localidade">Endereço <input type="text" id="endereco" placeholder="endereco"></label>
                 <label for="experiencias">Experiencias <textarea name="" id="experiencias" cols="30" rows="3" placeholder="Informa as suas experiencias anteriores"></textarea></label>
+                <aside id="radioSexo">
+                  <label for="masculino">Masculino <input type="radio" id="masculino" name="sexo" value="masculino" checked></label>
+                  <label for="feminino">Feminino <input type="radio" id="feminino" name="sexo" value="feminino"></label>
+                </aside>
+
                 <label for="idiomas">Idiomas:                   
                   <select id="idiomas" name="idiomas">
                     <option value="ingles">Ingles</option>
@@ -143,34 +150,21 @@
                 </label>
                 
               </div>
-              <div id="registoHotel">
-                <label for="localizacao">Localização<input type="text" id="localizacao" placeholder="localizacao"></label>
-                <fieldset class="star-rating">
-                  <legend>Avaliação:</legend>
-                  <input type="radio" id="star-5" name="rating" value="5" /><label for="star-5" title="Excelente">5 estrelas</label>
-                  <input type="radio" id="star-4" name="rating" value="4" /><label for="star-4" title="Muito bom">4 estrelas</label>
-                  <input type="radio" id="star-3" name="rating" value="3" /><label for="star-3" title="Bom">3 estrelas</label>
-                  <input type="radio" id="star-2" name="rating" value="2" /><label for="star-2" title="Ruim">2 estrelas</label>
-                  <input type="radio" id="star-1" name="rating" value="1" /><label for="star-1" title="Terrível">1 estrela</label>
-                </fieldset>
-                
-              </div>
-              <div id="registoRestaurante">
-              <label for="localizacao">Localização<input type="text" id="localizacao" placeholder="localizacao"></label>
-              <fieldset class="star-rating">
-                <legend>Avaliação:</legend>
-                <input type="radio" id="star-5" name="rating" value="5" /><label for="star-5" title="Excelente">5 estrelas</label>
-                <input type="radio" id="star-4" name="rating" value="4" /><label for="star-4" title="Muito bom">4 estrelas</label>
-                <input type="radio" id="star-3" name="rating" value="3" /><label for="star-3" title="Bom">3 estrelas</label>
-                <input type="radio" id="star-2" name="rating" value="2" /><label for="star-2" title="Ruim">2 estrelas</label>
-                <input type="radio" id="star-1" name="rating" value="1" /><label for="star-1" title="Terrível">1 estrela</label>
-              </fieldset>
-              </div>
-              <label for="inputPassword" class="form-label">Password<input type="password" id="inputPassword" class="form-control" aria-labelledby="passwordHelpBlock"></label>
-              <label for="inputConfPassword" class="form-label">comfirmar Password <input type="password" id="inputConfPassword" class="form-control" aria-labelledby="passwordHelpBlock"></label>
-              
 
-          </div> 
+              <div id="registoParceiro">
+                <label for="endereco">Endereço<input type="text" id="endereco" placeholder="endereco"></label>
+                <label for="link">Link: <input type="text" id="link" placeholder="Insira o link"></label>
+                <label for="tipoParceiro">Tipo de parceiro:
+                  <select id="tipoParceiro" name="tipoParceiro">
+                    <option value="hotel">Hotel</option>
+                    <option value="restaurante">Restaurante</option>
+                  </select>
+                </label>
+              </div>
+
+              <label for="senha">Senha: <input type="password" id="senha" placeholder="Senha"></label>
+              <label for="confirma_senha">Confirme a senha: <input type="password" id="confirma_senha" placeholder="Confirme a senha" onblur="validarSenha()"></label>
+              
             <input type="button" value="Enviar" onclick="enviar()">
         </form>
 </section>

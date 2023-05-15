@@ -14,23 +14,17 @@
           if(tipo === 'turista'){
             document.getElementById('registoTurista').style.display = 'block';
             document.getElementById('registoGuia').style.display = 'none';
-            document.getElementById('registoHotel').style.display = 'none';
-            document.getElementById('registoRestaurante').style.display = 'none';
+            document.getElementById('registoParceiro').style.display = 'none';
           } else if(tipo === 'guia'){
             document.getElementById('registoTurista').style.display = 'none';
             document.getElementById('registoGuia').style.display = 'block';
-            document.getElementById('registoHotel').style.display = 'none';
-            document.getElementById('registoRestaurante').style.display = 'none';
-          } else if(tipo === 'hotel'){
+            document.getElementById('registoParceiro').style.display = 'none';
+    
+          } else if(tipo === 'parceiro'){
             document.getElementById('registoTurista').style.display = 'none';
             document.getElementById('registoGuia').style.display = 'none';
-            document.getElementById('registoHotel').style.display = 'block';
-            document.getElementById('registoRestaurante').style.display = 'none';
-          } else if(tipo === 'restaurante'){
-            document.getElementById('registoTurista').style.display = 'none';
-            document.getElementById('registoGuia').style.display = 'none';
-            document.getElementById('registoHotel').style.display = 'none';
-            document.getElementById('registoRestaurante').style.display = 'block';
+            document.getElementById('registoParceiro').style.display = 'block';
+          
           }
 
         } else {
@@ -38,6 +32,19 @@
           card.style.border = "1px solid #000";
         }
       });
+
+      function validarSenha() {
+        var senha = document.getElementById("senha").value;
+        var confirmaSenha = document.getElementById("confirma_senha").value;
+        var valSenha = document.getElementById("valSenha");
+      
+        if (senha != confirmaSenha) {
+          valSenha.innerHTML = "As senhas não correspondem.";
+        } else {
+          valSenha.innerHTML = "";
+        }
+      }
+      
     }
 
     function ShowDropDown(id)
@@ -147,6 +154,9 @@ function submeter()
         res.innerText = 'Mensagem submetida com sucesso'
     }
 }
+
+
+
 
 
 
