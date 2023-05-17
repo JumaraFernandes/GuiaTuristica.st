@@ -9,8 +9,9 @@
   <link rel="shortcut icon" href="imagens/logo.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/estiloSobre.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/estilogeral.css">
+  <link rel="stylesheet" href="css/estiloSobre.css">
 </head>
 <body>
   <!--cabeçalho-->
@@ -34,10 +35,10 @@
       </div>
     </div>
     <div class="missaovisao">         
-       <h1>Missão e visão</h1>
+       <h2>Missão e visão</h2>
        <p> Guia Turística de São Tomé e Príncipe </p>
        <div>
-       <h1>Missão </h1>
+       <h3>Missão </h3>
        <ul>
         <li>Promover São Tomé e Príncipe como destino turístico;</li>
         <li>Promover e divulgar as belezas naturais e culturais de São Tomé e Príncipe</li>
@@ -49,7 +50,7 @@
        </ul>
       </div>
       <div class="visao">
-        <h1>visão</h1>
+        <h3>visão</h3>
         <ul>
           <li>Ser reconhecido como um guia confiável e de qualidade para os visitantes de São Tomé e Príncipe</li>
           <li>Tornar-se a principal referência em turismo em São Tomé e Príncipe</li>

@@ -1,49 +1,5 @@
- #cabecalho{
-    background-color: #4CC9F0;
- }
 
-   .topo {
-    max-width: 80% ;
-
- }
-
- .dropdown-menu{
-    background-color: #4CC9F0;
- }
-
- .topo a{
-    color: #fff;
-    font-size: 14pt;
- }
-
- .esquerda a{
-    font-size: 16pt;
- }
-
- .topo ul a:hover,
- .ativo {
-    padding-bottom: 0;
-    border-bottom: 2px solid #7BF1A8;
-    color: #4CC9F0;
-    transition: .5s;
-
- }
-
-  .esquerda {
-    float: left;
-    width: 50%; /* definir a largura */
-  }
-  .esquerda a:hover {
-    color: #4CC9F0;
-
-  }
-  
-  .direita {
-    float: right;
-    width: 80%; /* definir a largura */
-  }
-
-  .corpo {
+.corpo {
     margin: 0 auto;
     display: flex;
     justify-content: center; 
@@ -52,62 +8,46 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
-
+  
   .corpo h1{
     background-color: #4CC9F0;
-    color:#7BF1A8;
+    color: #8bc34a;
   }
 
   
-  .footer {
-    background-color: #7BF1A8;
-    padding: 30px 0;
-    margin-top: 50px;
-    color: #fff;
-  }
   
-  .footer-content {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  main h1{
-    color: #7BF1A8;
-  }
-
-
    main{
   margin: auto;
   width: 80%;
   background-color: #fff;
   padding: 50px;
    }
-
+  
    .tituloSobre{
     text-align: center;
     padding: 10px;
    }
-
+  
    .tituloSobre span,
    .lado span{
     color: #9d9d9d;
     font-size: 19px;
     font-family: Playfair Display Flex, serif;
    }
-
+  
    .tituloSobre h1{
     color: #8bc34a;
     font-size: 58px;
     font-family: Playfair Display Flex, serif;
    }
-
+  
    .tituloSobre p,
    .lado p{
     color: #666666;
     font-size: 17px;
     font-family: Metropolis, Metropolis-Fallback, sans-serif;
    }
-
+  
   .lado {
      display: flex;
      color: #666666;
@@ -115,18 +55,25 @@
     font-family: Metropolis, Metropolis-Fallback, sans-serif;
     text-align: right;
   }
-
+  
   .lado div{
     padding: 20px;
   }
-
-  .lado h1{
+  
+  .missaovisao h2{
     color: #8bc34a;
     font-size: 58px;
     font-family: Playfair Display Flex, serif;
-
+  
   }
 
+  .missaovisao h3{
+    color: #8bc34a;
+    font-size: 40px;
+    font-family: Playfair Display Flex, serif;
+  
+  }
+  
   .lado a{
     color:#666666;
     font-size: 17px;
@@ -137,21 +84,14 @@
   }
   .missaovisao h1{
     color: #8bc34a;
-
+  
   }
   .missaovisao p, li{
     color:#666666;
     font-size: 17px;
     font-family: Metropolis, Metropolis-Fallback, sans-serif;
     text-decoration: none;  
-
+  
    }
-
+  
    
-
-   
-     
-  
-  
-  
-  

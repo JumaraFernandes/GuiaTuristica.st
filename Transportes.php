@@ -11,55 +11,94 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/estilogeral.css">
   <link rel="stylesheet" href="css/estilotransportes.css">
+  <script src="../js/funcao.js"></script>
+
 </head>
 <body>
   <!--cabeçalho-->
-  <?php include 'includes/header.php' ?>
-  <main> 
+  <header id="cabecalho">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid topo">
+        <div class="esquerda">
+          <a class="navbar-brand" href="index.php"><img src="imagens/logo.png" alt="" width="50px" srcset="">Guia Turistica São Tomé e Principe</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse direita" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.php">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="sobre_nos.php">Sobre Nós</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseenter="ShowDropDown('dropServicos')">
+                Serviços
+              </a>
+              <ul class="dropdown-menu" id="dropServicos" onmouseover="ShowDropDown('dropServicos')" onmouseout="closeDropDown('dropServicos')">
+                <li><a class="dropdown-item" href="Guias.php">Guias</a></li>
+                <li><a class="dropdown-item" href="Transportes.php">Transportes</a></li>
+              
+              </ul>
+              
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" onmouseenter="ShowDropDown('dropparcerias')">
+                Parcerias
+              </a>
+              <ul class="dropdown-menu" id="dropparcerias" onmouseover="ShowDropDown('dropparcerias')" onmouseout="closeDropDown('dropparcerias')">
+                <li><a class="dropdown-item" href="hoteis.php">Hoteis</a></li>
+                <li><a class="dropdown-item" href="Restaurantes.php">Restaurante</a></li>
+              
+              </ul>
+              
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseenter="ShowDropDown('dropInformações')">
+                Informações
+              </a>
+              <ul class="dropdown-menu" id="dropInformações" onmouseover="ShowDropDown('dropInformações')" onmouseout="closeDropDown('dropInformações')">
+                <li><a class="dropdown-item" href="Contacto.php">Contatos</a></li>
+                <li><a class="dropdown-item" href="Forum.php">Forúm</a></li>
+                <li><a class="dropdown-item" href="Hl.php">Historias e Línguas</a></li>
+                <li><a class="dropdown-item" href="Galeria.php">Galeria</a></li>
+                <li><a class="dropdown-item" href="VistoseMigracao.php">Visto e Migração</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseover="ShowDropDown('dropMinhaconta')" onmouseout="closeDropDown('dropMinhaconta')">
+                Minha Conta
+              </a>
+              <ul class="dropdown-menu" id="dropMinhaconta">
+                <li><a class="dropdown-item" href="login.php">login</a></li>
+                <li><a class="dropdown-item ativo" href="Registar.php">Registar</a></li>
+              
+              </ul>
+              
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+    <div class="titulo">
+      <h2>Bem Vindo à São Tomé e Príncipe</h2>
+      <p>Descubra a beleza intocada de São Tomé e Príncipe, um paraíso tropical único no coração </p>
+      <p>do Oceano Atlântico. </p>
+    </div>
+  </header>
+   
+  <main>
+
+
     <div class="corpo">
       <h1>Transportes</h1>
-        <h2>Esses são o Transportes disponivel no pais</h2>
-        <p>"Descubra as melhores opções de transporte para explorar São Tomé e Príncipe com conforto e segurança." </p>
-      </div>
-      <section class="transporte">
-        <div class="card">
-          <img src="imagens/transporte.barco1.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5>Barco</h5>
-            <p class="card-text">Com seu amplo espaço e conforto, este barco é a escolha perfeita para quem deseja explorar as belas praias e ilhas de São Tomé e Príncipe com segurança e tranquilidade. </p>
-            <p>Com sua estrutura robusta e confiável, este barco oferece uma maneira emocionante e confortável de descobrir os tesouros escondidos das ilhas, como praias desertas e recifes de coral, proporcionando uma experiência única e inesquecível para todos os viajantes.</p>
-          </div>
-        </div>
-          <div class="card">
-            <img src="imagens/transporte.bicicleta.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>Bicicleta</h5>
-                <p class="card-text">Esta bicicleta é a escolha perfeita para aqueles que desejam explorar as belezas naturais de São Tomé e Príncipe em um ritmo tranquilo e saudável. </p>
-                <p>Com sua estrutura resistente e pneus grossos, esta bicicleta é ideal para explorar as trilhas e caminhos acidentados do país com confiança e segurança.</p>
-                <p>"Com seu design leve e ágil, esta bicicleta oferece uma maneira divertida e ecológica de explorar as paisagens deslumbrantes de São Tomé e Príncipe, enquanto desfruta de uma experiência única e saudável.</p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="imagens/transporte.autocarro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>Autocarro</h5>
-              <p class="card-text">Com um autocarro espaçoso e moderno, você pode desfrutar de uma experiência de viagem confortável e relaxante em São Tomé e Príncipe. Com capacidade para transportar grupos grandes, nosso autocarro é a escolha ideal para passeios turísticos em grupo, viagens de negócios ou qualquer outra ocasião em que você precise de transporte confiável.</p>
-              <p>Com assentos reclináveis, ar condicionado e janelas panorâmicas, você pode desfrutar de uma vista deslumbrante da paisagem durante sua viagem. Nosso motorista experiente garantirá que você chegue ao seu destino com segurança e pontualidade, para que você possa relaxar e aproveitar sua viagem sem preocupações.</p>
-              
-            </div>
-          </div>
-          <div class="card">
-            <img src="imagens/transporte.moto.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>Moto</h5>
-              <p class="card-text">Com sua agilidade e praticidade, esta moto é a escolha perfeita para aqueles que desejam explorar as estradas e caminhos de São Tomé e Príncipe em busca de aventuras.</p>
-              <p>Com seu motor potente e fácil manuseio, esta moto é ideal para explorar as belezas naturais do país de forma rápida e eficiente, sem abrir mão da segurança e conforto</p>
-              <p>"Desfrute da liberdade e emoção de pilotar uma moto pelas belas paisagens de São Tomé e Príncipe, enquanto aproveita ao máximo sua viagem de forma única e inesquecível."</p>
-            </div>
-          </div>
-      </section>
-    </div>
-    </main>
+       
+  
 
     <?php include 'includes/footer.php' ?>
   

@@ -25,7 +25,6 @@
   font-size: 16pt;
 }
 
-.topo ul a:hover,
 .ativo {
   padding-bottom: 0;
   border-bottom: 2px solid #7BF1A8;
@@ -38,10 +37,10 @@
   float: left;
   width: 50%; /* definir a largura */
 }
-.esquerda a:hover {
+/* .esquerda a:hover {
   color: #4CC9F0;
 
-}
+} */
 
 .direita {
   float: right;
@@ -141,9 +140,9 @@ main{
     transition: all 0.3s ease;
   }
   
-  .my-button:hover {
+/*   .my-button:hover {
     background-color:#4CC9F0 ;
-  }
+  } */
 
    
   .footer {
