@@ -1,0 +1,20 @@
+#cabecalho{
+    
+    background-image: url('../imagens/hotelfundo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center ;
+    height: 80vh;
+   }
+
+   .corpo{
+
+    margin-top: 50px;
+   }
+  
+   .corpo h1{
+    text-align: center;
+    color:  #8bc34a;
+    margin-bottom: 5px;
+   }
+  
