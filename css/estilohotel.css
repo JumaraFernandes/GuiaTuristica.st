@@ -17,4 +17,31 @@
     color:  #8bc34a;
     margin-bottom: 5px;
    }
-  
+
+   .posicao h4{
+        color: #ffff;
+        margin-top: -50vh;
+        margin-bottom: 50vh;
+        text-align: center;
+        FONT-FAMILY:"Dancing Script", cursive;
+        FONT-SIZE:50px;
+   }
+  .saotome h1{
+    color:  #8bc34a;
+    text-align: center;
+
+  }
+  .saotome p{
+    FONT-FAMILY:sans-serif;
+    FONT-SIZE:16px;
+    LINE-HEIGHT:24px;
+    TEXT-ALIGN:start;
+    color: #1a051d;
+  }
+
+
+  .pricinpe{
+
+    color:  #8bc34a;
+    text-align: center;
+  }
