@@ -13,91 +13,23 @@
 </head>
 <body>
   <!--cabeçalho-->
-  <header id="cabecalho">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid topo">
-        <div class="esquerda">
-          <a class="navbar-brand" href="index.html"><img src="imagens/logo.png" alt="" width="50px" srcset="">Guia Turistica São Tomé e Principe</a>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse direita" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="sobre_nos.html">Sobre Nós</a>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="Servicos.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Serviços
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="Guias.html">Guias</a></li>
-                <li><a class="dropdown-item" href="Transportes.html">Transportes</a></li>
-              
-              </ul>
-              
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="parcerias.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Parcerias
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="hoteis.html">Hoteis</a></li>
-                <li><a class="dropdown-item" href="Restaurantes.html">Restaurante</a></li>
-              
-              </ul>
-              
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="Informacoes.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Informações
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="Contacto.html">Contatos</a></li>
-                <li><a class="dropdown-item" href="Forum.html">Forúm</a></li>
-                <li><a class="dropdown-item" href="Hl.html">Historias e Línguas</a></li>
-                <li><a class="dropdown-item" href="Galeria.html">Galeria</a></li>
-                <li><a class="dropdown-item" href="VistoseMigracao.html">Visto e Migração</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="MinhaConta.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Minha Conta
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item ativo" href="login.html">login</a></li>
-                <li><a class="dropdown-item" href="Registar.html">Registar</a></li>
-              
-              </ul>
-              
-            </li>
-          </ul>
-          
-        </div>
-      </div>
-    </nav>
-  </header>
+  <?php include 'includes/header.php' ?>
+  
   <main> 
     <div class="corpo">
 
-        <form action="" method="post"> 
+        <form action="connect/login.php" method="post"> 
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input type="email" class="form-control" id="exampleFormControlInput1" name="nomeusario"  placeholder="name@example.com">
           </div>
           <label for="inputPassword5" class="form-label">Password</label>
-          <input type="password" id="inputPassword5" class="form-control" aria-labelledby="passwordHelpBlock">
+          <input type="password" id="inputPassword5"  name="passe" class="form-control" aria-labelledby="passwordHelpBlock">
           <div id="passwordHelpBlock" class="form-text">
             Sua senha deve ter de 8 a 20 caracteres, conter letras e números e não deve conter espaços, caracteres especiais ou emoji.
           </div>
           <div class="col-auto">
-            <button type="Entrar" class="btn btn-primary mb-3">Entrar</button>
+          <input type="submit" name="submit" value="Enviar">
           </div>
           <div>
             <a href="Registar.html">Registar</a>

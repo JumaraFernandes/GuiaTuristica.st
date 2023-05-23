@@ -103,9 +103,7 @@ form input:checked[type="checkbox"]
     font-weight: 500;
 }
 
-#registoGuia{
-    display: none;
-}
+
 
 input[type="radio"]:checked {
   background-color: blue;
@@ -127,12 +125,6 @@ input[type="radio"]:checked {
     border: none;
     background-color: rgba(13, 138, 161, 0.2);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> f853073ed5b2a54652abdd9e7d8a646e994fa2e7
-
-  
 
   
 .rating {
@@ -163,7 +155,6 @@ input[type="radio"]:checked {
 #registoGuia,
 #registoParceiro{
     display: none;
-    opacity: 0;
-    background-color: black;
+    opacity: 1;
 }
 

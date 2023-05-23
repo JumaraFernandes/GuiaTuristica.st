@@ -1,13 +1,15 @@
 <?php
-$host  = "locaslhost";
-$usuario = "root";
-$bd = "guiaturistica";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$bd  = "guia";
 
-$mysqli = new $mysqli($host,$usuario,$bd);
+// Criar uma conexão com o banco de dados
+$conn = new mysqli($servername, $username, $password, $bd );
 
-if($mysqli->connect_errno);
-  echo "Falha na conexão: (".$mysqli->connect_errno.") ".$mysql->connect_error;
-else{
-    echo "Fez bem"
+// Verificar a conexão
+if ($conn->connect_error) {
+    echo 'não consegui comunicar';
+    die("Falha na conexão com o banco de dados: " . $conn->connect_error);
 }
 ?>

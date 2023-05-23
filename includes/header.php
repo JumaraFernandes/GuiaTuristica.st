@@ -6,7 +6,7 @@
   <script src="js/funcao.js"></script>
   <link rel="stylesheet" href="css/estilogeral.css">
  <header id="cabecalho">
-    <nav class="navbar navbar-expand-lg">
+ <nav class="navbar navbar-expand-lg">
       <div class="container-fluid topo">
         <div class="esquerda">
           <a class="navbar-brand" href="index.php"><img src="imagens/logo.png" alt="" width="50px" srcset="">Guia Turistica São Tomé e Principe</a>
@@ -24,7 +24,7 @@
             </li>
             
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseenter="ShowDropDown('dropServicos')">
+              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseenter="ShowDropDown('dropServicos')" onmouseout="closeDropDown('dropServicos')">
                 Serviços
               </a>
               <ul class="dropdown-menu" id="dropServicos" onmouseover="ShowDropDown('dropServicos')" onmouseout="closeDropDown('dropServicos')">
@@ -35,7 +35,7 @@
               
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" role="button" onmouseenter="ShowDropDown('dropparcerias')">
+              <a class="nav-link dropdown-toggle" role="button" onmouseenter="ShowDropDown('dropparcerias')" onmouseout="closeDropDown('dropparcerias')">
                 Parcerias
               </a>
               <ul class="dropdown-menu" id="dropparcerias" onmouseover="ShowDropDown('dropparcerias')" onmouseout="closeDropDown('dropparcerias')">
@@ -47,7 +47,7 @@
             </li>
             
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseenter="ShowDropDown('dropInformações')">
+              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseenter="ShowDropDown('dropInformações')" onmouseout="closeDropDown('dropInformações')">
                 Informações
               </a>
               <ul class="dropdown-menu" id="dropInformações" onmouseover="ShowDropDown('dropInformações')" onmouseout="closeDropDown('dropInformações')">
@@ -59,7 +59,7 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseenter="ShowDropDown('dropMinhaconta')" onmouseout="closeDropDown('dropMinhaconta')">
+              <a class="nav-link dropdown-toggle" href="#" role="button" onmouseover="ShowDropDown('dropMinhaconta')" onmouseout="closeDropDown('dropMinhaconta')">
                 Minha Conta
               </a>
               <ul class="dropdown-menu" id="dropMinhaconta" onmouseover="ShowDropDown('dropMinhaconta')" onmouseout="closeDropDown('dropMinhaconta')">

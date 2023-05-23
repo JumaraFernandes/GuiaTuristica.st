@@ -18,6 +18,9 @@
     <div class="corpo">
       <h1>Hoteis</h1>
     </div>
+     
+       
+     </div>
     </main>
 
   <!--Rodapé-->

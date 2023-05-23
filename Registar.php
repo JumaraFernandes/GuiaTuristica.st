@@ -13,14 +13,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/estilogeral.css">
   <link rel="stylesheet" href="css/estiloRegistar.css">
-   <script src="js/funcao.js"></script>
+  <script src="../js/funcao.js"></script>
 </head>
-<body onload="setMinimumDate()">
+<body>
   <!--cabeçalho-->
   <?php include 'includes/header.php' ?>
  
   <main> 
-    <div class="corpo">
+  <div class="corpo">
       <div class="card cardAtivo" id="turista" onclick="clictokRegis('turista')">
         <div class="card-body">
           <h5 class="card-title">Turista</h5>
@@ -45,16 +45,17 @@
       </div>
     </div>
     <section id="form">
-      <form>
+    <form action="connect/registar.php" method="post">
           <div>
-              <label for="nome">Nome: <input type="text" id="nome" placeholder="Nome"></label>
-              <label for="email">Email: <input type="email" id="email" placeholder="Email" onblur="validarEmail()"></label>
+              <label for="nome">Nome: <input type="text" id="nome" name="nome" placeholder="Nome"></label>
+              <label for="email">Email: <input type="email" id="email" name="email" placeholder="Email" onblur="validarEmail()"></label>
               <div id="valEmail"></div>
-              <label for="telefone">Telefone: <input type="text" id="telefone" placeholder="telefone"></label>
+              <label for="telefone">Telefone: <input type="text" id="telefone" name="telefone"  placeholder="telefone"></label>
               
 
+              <input type="hidden" name="tipo" id="tipo" value="registoTurista">
               <div id="registoTurista">
-                <label for="dataEntrada">Data Nacimento: <input type="date" id="dataNascimento"></label>
+                <label for="datanascimento">Data Nacimento: <input type="date" id="dataNascimentoguia" name="datanascimento"></label>
                 <label for="sexo">Sexo: </label>
                 <aside id="radioSexo">
                   <label for="masculino">Masculino <input type="radio" id="masculino" name="sexo" value="masculino" checked></label>
@@ -63,11 +64,11 @@
                 
 
               </div>
-              <div id="registoGuia">
-                <label for="numIdentificacao">Nº Identificação: <input type="text" id="numIdentificacao" placeholder="Insira o seu Nº de Identificação"></label>
-                <label for="dataEntrada">Data Nacimento: <input type="date" id="dataEntrada"></label>
-                <label for="localidade">Endereço <input type="text" id="endereco" placeholder="endereco"></label>
-                <label for="experiencias">Experiencias <textarea name="" id="experiencias" cols="30" rows="3" placeholder="Informa as suas experiencias anteriores"></textarea></label>
+              <div id="registoGuia" >
+              <label for="numIdentificacao">Nº Identificação: <input type="text" id="numIdentificacao" name="numIdentificacao" placeholder="Insira o seu Nº de Identificação"></label>
+                <label for="dataNascimento">Data Nacimento: <input type="date" id="dataNascimentoguia" name="dataNascimento"></label>
+                <label for="localidade">Endereço <input type="text" id="enderecoGuia" name="enderecoGuia" placeholder="endereco"></label>
+                <label for="experiencias">Experiencias <textarea id="experiencias" name="experiencias" cols="30" rows="3" placeholder="Informa as suas experiencias anteriores"></textarea></label>
                 <label for="sexo">Sexo: </label>
                 <aside id="radioSexo">
                   <label for="masculino">Masculino <input type="radio" id="masculino" name="sexo" value="masculino" checked></label>
@@ -82,27 +83,27 @@
                     <option value="frances">Francês</option>
                   </select>
                 </label>
-                
+                <label for="foto">cv: <input type="file" id="cv" name="cv" accept="image/*"></label>
               </div>
 
               <div id="registoParceiro">
-                <label for="endereco">Endereço<input type="text" id="endereco" placeholder="endereco"></label>
-                <label for="link">Link: <input type="text" id="link" placeholder="Insira o link"></label>
-                <label for="link">Classificação: <br>
-                  <div class="rating">
-                      <input type='radio' hidden name='rate' id='rating-opt5' data-idx='0'>	
+                <label for="endereco">Endereço<input type="text" id="enderecoParceiro" name="enderecoParceiro" placeholder="endereco"></label>
+                <label for="link">Link: <input type="text" id="link" name="link" placeholder="Insira o link"></label>
+                <label for="Estrelas">Classificação: <br>
+                  <div class="rating" >
+                      <input type='radio' hidden name='rate' id='rating-opt5'>	
                       <label for='rating-opt5'></label>
                 
-                      <input type='radio' hidden name='rate' id='rating-opt4' data-idx='1'>
+                      <input type='radio' hidden name='rate' id='rating-opt4'>
                       <label for='rating-opt4'></label>
                 
-                      <input type='radio' hidden name='rate' id='rating-opt3' data-idx='2'>
+                      <input type='radio' hidden name='rate' id='rating-opt3'>
                       <label for='rating-opt3'></label>
                 
-                      <input type='radio' hidden name='rate' id='rating-opt2' data-idx='3'>
+                      <input type='radio' hidden name='rate' id='rating-opt2'>
                       <label for='rating-opt2'></label>
                 
-                      <input type='radio' hidden name='rate' id='rating-opt1' data-idx='4'>
+                      <input type='radio' hidden name='rate' id='rating-opt1'>
                       <label for='rating-opt1'></label>
                     </div>
                  
@@ -113,16 +114,17 @@
                     <option value="restaurante">Restaurante</option>
                   </select>
                 </label>
-                <label for="foto">Foto: <input type="file" id="foto" accept="image/*"></label>
+                <label for="foto">Foto: <input type="file" id="foto" name="foto" accept="image/*"></label>
               </div>
 
-              <label for="senha">Senha: <input type="password" id="senha" placeholder="Senha"></label>
-              <label for="confirma_senha">Confirme a senha: <input type="password" id="confirma_senha" placeholder="Confirme a senha" onblur="validarSenha()"></label>
-              
-            <input type="button" value="Enviar" onclick="enviar()">
+              <label for="senha">Senha: <input type="password" id="senha" name="senha" placeholder="Senha"></label>
+              <label for="confirma_senha">Confirme a senha: <input type="password" id="confirma_senha" name="confsenha" placeholder="Confirme a senha" onblur="validarSenha()"></label>
+              <div id="valSenha"></div>
+            <input type="submit" name="submit" value="Enviar">
+
           </div>
         </form>
-</section>
+    </section>
     </main>
     
     <?php include 'includes/footer.php' ?>
@@ -136,21 +138,11 @@
     var dataMaximaFormatada = dataMaxima.toISOString().split('T')[0];
 
     // Obtém o elemento de entrada de data
-    var inputDataNascimento = document.getElementById('dataNascimento');
-
+    var inputDataNascimento = document.getElementById('dataNascimentoturista');
+    var inputDataNascimento = document.getElementById('dataNascimentoguia');
     // Define o limite máximo
     inputDataNascimento.setAttribute('max', dataMaximaFormatada);
   </script>
-
- 
-
-  
-
-  
-    
-    
-  
-  
 </body>
 </html>
 

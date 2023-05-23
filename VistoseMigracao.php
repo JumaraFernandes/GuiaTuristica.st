@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/estilogeral.css">
 </head>
 <body>
-<?php include 'includes/header.php' ?>
+  <?php include 'includes/header.php' ?>
   <main> 
     <div class="corpo">
       <h1>Vistos e Migração</h1>

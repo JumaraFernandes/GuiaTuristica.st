@@ -1,3 +1,5 @@
+
+
 #cabecalho{
     
  background-size: cover;
@@ -68,21 +70,6 @@
   }
      
   
-  main{
-    margin: 50px 0 50px 0;
-  }
-  main h1{
-    color: #7BF1A8;
-    text-align: center;
-  }
-
-
-   main{
-  margin: auto;
-  width: 80%;
-  background-color: #fff;
-  padding: 50px;
-   }
 
 
   
