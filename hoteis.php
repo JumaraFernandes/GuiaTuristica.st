@@ -18,6 +18,11 @@
     <div class="corpo">
       <h1>Hoteis</h1>
     </div>
+
+      <section>
+         
+
+      </section>
      
        
      </div>
