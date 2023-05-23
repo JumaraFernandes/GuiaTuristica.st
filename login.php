@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/estiloLogin.css">
 </head>
-<body>
+<body style="background-color: #7BF1A8;">
   <!--cabeçalho-->
   <?php include 'includes/header.php' ?>
   
@@ -29,7 +29,7 @@
             Sua senha deve ter de 8 a 20 caracteres, conter letras e números e não deve conter espaços, caracteres especiais ou emoji.
           </div>
           <div class="col-auto">
-          <input type="submit" name="submit" value="Enviar">
+          <input type="submit" name="submit" value="Entrar">
           </div>
           <div>
             <a href="Registar.html">Registar</a>

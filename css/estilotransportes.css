@@ -10,7 +10,24 @@
  }
 
 
- .transportes{
+ .corpo{
+
+  margin-top: 100px;
+ }
+
+ .corpo h1{
+  text-align: center;
+  color: aquamarine;
+  margin-bottom: 10px;
+ }
+ 
+ .tr h3{
+  text-align: center;
+     color: #000
+ }
+
+
+.transportes{
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -20,7 +37,7 @@
  }
  .transportes h3{
      text-align: center;
-     background-color: #ffff;
+     color: #ffff;
 
    }
 
@@ -63,4 +80,9 @@
  .cardAnimacao:hover{
     opacity: 0.7;
  }
+
+ .cards{
+  display: flex;
+ }
+ 
 

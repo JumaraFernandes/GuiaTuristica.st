@@ -14,9 +14,7 @@
 </head>
 <body>
   <header id="cabecalho">
-<!--     <video autoplay muted loop id="video-background">
-      <source src="imagens/video.mp4" type="video/mp4">
-    </video> -->
+
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid topo">
           <div class="esquerda">
@@ -34,18 +32,9 @@
               <li class="nav-item">
                 <a class="nav-link " aria-current="page" href="sobre_nos.php">Sobre Nós</a>
               </li>
-              
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" onmouseenter="ShowDropDown('dropServicos')" onmouseout="closeDropDown('dropServicos')">
-                  Serviços
-                </a>
-                <ul class="dropdown-menu" id="dropServicos" onmouseover="ShowDropDown('dropServicos')" onmouseout="closeDropDown('dropServicos')">
-                  <li><a class="dropdown-item" href="Guias.php">Guias</a></li>
-                  <li><a class="dropdown-item" href="Transportes.php">Transportes</a></li>
-                
-                </ul>
-                
-              </li>
+                <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="Guias.php">Guias</a>
+                </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" role="button" onmouseenter="ShowDropDown('dropparcerias')" onmouseout="closeDropDown('dropparcerias')">
                   Parcerias
@@ -63,6 +52,7 @@
                   Informações
                 </a>
                 <ul class="dropdown-menu" id="dropInformações" onmouseover="ShowDropDown('dropInformações')" onmouseout="closeDropDown('dropInformações')">
+                  <li><a class="dropdown-item" href="Transportes.php">Transportes</a></li>
                   <li><a class="dropdown-item" href="Contacto.php">Contatos</a></li>
                   <li><a class="dropdown-item" href="Forum.php">Forúm</a></li>
                   <li><a class="dropdown-item" href="Hl.php">Historias e Línguas</a></li>

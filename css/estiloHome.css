@@ -14,16 +14,6 @@ video{
 
 }
 
-
-
-
-#cabecalho{
-    
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center ;
-  background-color: #4CC9F0;
- }
   .topo {
      max-width: 80%;
  
@@ -154,10 +144,6 @@ main{
     transition: all 0.3s ease;
   }
   
-/*   .my-button:hover {
-    background-color:#4CC9F0 ;
-  } */
-
    
   .footer {
     background-color: #7BF1A8;
