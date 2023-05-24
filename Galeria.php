@@ -22,18 +22,19 @@
             <p>Algumas fotos do nosso Pais</p>
         </div>
         <div id="galeria">
-            <img src="imagens/imagem1.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem2.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem3.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem4.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem5.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem6.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem7.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem8.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem9.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem11.jpg" alt="Imagem do pais">
-            <img src="imagens/imagem19.jpg" alt="Imagem do pais">
-            
+
+        <?php
+        // Criar vetor de nomes de imagem
+        $imagens = array("imagem1.jpg", "imagem2.jpg", "imagem3.jpg", "imagem4.jpg", "imagem5.jpg", "imagem6.jpg", "imagem7.jpg", "imagem8.jpg", "imagem9.jpg", "imagem10.jpg", "imagem11.jpg", "imagem1.jpg", "imagem2.jpg", "imagem3.jpg", "imagem4.jpg", "imagem5.jpg", "imagem6.jpg", "imagem7.jpg", "imagem8.jpg", "imagem9.jpg", "imagem10.jpg", "imagem11.jpg");
+
+        // Iterar sobre o vetor para exibir as imagens
+        for ($i = 0; $i < count($imagens); $i++) {
+            ?>
+            <img src="imagens/<?php echo $imagens[$i]; ?>" alt="Imagem do país">
+            <?php
+        }
+        ?>
+
         </div>
     </section>
 

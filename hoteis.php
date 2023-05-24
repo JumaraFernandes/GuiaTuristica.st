@@ -53,7 +53,7 @@
         <h5>HOTEL PRAIA</h5>
         <p class="card-text">Praia Lagarto</p>
         <p class="card-text">Tel: (+239) 2226235/9986250</p>
-        <a class="card-text" href="reservas@hotelpraia.st">E-mail: reservas@hotelpraia.st</a>
+        <a class="card-text" href="reservas@hotelpraia.st">E-mail:reservas@hotelpraia.st</a>
         <a class="card-text" href="https://www.hotel-praia.com" target="_blank">www.hotel-praia.com</a>
       </div>
     </div>
@@ -66,7 +66,7 @@
         <h5>HOTEL ROÇA SANTO ANTONIO</h5>
         <p class="card-text">Roça de Santo António</p>
         <p class="card-text">Tel: (+239)9986652</p>
-        <a class="card-text" href="serviruma.rocasantoantonio@gmail.com">E-mail: E-mail: serviruma.rocasantoantonio@gmail.com</a>
+        <a class="card-text" href="serviruma.rocasantoantonio@gmail.com">E-mail:serviruma.rocasantoantonio@gmail.com</a>
         <a class="card-text" href="https://www.rsaecolodge.pt" target="_blank">www.rsaecolodge.pt</a>
       </div>
     </div>
