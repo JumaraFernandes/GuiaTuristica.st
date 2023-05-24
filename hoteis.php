@@ -87,25 +87,25 @@
 
   <div class="col-md-4">
     <div class="card">
-      <img src="imagens/compataag.jpeg" class="card-img-top" alt="...">
+      <img src="imagens/MUCUMBLI LODGE.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5>TAAG</h5>
-        <p class="card-text">Av. Marginal 12 de Julho</p>
-        <p class="card-text">Tel: (+239) 2241150</p>
-        <a class="card-text" href="mailto:taagstp@cstome.net">E-mail: taagstp@cstome.ne</a>
-        <a class="card-text" href="https://www.pestana.com/pt" target="_blank">www.pestana.com</a>
+        <h5>MUCUMBLI LODGE</h5>
+        <p class="card-text">Ponta Figo - Neves</p>
+        <p class="card-text">Tel: (+239) 9908737/9908736/9936602</p>
+        <a class="card-text" href="mailto:mucumbli@gmail.com">E-mail: mucumbli@gmail.com</a>
+        <a class="card-text" href="https://www.mucumbli.wordpress.com" target="_blank">www.mucumbli.wordpress.com</a>
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="card">
-      <img src="imagens/compaTap.jpeg" class="card-img-top" alt="...">
+      <img src="imagens/ROÇASÃOJOÃO.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5>TAP</h5>
-        <p class="card-text">Av. Marginal 12 de Julho</p>
-        <p class="card-text">Tel: (+239) 2222307/2223839</p>
-        <a class="card-text" href="mailto:tap@cstome.net">E-mail: tap@cstome.net</a>
+        <h5>ROÇA SÃO JOÃO</h5>
+        <p class="card-text">Angolares</p>
+        <p class="card-text">Tel: (+239) 2261140/9929475</p>
+        <a class="card-text" href="mailto:tap@cstome.net">E-mail: reservas.rocasjoao@gmail.comt</a>
         <a class="card-text" href="https://www.pestana.com/pt" target="_blank">www.pestana.com</a>
       </div>
     </div>
@@ -126,31 +126,74 @@
              <div class="row">
               <div class="col-md-4">
                 <div class="card">
-                  <img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">
+                  <img src="imagens/Photelrural.jpeg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5>PESTANA SÃO TOMÉ</h5>
-                    <p class="card-text">Av. Marginal 12 de Julho</p>
-                    <p class="card-text">Tel: (+239) 2244500/2244539</p>
-                    <a class="card-text" href="mailto:pestana.stome@pestana.com">E-mail: pestana.stome@pestana.com</a>
-                    <a class="card-text" href="https://www.pestana.com/pt" target="_blank">www.pestana.com</a>
+                    <h5>HOTEL RURAL PRAIA ABADE</h5>
+                    <p class="card-text">Tel: (+239) 9916024</p>
+                    <a class="card-text" href="mailto:rocaabade@gmail.com">E-mail: rocaabade@gmail.com</a>
+                    <a class="card-text" href="https://www.abadeprincipe.com" target="_blank">www.abadeprincipe.com</a>
                   </div>
                 </div>
               </div>
               
               <div class="col-md-4">
                 <div class="card">
-                  <img src="imagens/hotelpraia.jpg" class="card-img-top" alt="...">
+                  <img src="imagens/Photelroca.jpeg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5>HOTEL PRAIA</h5>
-                    <p class="card-text">Praia Lagarto</p>
-                    <p class="card-text">Tel: (+239) 2226235/9986250</p>
-                    <a class="card-text" href="reservas@hotelpraia.st">E-mail: reservas@hotelpraia.st</a>
-                    <a class="card-text" href="https://www.hotel-praia.com" target="_blank">www.hotel-praia.com</a>
+                    <h5>HOTEL ROÇA BELO MONTE</h5>
+                    <p class="card-text">Tel: (+239) 2251167</p>
+                    <a class="card-text" href="belomonte@africas-eden.com">E-mail: belomonte@africas-eden.com</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="imagens/Photelbom.jpeg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5>BOM BOM ISLAND RESORT</h5>
+                    <p class="card-text">Tel: (+239) 2251114</p>
+                    <a class="card-text" href="mailto:reservations@bombomprincipe.com">E-mail: reservations@bombomprincipe.com</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="imagens/resortsundy.jpeg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5>RESORT SUNDY PRAIA</h5>
+                    <p class="card-text">Tel: (+239) 999 5000</p>
+                    <a class="card-text" href="mailto:reservations@sundyprincipe.com">E-mail: reservations@sundyprincipe.com</a>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="imagens/hotelsundy.jpeg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5>HOTEL SUNDY ROÇA</h5>
+                    <p class="card-text">Tel: (+239) 2251155</p>
+                    <a class="card-text" href="mailto:reservations@hotelrocasundy.com">E-mail: reservations@hotelrocasundy.com</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+              <div class="card">
+                  <img src="imagens/Photelrural.jpeg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5>HOTEL RURAL PRAIA ABADE</h5>
+                    <p class="card-text">Tel: (+239) 9916024</p>
+                    <a class="card-text" href="mailto:rocaabade@gmail.com">E-mail: rocaabade@gmail.com</a>
+                   
                   </div>
                 </div>
               </div>
 
            </div>
+         </div>
 
          </section>
      </div>

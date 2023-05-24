@@ -1,6 +1,6 @@
 #cabecalho{
     
-    background-image: url('../imagens/hotelfundo.jpg');
+    background-image: url('../imagens/restaurantegeral.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center ;
@@ -45,7 +45,7 @@
     text-align: center;
   }
 
-  .pricinp p{
+  .pricinpe p{
     FONT-FAMILY:sans-serif;
     FONT-SIZE:16px;
     LINE-HEIGHT:24px;
