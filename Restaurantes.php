@@ -16,93 +16,79 @@
   <?php include 'includes/header.php' ?>
   <main> 
     <div class="corpo">
-      <h1>Restaurantes</h1>
-    </div>
 
     <section class="saotome">
          <div>
-             <h1>Hotéis e Resorts na ilha de São Tomé</h1>
+             <h1>RESTAURANTES E BARES EM S. TOMÉ</h1>
            <p>
-             Em termos de estruturas hoteleiras, a cidade de São Tomé tem alguns hotéis e resorts de qualidade a bom nível. O hotel Miramar, na marginal 12 Julho é um clássico da cidade. Inaugurado nos anos oitenta, foi durante muito tempo o único com condições para receber homens de negócios e visitantes importantes, por isso construiu uma sólida reputação.
+              Os restaurantes em São Tomé estão concentrados a maioria no distrito de Àgua-Grande, as grandes quantidades de refeições são confeccionados a base de peixe sendo que somos um país rodeado pelo mar, com uma costa rica pela quantidade e a qualidade de peixe existente.
            </p>
              <p>
-             O Omali Lodge e o Hotel praia são outros refúgios de qualidade inquestionável: localizados na praia Lagarto. Ao extremo sul  encontra-se o Resort Inhame Ecolodge situado a 7 minutos de barco do marco do equador.
+                No restaurante Cacau que todas as quintas feiras realizam noites tradicionais gastronómicas com músicas e dança onde apresentam um leque dos pratos típicos das ilhas. Existe também o workshop gastronómico que se realiza na famosa Roça São João em angolares, com certeza desfrutarás de uma explosão de sabores.
              </p>
              <div class="row">
   <div class="col-md-4">
     <div class="card">
-      <img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">
+      <img src="imagens/Sres1.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5>PESTANA SÃO TOMÉ</h5>
-        <p class="card-text">Av. Marginal 12 de Julho</p>
-        <p class="card-text">Tel: (+239) 2244500/2244539</p>
-        <a class="card-text" href="mailto:pestana.stome@pestana.com">E-mail: pestana.stome@pestana.com</a>
-        <a class="card-text" href="https://www.pestana.com/pt" target="_blank">www.pestana.com</a>
+        <h5>RESTAURANTE/BAR ALMADA NEGREIROS</h5>
+        <p class="card-text">Roça Saudadeo</p>
+        <p class="card-text">Tel: (+239) 9914235</p>
       </div>
     </div>
   </div>
   
   <div class="col-md-4">
     <div class="card">
-      <img src="imagens/hotelpraia.jpg" class="card-img-top" alt="...">
+      <img src="imagens/Sres2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5>HOTEL PRAIA</h5>
-        <p class="card-text">Praia Lagarto</p>
-        <p class="card-text">Tel: (+239) 2226235/9986250</p>
-        <a class="card-text" href="reservas@hotelpraia.st">E-mail: reservas@hotelpraia.st</a>
-        <a class="card-text" href="https://www.hotel-praia.com" target="_blank">www.hotel-praia.com</a>
+        <h5>RESTAURANTE/BAR /CAFÉ EFRAIM</h5>
+        <p class="card-text">Monte Café</p>
+        <p class="card-text">Tel: (+239)996 0327</p>
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="card">
-      <img src="imagens/hotelrocasanto.jpg" class="card-img-top" alt="...">
+      <img src="imagens/Sres3.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5>HOTEL ROÇA SANTO ANTONIO</h5>
-        <p class="card-text">Roça de Santo António</p>
-        <p class="card-text">Tel: (+239)9986652</p>
-        <a class="card-text" href="serviruma.rocasantoantonio@gmail.com">E-mail: E-mail: serviruma.rocasantoantonio@gmail.com</a>
-        <a class="card-text" href="https://www.rsaecolodge.pt" target="_blank">www.rsaecolodge.pt</a>
+        <h5>PICO MUCAMBO</h5>
+        <p class="card-text">Av. Amilcar Cabral</p>
+        <p class="card-text">Tel: Tel: (+239) 222 7506</p>
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="card">
-      <img src="imagens/hotelcentral.jpg" class="card-img-top" alt="...">
+      <img src="imagens/Sres6.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5>HOTEL CENTRAL</h5>
-        <p class="card-text">Rua de Angola</p>
-        <p class="card-text">Tel: (+239) 2227551</p>
-        <a class="card-text" href="hotelcentral.saotome@gmail.com">E-mail: hotelcentral.saotome@gmail.com</a>
-        <a class="card-text" href="https://www.hotelcentralsaotome.com" target="_blank">www.hotelcentralsaotome.com</a>
+        <h5>PARAÍSO DOS GRELHADOSL</h5>
+        <p class="card-text">Av. Marginal 12 de Julho</p>
+        <p class="card-text">Tel: Tel: (+239) 9013132</p>
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="card">
-      <img src="imagens/MUCUMBLI LODGE.jpeg" class="card-img-top" alt="...">
+      <img src="imagens/Sres4.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5>MUCUMBLI LODGE</h5>
-        <p class="card-text">Ponta Figo - Neves</p>
-        <p class="card-text">Tel: (+239) 9908737/9908736/9936602</p>
-        <a class="card-text" href="mailto:mucumbli@gmail.com">E-mail: mucumbli@gmail.com</a>
-        <a class="card-text" href="https://www.mucumbli.wordpress.com" target="_blank">www.mucumbli.wordpress.com</a>
+        <h5>NOVENTA GRAUS ESPLANADA</h5>
+        <p class="card-text">Av. da Independência</p>
+        <p class="card-text">Tel: Tel: (+239) 9980520/ (+239) 9980523</p>
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="card">
-      <img src="imagens/ROÇASÃOJOÃO.jpeg" class="card-img-top" alt="...">
+      <img src="imagens/Sres5.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5>ROÇA SÃO JOÃO</h5>
-        <p class="card-text">Angolares</p>
-        <p class="card-text">Tel: (+239) 2261140/9929475</p>
-        <a class="card-text" href="mailto:tap@cstome.net">E-mail: reservas.rocasjoao@gmail.comt</a>
-        <a class="card-text" href="https://www.pestana.com/pt" target="_blank">www.pestana.com</a>
+        <h5>CÉSAR CAFÉ</h5>
+        <p class="card-text">Av. Marginal 12 de Julho</p>
+        <p class="card-text">Tel: Tel: (+239) 995 61615</p>
       </div>
     </div>
   </div>
@@ -115,39 +101,51 @@
       <section class="pricinpe">
          
          <div>
-         <h1>Hotéis e Resorts na Ilha do Príncipe</h1>
+         <h1>RESTAURANTES E BARES NO PRÍNCIPE</h1>
 
-           <p> Um dos resorts mais requintados encontra-se na praia Sundy, com decoração luxuosa e uma vista magnífica para o mar. Para aqueles que apreciam o glamour o edifícios emblemáticos e históricos, nada melhor do que visitar o Alojamento na Roça Belo Monte ou Sundy Roça. O Bom-Bom Island Resort foi o primeiro a ser construído na Ilha do Príncipe, onde possui características paisagística únicas, do ilhéu bombom, pode-se desfrutar de uma paisagem, de cortar respiração, para a Ilha do Príncipe.</p>
+           <p> A ilha do Príncipe possui a sua Gastronomia típica como por exemplo a funji maguita, molho no fogo entre outras especialidades gastronómicas que nos deixam com água na boca. Aqui o turista poderá degustar a diversidade gastronómica, durante a sua estadia na ilha, num dos restaurantes existentes sobretudo na capital ou alternar a uma fusão de sabores apresentados nos restaurante das unidades hoteleiras existentes</p>
 
            <div class="row">
             <div class="col-md-4">
               <div class="card">
-                <img src="imagens/Photelrural.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5>HOTEL RURAL PRAIA ABADE</h5>
-                  <p class="card-text">Tel: (+239) 9916024</p>
-                  <a class="card-text" href="mailto:rocaabade@gmail.com">E-mail: rocaabade@gmail.com</a>
-                  <a class="card-text" href="https://www.abadeprincipe.com" target="_blank">www.abadeprincipe.com</a>
+                  <h5>RESTAURANTE/BAR BEIRA-MAR</h5>
+                  <p class="card-text">Cidade de Santo António</p>
+                  <p class="card-text">Tel: (+239) 991 63 10</p>
+               
                 </div>
               </div>
             </div>
             
             <div class="col-md-4">
               <div class="card">
-                <img src="imagens/Photelroca.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5>HOTEL ROÇA BELO MONTE</h5>
-                  <p class="card-text">Tel: (+239) 2251167</p>
-                  <a class="card-text" href="belomonte@africas-eden.com">E-mail: belomonte@africas-eden.com</a>
+                  <h5>RESTAURANTE/BAR DA TERESA</h5>
+                  <p class="card-text">Cidade de Santo António</p>
+                  <p class="card-text">Tel: (+239) 994 32 26</p>
+               
                 </div>
               </div>
             </div>
 
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5>RESTAURANTE/BAR PASSÔ</h5>
+                  <p class="card-text">Cidade de Santo António</p>
+                  <p class="card-text">Tel: (+239) 9914400/ 991 95 60/ 225 10 72</p>
+               
+                </div>
+              </div>
+            </div>
+
+    
       
          </div>
        </div>
 
        </section>
+       </div>
     </main>
     <?php include 'includes/footer.php' ?>
   
