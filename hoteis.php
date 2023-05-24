@@ -119,7 +119,37 @@
       <section class="pricinpe">
          
            <div>
-           <h1>Hoteis em Principe</h1>
+           <h1>Hotéis e Resorts na Ilha do Príncipe</h1>
+
+             <p> Um dos resorts mais requintados encontra-se na praia Sundy, com decoração luxuosa e uma vista magnífica para o mar. Para aqueles que apreciam o glamour o edifícios emblemáticos e históricos, nada melhor do que visitar o Alojamento na Roça Belo Monte ou Sundy Roça. O Bom-Bom Island Resort foi o primeiro a ser construído na Ilha do Príncipe, onde possui características paisagística únicas, do ilhéu bombom, pode-se desfrutar de uma paisagem, de cortar respiração, para a Ilha do Príncipe.</p>
+
+             <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5>PESTANA SÃO TOMÉ</h5>
+                    <p class="card-text">Av. Marginal 12 de Julho</p>
+                    <p class="card-text">Tel: (+239) 2244500/2244539</p>
+                    <a class="card-text" href="mailto:pestana.stome@pestana.com">E-mail: pestana.stome@pestana.com</a>
+                    <a class="card-text" href="https://www.pestana.com/pt" target="_blank">www.pestana.com</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="imagens/hotelpraia.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5>HOTEL PRAIA</h5>
+                    <p class="card-text">Praia Lagarto</p>
+                    <p class="card-text">Tel: (+239) 2226235/9986250</p>
+                    <a class="card-text" href="reservas@hotelpraia.st">E-mail: reservas@hotelpraia.st</a>
+                    <a class="card-text" href="https://www.hotel-praia.com" target="_blank">www.hotel-praia.com</a>
+                  </div>
+                </div>
+              </div>
+
            </div>
 
          </section>
