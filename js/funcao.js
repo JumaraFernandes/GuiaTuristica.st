@@ -37,25 +37,6 @@ function clictokRegis(tipo) {
 
 
 
-    $(document).ready(function() {
-      $('#enviar').click(function() {
-        var textoLabel = $('label[for="meuLabel"]').text();
-        
-        $.ajax({
-          url: 'seu_arquivo_php.php',
-          type: 'POST',
-          data: { texto: textoLabel },
-          success: function(response) {
-            console.log('Dados enviados com sucesso!');
-            console.log(response);
-          },
-          error: function(xhr, status, error) {
-            console.log('Erro ao enviar os dados.');
-            console.log(error);
-          }
-        });
-      });
-    });
     
     function validarSenha() {
       var senha = document.getElementById("senha").value;
@@ -68,6 +49,8 @@ function clictokRegis(tipo) {
         valSenha.innerHTML = "";
       }
     }
+
+
     function ShowDropDown(id)
     {
         document.getElementById(id).style.display = 'block';
@@ -76,7 +59,8 @@ function clictokRegis(tipo) {
     function closeDropDown(id) {
         document.getElementById(id).style.display = 'none';
     }
-    var valido = true
+
+
 function validarEmail(){
     var email = document.getElementById('email')
     var res = document.getElementById('valEmail')
@@ -101,6 +85,49 @@ function setMinimumDate() {
     inputDate.setAttribute('max', maxDate);
   }
   
+
+  
+  function changeCard(tipo) {
+    if (tipo === 'perfil') {
+        document.getElementById('perfil').style.display = 'block';
+          document.getElementById('reservas').style.display = 'none';
+          document.getElementById('msg').style.display = 'none';
+          document.getElementById('listMsg').style.display = 'none';
+          
+            
+        } else if (tipo === 'reservas') {
+            document.getElementById('perfil').style.display = 'none';
+            document.getElementById('reservas').style.display = 'block';
+            document.getElementById('msg').style.display = 'none';
+            document.getElementById('listMsg').style.display = 'none';
+        } else if (tipo === 'msg') {
+            document.getElementById('perfil').style.display = 'none';
+            document.getElementById('reservas').style.display = 'none';
+            document.getElementById('msg').style.display = 'block';
+            document.getElementById('listMsg').style.display = 'none';
+        } else if (tipo === 'listMsg') {
+            document.getElementById('listMsg').style.display = 'block';
+            document.getElementById('perfil').style.display = 'none';
+            document.getElementById('reservas').style.display = 'none';
+            document.getElementById('msg').style.display = 'none';
+        }
+
+    }
+
+
+    function changeCardAdmin(tipo) {
+      if (tipo === 'perfil') {
+          document.getElementById('perfil').style.display = 'block';
+            document.getElementById('pedidos').style.display = 'none';
+            
+              
+          } else if (tipo === 'pedidos') {
+              document.getElementById('perfil').style.display = 'none';
+              document.getElementById('pedidos').style.display = 'block';
+          } 
+  
+      }
+   
  
 
 

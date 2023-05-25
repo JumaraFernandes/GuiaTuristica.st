@@ -55,11 +55,11 @@
 
               <input type="hidden" name="tipo" id="tipo" value="registoTurista">
               <div id="registoTurista">
-                <label for="datanascimento">Data Nacimento: <input type="date" id="dataNascimentoguia" name="datanascimento"></label>
+                <label for="datanascimento">Data Nacimento: <input type="date" id="dataNascimentoturista" name="dataNascimentoturista"></label>
                 <label for="sexo">Sexo: </label>
                 <aside id="radioSexo">
-                  <label for="masculino">Masculino <input type="radio" id="masculino" name="sexo" value="masculino" checked></label>
-                  <label for="feminino">Feminino <input type="radio" id="feminino" name="sexo" value="feminino"></label>
+                  <label for="masculino">Masculino <input type="radio" id="masculino" name="sexo" value="M" checked></label>
+                  <label for="feminino">Feminino <input type="radio" id="feminino" name="sexo" value="F"></label>
                 </aside>
                 
 

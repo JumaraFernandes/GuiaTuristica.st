@@ -52,7 +52,7 @@ function vepass($passe,$repasse)
 function uidexists($conn, $username, $email)
 {
     $query_select = "SELECT * FROM users WHERE nomeusario = ? or email = ?";
-    $stmt=mysqli_stmt_init($connect);
+    $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $query_select))
     {
         header ("location: ../Registar.php?error=stmtuidexist");
@@ -71,7 +71,7 @@ function uidexists($conn, $username, $email)
 
 function loginuser($conn , $username, $passe)
 {
-    $uidexits=uidexists($connect, $username, $username);
+    $uidexits=uidexists($conn, $username, $username);
 
     if($uidexits===false)
     {
@@ -98,13 +98,30 @@ function loginuser($conn , $username, $passe)
                     
 function registarGuia($conn, $numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv, $dataNascimento, $nome, $email, $telefone, $senha)
 {
-    $query = "CALL RegistrarGuia(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    /* $query = "CALL RegistrarGuia(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ssssssssss", $numIdentificacao, $sexo, $experiencia, $enderecoGuia, $cv, $dataNascimento, $nome, $email, $senha,$telefone);
+    $sexo = 'M';
+    mysqli_stmt_bind_param($stmt, "sssssssss", $numIdentificacao, $sexo, $experiencia, $enderecoGuia, $cv, $dataNascimento, $nome, $email, $senha);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt); */
+
+    $query = "CALL RegistrarGuia(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sssssssss", $numIdentificacao, $sexo, $experiencia, $enderecoGuia, $cv, $dataNascimento, $nome, $email, $senha);
+    mysqli_stmt_execute($stmt);
+
+    // Verifique se a consulta foi executada com sucesso
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "Guia registrado com sucesso!";
+    } else {
+        echo "Erro ao registrar o guia.";
+    }
+
+    // Feche o statement
     mysqli_stmt_close($stmt);
+
     
 }
 
@@ -123,14 +140,25 @@ function loginUtilizador($conn, $username, $password)
 }
 
 
-function registarTurista($conn, $dataNascimento, $sexo, $nome, $email, $telefone, $senha)
+function registarTurista($conn, $dataNascimento, $sexo, $nome, $email, $senha)
 {
-    $query = "CALL RegistrarTurista(?, ?, ?, ?, ?, ?)";
+    $query = "CALL RegistrarTurista(?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssssi", $dataNascimento, $sexo, $nome, $email, $senha, $telefone);
+    mysqli_stmt_bind_param($stmt, "sssss", $dataNascimento, $sexo, $nome, $email, $senha);
     mysqli_stmt_execute($stmt);
+
+    // Verifique se a consulta foi executada com sucesso
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "Turista registrado com sucesso!";
+    } else {
+        echo "Erro ao registrar o turista.";
+    }
+
+    // Feche o statement
     mysqli_stmt_close($stmt);
 }
+
+
 
 function registarParceiro($conn, $tipo, $endereco, $estrelas, $link, $nome, $email, $senha, $telefone)
 {
