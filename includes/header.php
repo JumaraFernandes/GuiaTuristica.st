@@ -1,4 +1,6 @@
-
+<?php
+  session_start(); // Inicia a sessão (certifique-se de chamar isso antes de qualquer saída HTML)
+?>
 
 <link rel="shortcut icon" href="../imagens/logo.png" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -52,17 +54,43 @@
                 <li><a class="dropdown-item" href="VistoseMigracao.php">Visto e Migração</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" onmouseover="ShowDropDown('dropMinhaconta')" onmouseout="closeDropDown('dropMinhaconta')">
                 Minha Conta
               </a>
               <ul class="dropdown-menu" id="dropMinhaconta" onmouseover="ShowDropDown('dropMinhaconta')" onmouseout="closeDropDown('dropMinhaconta')">
                 <li><a class="dropdown-item" href="login.php">login</a></li>
                 <li><a class="dropdown-item ativo" href="Registar.php">Registar</a></li>
+
+                <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="Guias.php">Olá </a>
+            </li>
               
               </ul>
               
             </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="Guias.php">Olá Jumara</a>
+            </li> -->
+
+            <?php
+if (isset($_SESSION['nome'])) {
+  // Usuário está logado, exibe "Olá [nome do usuário]"
+  $nomeUsuario = $_SESSION['nome'];
+  echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="Guias.php">Olá ' . $nomeUsuario . '</a></li>';
+} else {
+  // Usuário não está logado, exibe "Minha Conta"
+  echo '<li class="nav-item dropdown">';
+  echo '<a class="nav-link dropdown-toggle" href="#" role="button" onmouseover="ShowDropDown(\'dropMinhaconta\')" onmouseout="closeDropDown(\'dropMinhaconta\')">Minha Conta</a>';
+  echo '<ul class="dropdown-menu" id="dropMinhaconta" onmouseover="ShowDropDown(\'dropMinhaconta\')" onmouseout="closeDropDown(\'dropMinhaconta\')">';
+  echo '<li><a class="dropdown-item" href="login.php">Login</a></li>';
+  echo '<li><a class="dropdown-item ativo" href="Registar.php">Registar</a></li>';
+  echo '</ul>';
+  echo '</li>';
+}
+?>
+
+
           </ul>
           
         </div>

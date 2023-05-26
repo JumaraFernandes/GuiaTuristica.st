@@ -3,7 +3,7 @@ require_once "conexaobd.php";
 require_once "funcao.php";
 
 if (isset($_POST['submit'])) {
-    $nome = $_POST['nome'];
+     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
     $senha = $_POST['senha'];
@@ -119,7 +119,10 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
-    echo "Está funcionando: " . $tipo;
+    echo "Está funcionando: " . $tipo; 
+
+    //registarAdmin($conn, 'Jumara', 'a43691@ipb.pt', 'Jumara.4');
+
 
 } else {
     header("location: ../registar.php");

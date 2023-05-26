@@ -261,6 +261,28 @@ function getTipoUtilizador($conn, $idUtilizador) {
     return "Tipo de utilizador desconhecido";
 }
 
+function registarAdmin($conn, $nome, $email, $senha)
+{
+    echo 'Registar Admin'.'<br>';
+    $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
+    echo 'Encriptada: ' .$hashedSenha;
+    $query = "CALL RegistarAdmin(?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sss", $nome, $email, $hashedSenha);
+    mysqli_stmt_execute($stmt);
+    
+    // Verifique se o administrador foi registrado com sucesso
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "Administrador registrado com sucesso!";
+    } else {
+        echo "Erro ao registrar o administrador.";
+    }
+    
+    // Feche o statement
+    mysqli_stmt_close($stmt);
+}
+
+
 
 
 ?>
