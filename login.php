@@ -22,10 +22,10 @@
         <form action="connect/login.php" method="post"> 
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" name="nomeusario"  placeholder="name@example.com">
+            <input type="email" class="form-control" id="exampleFormControlInput1" name="email"  placeholder="name@example.com">
           </div>
           <label for="inputPassword5" class="form-label">Password</label>
-          <input type="password" id="inputPassword5"  name="passe" class="form-control" aria-labelledby="passwordHelpBlock">
+          <input type="password" id="inputPassword5"  name="senha" class="form-control" aria-labelledby="passwordHelpBlock">
           <div id="passwordHelpBlock" class="form-text">
             Sua senha deve ter de 8 a 20 caracteres, conter letras e números e não deve conter espaços, caracteres especiais ou emoji.
           </div>

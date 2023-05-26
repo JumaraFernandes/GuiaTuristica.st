@@ -5,20 +5,23 @@ if(isset($_POST['submit']))
     //echo "está a funcionar";
     //die();
     
-    $username=$_POST['nomeusario'];
-    $passe=$_POST['passe'];
+    $email=$_POST['email'];
+    $passe=$_POST['senha'];
    
 
     require_once "conexaobd.php";
     require_once "funcao.php";
 
-    if(emptyInputLogin($username,$passe)!== true)
+    if(emptyInputLogin($email,$passe)!== true)
     {
+        
         header ("location: ../login.php?error=emptyinput");
         exit();
     }
     
-    loginuser($connect, $username, $passe);
+    login($conn, $email, $passe);
+    
+    echo 'login';
     
 }
 else

@@ -71,17 +71,19 @@
                 <label for="experiencias">Experiencias <textarea id="experiencias" name="experiencias" cols="30" rows="3" placeholder="Informa as suas experiencias anteriores"></textarea></label>
                 <label for="sexo">Sexo: </label>
                 <aside id="radioSexo">
-                  <label for="masculino">Masculino <input type="radio" id="masculino" name="sexo" value="masculino" checked></label>
-                  <label for="feminino">Feminino <input type="radio" id="feminino" name="sexo" value="feminino"></label>
+                  <label for="masculino">Masculino <input type="radio" id="masculino" name="sexo" value="M" checked></label>
+                  <label for="feminino">Feminino <input type="radio" id="feminino" name="sexo" value="F"></label>
                 </aside>
 
                 <label for="idiomas">Idiomas:                   
-                  <select id="idiomas" name="idiomas">
-                    <option value="ingles">Ingles</option>
-                    <option value="portugues">Portugues</option>
+                  <select id="idiomas" name="idiomas[]" multiple>
+                    <option value="ingles">Inglês</option>
+                    <option value="portugues">Português</option>
                     <option value="espanhol">Espanhol</option>
                     <option value="frances">Francês</option>
-                  </select>
+                </select>
+
+
                 </label>
                 <label for="foto">cv: <input type="file" id="cv" name="cv" accept="image/*"></label>
               </div>
@@ -91,27 +93,27 @@
                 <label for="link">Link: <input type="text" id="link" name="link" placeholder="Insira o link"></label>
                 <label for="Estrelas">Classificação: <br>
                   <div class="rating" >
-                      <input type='radio' hidden name='rate' id='rating-opt5'>	
+                      <input type='radio' hidden name='rate' id='rating-opt5' value="1">	
                       <label for='rating-opt5'></label>
                 
-                      <input type='radio' hidden name='rate' id='rating-opt4'>
+                      <input type='radio' hidden name='rate' id='rating-opt4' value="2">
                       <label for='rating-opt4'></label>
                 
-                      <input type='radio' hidden name='rate' id='rating-opt3'>
+                      <input type='radio' hidden name='rate' id='rating-opt3' value="3">
                       <label for='rating-opt3'></label>
                 
-                      <input type='radio' hidden name='rate' id='rating-opt2'>
+                      <input type='radio' hidden name='rate' id='rating-opt2' value="4">
                       <label for='rating-opt2'></label>
                 
-                      <input type='radio' hidden name='rate' id='rating-opt1'>
+                      <input type='radio' hidden name='rate' id='rating-opt1' value="5">
                       <label for='rating-opt1'></label>
                     </div>
                  
                 </label>
                 <label for="tipoParceiro">Tipo de parceiro:
                   <select id="tipoParceiro" name="tipoParceiro">
-                    <option value="hotel">Hotel</option>
-                    <option value="restaurante">Restaurante</option>
+                    <option value="H">Hotel</option>
+                    <option value="R">Restaurante</option>
                   </select>
                 </label>
                 <label for="foto">Foto: <input type="file" id="foto" name="foto" accept="image/*"></label>
