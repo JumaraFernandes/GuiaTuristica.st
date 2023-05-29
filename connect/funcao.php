@@ -84,13 +84,13 @@ function login($conn, $email, $senha)
 
 
             if($tipoUtilizador === 'guia'){
-                header ("location: ../Perfil/guia.php");
+                header ("location: ../PerfilGuia.php");
             } else if($tipoUtilizador === 'parceiro'){
-                header ("location: ../Perfil/parceiro.php");
+                header ("location: ../PerfilParceiro.php");
             } else if($tipoUtilizador === 'turista'){
-                header ("location: ../Perfil/turista.php");
+                header ("location: ../PerfilTurista.php");
             } else if($tipoUtilizador === 'admin'){
-                header ("location: ../Perfil/admin.php");
+                header ("location: ../PerfilAdmin.php");
             }
 
         } else {
@@ -192,8 +192,6 @@ function registarTurista($conn, $dataNascimento, $sexo, $nome, $email, $senha)
     // Feche o statement
     mysqli_stmt_close($stmt);
 }
-
-
 
 function registarParceiro($conn, $tipo, $endereco, $estrelas, $link, $foto, $nome, $email, $telefone, $senha)
 {
