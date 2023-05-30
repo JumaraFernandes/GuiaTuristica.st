@@ -73,12 +73,15 @@ function login($conn, $email, $senha)
             session_start();
             $_SESSION['email'] = $row['email'];
             $_SESSION['nome'] = $row['nome'];
+            $_SESSION['id'] = $row['id'];
+            
             echo 'logado!!!';
             // Exemplo de uso:
             $idUtilizador = $row['id']; // ID do utilizador a ser verificado
             echo 'ID do user: '. $idUtilizador . '<br>';
             $tipoUtilizador = getTipoUtilizador($conn, $idUtilizador);
             echo "Tipo de utilizador: " . $tipoUtilizador;
+            $_SESSION['tipo'] = $tipoUtilizador;
 
 
 
@@ -112,7 +115,8 @@ function login($conn, $email, $senha)
 
 
 
-                    
+
+
 function registarGuia($conn, $numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv, $dataNascimento, $nome, $email, $telefone, $senha, $idiomas)
 {
     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
@@ -150,25 +154,7 @@ function registarGuia($conn, $numIdentificacao, $sexo, $experiencia,$enderecoGui
     // Feche o statement
     mysqli_stmt_close($stmt);
 } 
-function loginUtilizador($conn, $username, $password)
-{
-    $query = "CALL LoginUtilizador(?, ?)";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $username, $password);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_assoc($result);
-    $loggedIn = $row['loggedIn'];
 
-    // Verifique se o usuário está logado com sucesso
-    if ($loggedIn == 1) {
-        mysqli_stmt_close($stmt);
-        return true;
-    } else {
-        mysqli_stmt_close($stmt);
-        return false;
-    }
-}
 
 
 function registarTurista($conn, $dataNascimento, $sexo, $nome, $email, $senha)
@@ -259,14 +245,14 @@ function getTipoUtilizador($conn, $idUtilizador) {
     return "Tipo de utilizador desconhecido";
 }
 
-function registarAdmin($conn, $nome, $email, $senha)
+function registarAdmin($conn, $nome, $email, $senha,$telefone)
 {
     echo 'Registar Admin'.'<br>';
     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
     echo 'Encriptada: ' .$hashedSenha;
-    $query = "CALL RegistarAdmin(?, ?, ?)";
+    $query = "CALL RegistarAdmin(?, ?, ?,?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sss", $nome, $email, $hashedSenha);
+    mysqli_stmt_bind_param($stmt, "ssss",$telefone, $nome, $email, $hashedSenha);
     mysqli_stmt_execute($stmt);
     
     // Verifique se o administrador foi registrado com sucesso
@@ -280,6 +266,122 @@ function registarAdmin($conn, $nome, $email, $senha)
     mysqli_stmt_close($stmt);
 }
 
+
+function validarConta($conn, $emissor, $receptor, $message, )
+{
+    
+    // Cabeçalhos do e-mail
+    $headers = 'From: jumaraandrade4@gmail.com' . "\r\n" .
+               'Reply-To: jumarafernandes25@gmail.com' . "\r\n" .
+               'X-Mailer: PHP/' . phpversion();
+    
+    // Enviar o e-mail
+    $mailSent = mail($emissor, $receptor, $message, $headers);
+    
+    // Verificar se o e-mail foi enviado com sucesso
+    if ($mailSent) {
+        echo 'E-mail enviado com sucesso.';
+    } else {
+        echo 'Ocorreu um erro ao enviar o e-mail.';
+    }
+
+}
+
+
+ 
+    function PesquisarAdmin($conn, $emailP) {
+        // Chama o procedimento armazenado
+        $sql = "CALL PesquisarAdmin('$emailP')";
+        $result = $conn->query($sql);
+    
+        // Verifica se a chamada foi bem-sucedida e obtém os dados
+        if ($result) {
+            $row = $result->fetch_assoc();
+            
+            // Armazena os dados do administrador em um array
+            $perfilUsuario = array(
+                'ID' => $row['id'],
+                'Nome' => $row['nome'],
+                'Email' => $row['email'],
+                'Telefone' => $row['telefone']
+            );
+            
+            // Fecha o resultado da consulta
+            $result->close();
+        } else {
+            echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+            // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+            return null;
+        }
+    
+        // Fecha a conexão com o banco de dados
+        $conn->close();
+    
+        // Retorna o perfil do usuário
+        return $perfilUsuario;
+    }
+
+    function atualizarTelefoneAdmin($conn, $adminID, $novoTelefone) {
+        // Prepara a chamada do procedimento armazenado
+        $sql = "CALL AtualizarTelefoneAdmin($adminID, '$novoTelefone')";
+
+        // Executa a chamada do procedimento armazenado
+        if ($conn->query($sql)) {
+            echo "Telefone do administrador atualizado com sucesso.";
+            header("location: ../PerfilAdmin.php");
+        } else {
+            echo "Erro ao atualizar o telefone do administrador: " . $conn->error;
+            return false;
+            header("location: ../PerfilAdmin.php#ERRO!!!");
+        }
+    }
+
+
+
+
+        function obterRegistosPendentes($conn) {
+            // Prepara a chamada do procedimento armazenado
+            $sql = "CALL RegistosPendentes()";
+
+            // Executa a chamada do procedimento armazenado
+            $result = $conn->query($sql);
+
+            // Verifica se a chamada foi bem-sucedida e obtém os resultados
+            if ($result) {
+                $registosPendentes = array();
+
+                // Loop pelos resultados e armazenamento em um array
+                while ($row = $result->fetch_assoc()) {
+                    $registosPendentes[] = $row;
+                }
+
+                // Retorna os registros pendentes
+                return $registosPendentes;
+            } else {
+                echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+                return false;
+            }
+        }
+        // Chama a função para obter os registros pendentes
+        $registosPendentes = obterRegistosPendentes($conn);
+
+        // Verifica se houve registros pendentes retornados
+        if ($registosPendentes) {
+            // Faça o que desejar com os registros pendentes
+            foreach ($registosPendentes as $registo) {
+                echo "ID: " . $registo['id'] . "<br>";
+                echo "Nome: " . $registo['nome'] . "<br>";
+                echo "Email: " . $registo['email'] . "<br>";
+                echo "ativo: " . $registo['ativo'] . "<br>";
+                
+            }
+        } else {
+            // Tratar caso não haja registros pendentes
+            echo "Não há registros pendentes.";
+        }
+
+        // Fecha a conexão com o banco de dados
+        $conn->close();
 
 
 

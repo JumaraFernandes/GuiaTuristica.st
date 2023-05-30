@@ -59,12 +59,11 @@
                     </div>
                 </div>
                 <div>
-                    <div class="opcao">
+                    <a href="connect/logout.php" class="opcao">
                         <i class="bi bi-box-arrow-right"></i>
                         <p>Logout</p>
                         <i class="bi bi-chevron-right"></i>
-                    </div>
-
+                     </a>
                 </div>
             </div>
             <div class="col">
