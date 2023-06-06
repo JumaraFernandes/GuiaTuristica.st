@@ -98,7 +98,7 @@
 
   <div class="col-md-3 position-relative">
   <label for="validationTooltip05" class="form-label">Curriculo</label>
-  <?php echo ' <input type="file" class="form-control" aria-label="file example"'. $perfilUsuario['Telefone'] .'" required>'?>
+  <?php echo ' <input type="file" class="form-control" aria-label="file example" accept="application/pdf"'. $perfilUsuario['Telefone'] .'" required>'?>
   </div>
 
   <div class="col-12">

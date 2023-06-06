@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
         registarTurista( $dataNascimento, $sexo, $nome, $email, $telefone, $senha);
         
     
-    } elseif ($tipo === 'registoGuia') {
+    /* } elseif ($tipo === 'registoGuia') {
         // Código para o registro de guia
         $numIdentificacao = $_POST['numIdentificacao'];
         $enderecoGuia = $_POST['enderecoGuia'];
@@ -70,8 +70,62 @@ if (isset($_POST['submit'])) {
 
         // Processar os dados do registro de guia
         registarGuia( $numIdentificacao, $sexo, $experiencias,$enderecoGuia, $cv, $dataNascimento,$foto, $nome, $email, $telefone, $senha, $idiomasSelecionados);
-       // registarGuia($conn, 333, "feminino", "asddd", 12299, "rua largo", "não tenho", 1999-12-04, "jumara", "jumarafernandes", 960102873, "1234", "1234", "rua largo");
-     } elseif ($tipo === 'registoParceiro') {
+       // registarGuia($conn, 333, "feminino", "asddd", 12299, "rua largo", "não tenho", 1999-12-04, "jumara", "jumarafernandes", 960102873, "1234", "1234", "rua largo"); */
+
+    } elseif ($tipo === 'registoGuia') {
+        // Código para o registro de guia
+        $numIdentificacao = $_POST['numIdentificacao'];
+        $enderecoGuia = $_POST['enderecoGuia'];
+        $experiencias = $_POST['experiencias'];
+        $sexo = $_POST['sexo'];
+        $dataNascimento = $_POST['dataNascimento'];
+    
+        $idiomasSelecionados = $_POST['idiomas'];
+    
+        // Verifique se foram selecionados idiomas
+        if (!empty($idiomasSelecionados)) {
+            // Loop pelos idiomas selecionados
+            foreach ($idiomasSelecionados as $idioma) {
+                // Faça o que precisa ser feito com cada idioma selecionado
+                echo "Idioma selecionado: " . $idioma . "<br>";
+            }
+        } else {
+            echo "Nenhum idioma selecionado.";
+        }
+    
+        $cvNome = $_FILES['cv']['name'];
+        $cvTmp = $_FILES['cv']['tmp_name'];
+        $cvExtensao = pathinfo($cvNome, PATHINFO_EXTENSION); // Obtém a extensão do arquivo
+        $cvPath = '../cvpdf/' . uniqid() . '.' . $cvExtensao;
+        move_uploaded_file($cvTmp, $cvPath);
+
+        $fotoNome = $_FILES['fotoGuia']['name'];
+        $fotoTmp = $_FILES['fotoGuia']['tmp_name'];
+        $fotoExtensao = pathinfo($fotoNome, PATHINFO_EXTENSION); // Obtém a extensão do arquivo
+        $fotoPath = '../imagensguias/' . uniqid() . '.' . $fotoExtensao;
+        move_uploaded_file($fotoTmp, $fotoPath);
+        
+
+        echo "Número de Identificação: " . $numIdentificacao . "<br>";
+        echo "Endereço do Guia: " . $enderecoGuia . "<br>";
+        echo "Experiências: " . $experiencias . "<br>";
+        echo "Sexo: " . $sexo . "<br>";
+        echo "Data de Nascimento: " . $dataNascimento . "<br>";
+        echo "Nome: " . $nome . "<br>";
+        echo "Email: " . $email . "<br>";
+        echo "Telefone: " . $telefone . "<br>";
+        echo "Senha: " . $senha . "<br>";
+        echo "Confirmação de Senha: " . $confsenha . "<br>";
+        echo "Tipo: " . $tipo . "<br>";
+
+
+        
+    
+        // Processar os dados do registro de guia
+        //registarGuia($numIdentificacao, $sexo, $experiencias, $enderecoGuia, $cvPath, $dataNascimento, $fotoPath, $nome, $email, $telefone, $senha, $idiomasSelecionados);
+    }
+    
+     elseif ($tipo === 'registoParceiro') {
         // Código para o registro de parceiro
         $enderecoParceiro = $_POST['enderecoParceiro'];
         $link = $_POST['link'];

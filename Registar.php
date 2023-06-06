@@ -85,8 +85,8 @@
 
 
                 </label>
-                <label for="foto">cv: <input type="file" id="cv" name="cv" accept="image/*"></label>
-                <label for="foto">Foto: <input type="file" id="foto" name="foto" accept="image/*"></label>
+                <label for="cv">CV (PDF): <input type="file" id="cv" name="cv" accept="application/pdf"></label>
+                <label for="foto">Foto: <input type="file" id="foto" name="fotoGuia" accept="image/jpeg, image/png"></label>
               </div>
 
               <div id="registoParceiro">
@@ -117,7 +117,7 @@
                     <option value="R">Restaurante</option>
                   </select>
                 </label>
-                <label for="foto">Foto: <input type="file" id="foto" name="foto" accept="image/*"></label>
+                <label for="foto">Foto: <input type="file" id="foto" name="foto" accept="image/jpeg, image/png, image/gif"></label>
               </div>
 
               <label for="senha">Senha: <input type="password" id="senha" name="senha" placeholder="Senha"></label>
