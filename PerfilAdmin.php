@@ -28,10 +28,13 @@
     }
 
     // Resto do código da página de perfil
-    require_once "connect/conexaobd.php";
+    
     require_once "connect/funcao.php";
+    
 
-    $perfilUsuario = PesquisarAdmin($conn,$_SESSION['email']);
+    $perfilUsuario = PesquisarAdmin($_SESSION['email']);
+
+
      
     ?>
   
@@ -55,7 +58,7 @@
                     </div>
 
                 </div>
-                <div onclick="changeCardAdmin('pedidos')">
+                <div onclick="changeCardAdmin('totalGuias')">
                     <div class="opcao">
                     <i class="bi bi-person-plus-fill"></i>
                         <p> Total de guias </p>
@@ -76,44 +79,66 @@
                 <div class="" id="perfil" >
                     <h2>DadosPessois</h2>
                     
-     <form class="row g-3 needs-validation" action="connect/atualizarAdmin.php" method="post">
-    <div class="col-md-4 position-relative">
-    <label for="validationTooltip01" class="form-label">Nome</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Nome'] .'" readonly>'?>
-  </div>
+                    <form class="row g-3 needs-validation" action="connect/atualizarAdmin.php" method="post">
+                        <div class="col-md-4 position-relative">
+                            <label for="validationTooltip01" class="form-label">Nome</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Nome'] .'" readonly>'?>
+                        </div>
 
-  <div class="col-md-4 position-relative">
-    <label for="validationTooltipUsername" class="form-label">Email</label>
-    <div class="input-group has-validation">
-      <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-      <?php echo ' <input type="text" class="form-control" id="validationTooltipUsername" value="'. $perfilUsuario['Email'] .'" readonly>'?>
-    </div>
-  </div>
+                        <div class="col-md-4 position-relative">
+                            <label for="validationTooltipUsername" class="form-label">Email</label>
+                            <div class="input-group has-validation">
+                            <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                            <?php echo ' <input type="text" class="form-control" id="validationTooltipUsername" value="'. $perfilUsuario['Email'] .'" readonly>'?>
+                            </div>
+                        </div>
 
-  <div class="col-md-3 position-relative">
-    <label for="validationTooltip05" class="form-label">Telefone</label>
-    <?php echo '  <input type="text" class="form-control" name="telefone" id="validationTooltip05" value="'. $perfilUsuario['Telefone'] .'" required>'?>
-  </div>
+                        <div class="col-md-3 position-relative">
+                            <label for="validationTooltip05" class="form-label">Telefone</label>
+                            <?php echo '  <input type="text" class="form-control" name="telefone" id="validationTooltip05" value="'. $perfilUsuario['Telefone'] .'" required>'?>
+                        </div>
 
 
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit" name="submit">Guardar Alterações</button>
-  </div>
-    </form>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit" name="submit">Guardar Alterações</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="" id="pedidos" >
                     <h2>Pedidos</h2>
-                    <div class="card">
-                        <h5 class="card-header">Guia - Tatiana Silva</h5>
-                        <div class="card-body">
-                            <a href="#" class="btn btn-primary btCancelar">Cancela</a>
-                            <a href="#" class="btn btn-primary btCancelar">Aceita</a>
-                        </div>
-                    </div>
+
+                    <?php 
+                        $registosPendentes = obterRegistosPendentes();
+
+                        // Verifica se houve registros pendentes retornados
+                        if ($registosPendentes) {
+                            // Faça o que desejar com os registros pendentes
+                            foreach ($registosPendentes as $registo) {
+                                echo '<div class="card pendentes">
+                                        <h5 class="card-header">' . $registo['nome'] . '</h5>
+                                        <p>'. $registo['email'] .'</p>
+                                        <p>'. $registo['ativo'] .'</p>
+                                        <div class="card-body">
+                                        <a href="connect/cancelarpedido.php?id='. $registo['id'] .'" class="btn btn-primary btCancelar">Cancela</a>
+                                        <a href="connect/aceitarPedido.php?id='. $registo['id'] .'" class="btn btn-primary btCancelar">Aceita</a>
+                                        </div>
+                                    </div>';
+                                
+                            }
+                        } else {
+                            echo "Não há registros pendentes.";
+                        } 
+  
+                    ?>
                 </div>
-               
-                    </div>
-                </div>
+
+                <div class="" id="totalGuias" >
+                    <h2>totalGuias</h2>
+                    <?php 
+                        $total= obterTotalGuiasRegistrados();
+
+                
+                    ?>
             </div>
         </div>
     </div>

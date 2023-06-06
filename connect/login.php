@@ -9,7 +9,7 @@ if(isset($_POST['submit']))
     $passe=$_POST['senha'];
    
 
-    require_once "conexaobd.php";
+    
     require_once "funcao.php";
 
     if(emptyInputLogin($email,$passe)!== true)
@@ -19,9 +19,8 @@ if(isset($_POST['submit']))
         exit();
     }
     
-    login($conn, $email, $passe);
+    login($email, $passe);
     
-    echo 'login';
     
 }
 else

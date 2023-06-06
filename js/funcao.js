@@ -116,17 +116,27 @@ function setMinimumDate() {
 
 
     function changeCardAdmin(tipo) {
+      
       if (tipo === 'perfil') {
           document.getElementById('perfil').style.display = 'block';
             document.getElementById('pedidos').style.display = 'none';
+            document.getElementById('totalGuias').style.display = 'none';
             
               
           } else if (tipo === 'pedidos') {
               document.getElementById('perfil').style.display = 'none';
               document.getElementById('pedidos').style.display = 'block';
+              document.getElementById('totalGuias').style.display = 'none';
           } 
+          else {
+            document.getElementById('perfil').style.display = 'none';
+              document.getElementById('pedidos').style.display = 'none';
+              document.getElementById('totalGuias').style.display = 'block';
+        } 
+
   
       }
+
    
  
 

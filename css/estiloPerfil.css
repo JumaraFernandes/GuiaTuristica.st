@@ -65,10 +65,20 @@
 #msg,
 #listMsg,
 #reservas,
-#pedidos{
+#pedidos,
+#totalGuias{
     display: none;
 }
 
 #perfil{
     display: block;
+}
+
+.pendentes{
+    margin-top: 20px;
+}
+
+.pendentes p{
+
+    padding: 10px;
 }

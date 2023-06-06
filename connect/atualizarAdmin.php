@@ -4,7 +4,7 @@ if(isset($_POST['submit']))
 {
     //echo "está a funcionar";
     //die();
-    require_once "conexaobd.php";
+    
      require_once "funcao.php";
 
      echo 'entrou';
@@ -16,7 +16,7 @@ if(isset($_POST['submit']))
 
     
 
-    atualizarTelefoneAdmin($conn, $id, $telefone);
+    atualizarTelefoneAdmin( $id, $telefone);
 
 }
 else{

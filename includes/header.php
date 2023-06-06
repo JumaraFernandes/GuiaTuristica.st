@@ -56,7 +56,16 @@
               if (isset($_SESSION['nome'])) {
                 // Usuário está logado, exibe "Olá [nome do usuário]"
                 $nomeUsuario = $_SESSION['nome'];
+                $tipo = $_SESSION['tipo'];
+                if($tipo === 'guia'){
+                  echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="PerfilGuia.php">Olá ' . $nomeUsuario . '</a></li>';
+              } else if($tipo === 'parceiro'){
+                  echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="PerfilParceiro.php">Olá ' . $nomeUsuario . '</a></li>';
+              } else if($tipo === 'turista'){
+                  echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="PerfilTurista.php">Olá ' . $nomeUsuario . '</a></li>';
+              } else if($tipo === 'admin'){
                 echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="PerfilAdmin.php">Olá ' . $nomeUsuario . '</a></li>';
+              }
               } else {
                 // Usuário não está logado, exibe "Minha Conta"
                 echo '<li class="nav-item dropdown">';

@@ -1,5 +1,5 @@
 <?php
-require_once "conexaobd.php";
+
 require_once "funcao.php";
 
 $nome = $_POST['nome'];
@@ -8,7 +8,7 @@ $senha = $_POST['senha'];
 $telefone= $_POST['telefone'];
 
 
-registarAdmin($conn, 'Jumara', 'jumarafernades@gmail.com', 'Jumara.4','960790265');
+registarAdmin($conn, 'Jumara Andrade Amaro Fernandes', 'jumarafernades@gmail.com', 'Jumara.4','960790265');
 
     header("location: ../login.php");
     exit();

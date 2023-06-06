@@ -1,5 +1,24 @@
 <?php
 
+function conetarBD() {
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $bd  = "guiaturistica";
+
+    // Criar uma conexão com o banco de dados
+    $conn = new mysqli($servername, $username, $password, $bd );
+
+    // Verificar a conexão
+    if ($conn->connect_error) {
+        echo 'não consegui comunicar';
+        die("Falha na conexão com o banco de dados: " . $conn->connect_error);
+    }   
+
+    return $conn;
+}
+
 function emptyInputRegisto($nome, $email, $username, $passe, $repasse)
 {
     $result=true;
@@ -51,10 +70,12 @@ function vepass($passe,$repasse)
 }
 
 
-function login($conn, $email, $senha)
+function login($email, $senha)
 {
+    $conn = conetarBD();
+
     echo 'chamou-me';
-    $query_select = "SELECT * FROM utilizador WHERE email = ?";
+    $query_select = "SELECT * FROM utilizador WHERE email = ? AND ativo = 1";
     $stmt = mysqli_stmt_init($conn);
     
     if (!mysqli_stmt_prepare($stmt, $query_select)) {
@@ -79,23 +100,20 @@ function login($conn, $email, $senha)
             // Exemplo de uso:
             $idUtilizador = $row['id']; // ID do utilizador a ser verificado
             echo 'ID do user: '. $idUtilizador . '<br>';
-            $tipoUtilizador = getTipoUtilizador($conn, $idUtilizador);
-            echo "Tipo de utilizador: " . $tipoUtilizador;
-            $_SESSION['tipo'] = $tipoUtilizador;
+            $tipo = $row['tipo'];
+            echo "Tipo de utilizador: " . $tipo;
+            $_SESSION['tipo'] = $tipo;
 
-
-
-
-            if($tipoUtilizador === 'guia'){
+             if($tipo === 'guia'){
                 header ("location: ../PerfilGuia.php");
-            } else if($tipoUtilizador === 'parceiro'){
+            } else if($tipo === 'parceiro'){
                 header ("location: ../PerfilParceiro.php");
-            } else if($tipoUtilizador === 'turista'){
+            } else if($tipo === 'turista'){
                 header ("location: ../PerfilTurista.php");
-            } else if($tipoUtilizador === 'admin'){
+            } else if($tipo === 'admin'){
                 header ("location: ../PerfilAdmin.php");
-            }
-
+            }  
+ 
         } else {
             echo "Credenciais inválidas. Senha incorreta.";
             echo 'Senha: '.$senha . "<br>";
@@ -112,20 +130,16 @@ function login($conn, $email, $senha)
     mysqli_stmt_close($stmt);
 }
 
-
-
-
-
-
-function registarGuia($conn, $numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv, $dataNascimento, $nome, $email, $telefone, $senha, $idiomas)
+function registarGuia($numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv, $dataNascimento,$foto, $nome, $email, $telefone, $senha, $idiomas)
 {
+    $conn = conetarBD();
     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
     echo 'Senha: '.$senha. '<br>';
     echo 'Encriptada: '.$hashedSenha.'<br>';
     echo 'Comparar: '.password_verify($senha, $hashedSenha) . '<br>';
-    $query = "CALL RegistrarGuia(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "CALL RegistrarGuia(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ssssssssss", $numIdentificacao, $sexo, $experiencia, $enderecoGuia, $cv, $dataNascimento, $telefone,$nome, $email, $hashedSenha);
+    mysqli_stmt_bind_param($stmt, "sssssssssss", $numIdentificacao, $sexo, $experiencia, $enderecoGuia, $cv, $dataNascimento,$foto, $telefone,$nome, $email, $hashedSenha);
     mysqli_stmt_execute($stmt);
 
     // Verifique se o guia foi registrado com sucesso
@@ -157,8 +171,9 @@ function registarGuia($conn, $numIdentificacao, $sexo, $experiencia,$enderecoGui
 
 
 
-function registarTurista($conn, $dataNascimento, $sexo, $nome, $email, $senha)
+function registarTurista( $dataNascimento, $sexo, $nome, $email, $senha)
 {
+    $conn = conetarBD();
     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
     echo 'Senha: '.$senha . '<br>';
     echo 'Encriptada: ' .$hashedSenha . '<br>';
@@ -179,12 +194,13 @@ function registarTurista($conn, $dataNascimento, $sexo, $nome, $email, $senha)
     mysqli_stmt_close($stmt);
 }
 
-function registarParceiro($conn, $tipo, $endereco, $estrelas, $link, $foto, $nome, $email, $telefone, $senha)
+function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, $nome, $email, $senha)
 {
+    $conn = conetarBD();
     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
     $query = "CALL RegistrarParceiro(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssssssss", $tipo, $endereco, $estrelas, $link, $telefone, $nome, $email, $hashedSenha, $foto);
+    mysqli_stmt_bind_param($stmt, "sssssssss", $tipo, $endereco, $estrelas, $link, $nome, $telefone, $email, $hashedSenha, $foto);
     mysqli_stmt_execute($stmt);
     // Verifique se a consulta foi executada com sucesso
     if (mysqli_stmt_affected_rows($stmt) > 0) {
@@ -195,58 +211,10 @@ function registarParceiro($conn, $tipo, $endereco, $estrelas, $link, $foto, $nom
     mysqli_stmt_close($stmt);
 }
 
-function getTipoUtilizador($conn, $idUtilizador) {
-    // Verificar se é um guia
-    $query = "SELECT id FROM guia WHERE id_utilizador = ?";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "i", $idUtilizador);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-    if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_close($stmt);
-        return "guia";
-    }
-
-    // Verificar se é um parceiro
-    $query = "SELECT id FROM parceiro WHERE id_utilizador = ?";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "i", $idUtilizador);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-    if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_close($stmt);
-        return "parceiro";
-    }
-
-    // Verificar se é um turista
-    $query = "SELECT id FROM turista WHERE id_utilizador = ?";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "i", $idUtilizador);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-    if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_close($stmt);
-        return "turista";
-    }
-
-    // Verificar se é um administrador
-    $query = "SELECT id FROM Administrador WHERE id_utilizador = ?";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "i", $idUtilizador);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-    if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_close($stmt);
-        return "admin";
-    }
-
-    // Caso nenhum tipo seja encontrado
-    mysqli_stmt_close($stmt);
-    return "Tipo de utilizador desconhecido";
-}
-
-function registarAdmin($conn, $nome, $email, $senha,$telefone)
+  function registarAdmin($nome, $email, $senha,$telefone)
 {
+    $conn = conetarBD();
+
     echo 'Registar Admin'.'<br>';
     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
     echo 'Encriptada: ' .$hashedSenha;
@@ -267,29 +235,9 @@ function registarAdmin($conn, $nome, $email, $senha,$telefone)
 }
 
 
-function validarConta($conn, $emissor, $receptor, $message, )
-{
-    
-    // Cabeçalhos do e-mail
-    $headers = 'From: jumaraandrade4@gmail.com' . "\r\n" .
-               'Reply-To: jumarafernandes25@gmail.com' . "\r\n" .
-               'X-Mailer: PHP/' . phpversion();
-    
-    // Enviar o e-mail
-    $mailSent = mail($emissor, $receptor, $message, $headers);
-    
-    // Verificar se o e-mail foi enviado com sucesso
-    if ($mailSent) {
-        echo 'E-mail enviado com sucesso.';
-    } else {
-        echo 'Ocorreu um erro ao enviar o e-mail.';
-    }
+    function PesquisarAdmin( $emailP) {
+        $conn = conetarBD();
 
-}
-
-
- 
-    function PesquisarAdmin($conn, $emailP) {
         // Chama o procedimento armazenado
         $sql = "CALL PesquisarAdmin('$emailP')";
         $result = $conn->query($sql);
@@ -313,15 +261,48 @@ function validarConta($conn, $emissor, $receptor, $message, )
             // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
             return null;
         }
+
     
-        // Fecha a conexão com o banco de dados
-        $conn->close();
+        // Retorna o perfil do usuário
+        return $perfilUsuario;
+    }
+     
+    function PesquisarGuia( $emailP) {
+        $conn = conetarBD();
+        // Chama o procedimento armazenado
+        $sql = "CALL PesquisarGuia('$emailP')";
+        $result = $conn->query($sql);
+    
+        // Verifica se a chamada foi bem-sucedida e obtém os dados
+        if ($result) {
+            $row = $result->fetch_assoc();
+            
+            // Armazena os dados do administrador em um array
+            $perfilUsuario = array(
+                'ID' => $row['id'],
+                'Nome' => $row['nome'],
+                'Email' => $row['email'],
+                'Telefone' => $row['telefone'],
+                'dataNascimento' => $row['dataNascimento'],
+                'Morada' => $row['endereco']
+            );
+            
+            // Fecha o resultado da consulta
+            $result->close();
+        } else {
+            echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+            // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+            return null;
+        }
+
     
         // Retorna o perfil do usuário
         return $perfilUsuario;
     }
 
-    function atualizarTelefoneAdmin($conn, $adminID, $novoTelefone) {
+    function atualizarTelefoneAdmin($adminID, $novoTelefone) {
+        $conn = conetarBD();
+
         // Prepara a chamada do procedimento armazenado
         $sql = "CALL AtualizarTelefoneAdmin($adminID, '$novoTelefone')";
 
@@ -339,7 +320,9 @@ function validarConta($conn, $emissor, $receptor, $message, )
 
 
 
-        function obterRegistosPendentes($conn) {
+        function obterRegistosPendentes() {
+            $conn = conetarBD();
+
             // Prepara a chamada do procedimento armazenado
             $sql = "CALL RegistosPendentes()";
 
@@ -362,26 +345,86 @@ function validarConta($conn, $emissor, $receptor, $message, )
                 return false;
             }
         }
-        // Chama a função para obter os registros pendentes
-        $registosPendentes = obterRegistosPendentes($conn);
 
-        // Verifica se houve registros pendentes retornados
-        if ($registosPendentes) {
-            // Faça o que desejar com os registros pendentes
-            foreach ($registosPendentes as $registo) {
-                echo "ID: " . $registo['id'] . "<br>";
-                echo "Nome: " . $registo['nome'] . "<br>";
-                echo "Email: " . $registo['email'] . "<br>";
-                echo "ativo: " . $registo['ativo'] . "<br>";
-                
+     
+        function ativarPerfil( $utilizadorID) {
+            $conn = conetarBD();
+
+            // Prepara a chamada do procedimento armazenado
+            $sql = "CALL AtivarPerfil(?)";
+            $stmt = mysqli_stmt_init($conn);
+            
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                echo "Erro ao preparar a declaração.";
+                return false;
             }
-        } else {
-            // Tratar caso não haja registros pendentes
-            echo "Não há registros pendentes.";
+            
+            // Vincula o parâmetro adminID
+            mysqli_stmt_bind_param($stmt, "i", $utilizadorID);
+            
+            // Executa o procedimento armazenado
+            if (mysqli_stmt_execute($stmt)) {
+                echo "Procedimento armazenado executado com sucesso.";
+                return true;
+            } else {
+                echo "Erro ao executar o procedimento armazenado: " . mysqli_error($conn);
+                return false;
+            }
+            
+            mysqli_stmt_close($stmt);
         }
 
-        // Fecha a conexão com o banco de dados
-        $conn->close();
+
+        function CancelarPerfil($utilizadorID) {
+            $conn = conetarBD();
+            
+            // Prepara a chamada do procedimento armazenado
+            $sql = "CALL CancelarPerfil(?)";
+            $stmt = mysqli_stmt_init($conn);
+            
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                echo "Erro ao preparar a declaração.";
+                return false;
+            }
+            
+            // Vincula o parâmetro adminID
+            mysqli_stmt_bind_param($stmt, "i", $utilizadorID);
+            
+            // Executa o procedimento armazenado
+            if (mysqli_stmt_execute($stmt)) {
+                echo "Procedimento armazenado executado com sucesso.";
+                return true;
+            } else {
+                echo "Erro ao executar o procedimento armazenado: " . mysqli_error($conn);
+                return false;
+            }
+            
+            mysqli_stmt_close($stmt);
+        }
+        
+
+    
+
+            function obterTotalGuiasRegistrados()
+            {
+                $conn = conetarBD();
+                // Chama o procedimento armazenado
+                $sql = "CALL ListarTotalGuias()";
+                $result1 = $conn->query($sql);
+                
+                // Verifica se a chamada do procedimento obteve sucesso
+                if ($result1 === false) {
+                    die("Erro ao chamar o procedimento: " . $conn->error);
+                }
+                
+                // Obtém o resultado da contagem de guias
+                $row = $result1->fetch_assoc();
+                $totalGuias = $row["total_guias"]; 
+                // Retorna o total de guias
+
+                echo 'Total guia: ' .$totalGuias; 
+                return $totalGuias;
+            }
 
 
 

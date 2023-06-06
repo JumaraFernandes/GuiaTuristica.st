@@ -45,7 +45,7 @@
       </div>
     </div>
     <section id="form">
-    <form action="connect/registar.php" method="post">
+    <form action="connect/registar.php" method="post" enctype="multipart/form-data">
           <div>
               <label for="nome">Nome: <input type="text" id="nome" name="nome" placeholder="Nome"></label>
               <label for="email">Email: <input type="email" id="email" name="email" placeholder="Email" onblur="validarEmail()"></label>
@@ -86,6 +86,7 @@
 
                 </label>
                 <label for="foto">cv: <input type="file" id="cv" name="cv" accept="image/*"></label>
+                <label for="foto">Foto: <input type="file" id="foto" name="foto" accept="image/*"></label>
               </div>
 
               <div id="registoParceiro">
@@ -140,10 +141,11 @@
     var dataMaximaFormatada = dataMaxima.toISOString().split('T')[0];
 
     // Obtém o elemento de entrada de data
-    var inputDataNascimento = document.getElementById('dataNascimentoturista');
-    var inputDataNascimento = document.getElementById('dataNascimentoguia');
+    var inputTurista = document.getElementById('dataNascimentoturista');
+    var inputGuia = document.getElementById('dataNascimentoguia');
     // Define o limite máximo
-    inputDataNascimento.setAttribute('max', dataMaximaFormatada);
+    inputTurista.setAttribute('max', dataMaximaFormatada);
+    inputGuia.setAttribute('max', dataMaximaFormatada);
   </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-require_once "conexaobd.php";
+
 require_once "funcao.php";
 
 if (isset($_POST['submit'])) {
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
         echo "sEXO do Guia: " . $sexo . "<br>";
 
         // Processar os dados do registro de turista
-        registarTurista($conn, $dataNascimento, $sexo, $nome, $email, $telefone, $senha);
+        registarTurista( $dataNascimento, $sexo, $nome, $email, $telefone, $senha);
         
     
     } elseif ($tipo === 'registoGuia') {
@@ -35,6 +35,7 @@ if (isset($_POST['submit'])) {
         $numIdentificacao = $_POST['numIdentificacao'];
         $enderecoGuia = $_POST['enderecoGuia'];
         $cv = $_POST['cv'];
+        $foto = $_POST['foto'];
         $experiencias = $_POST['experiencias'];
         $sexo = $_POST['sexo'];
         $dataNascimento = $_POST['dataNascimento'];
@@ -68,7 +69,7 @@ if (isset($_POST['submit'])) {
 
 
         // Processar os dados do registro de guia
-        registarGuia($conn, $numIdentificacao, $sexo, $experiencias,$enderecoGuia, NULL, $dataNascimento, $nome, $email, $telefone, $senha, $idiomasSelecionados);
+        registarGuia( $numIdentificacao, $sexo, $experiencias,$enderecoGuia, $cv, $dataNascimento,$foto, $nome, $email, $telefone, $senha, $idiomasSelecionados);
        // registarGuia($conn, 333, "feminino", "asddd", 12299, "rua largo", "não tenho", 1999-12-04, "jumara", "jumarafernandes", 960102873, "1234", "1234", "rua largo");
      } elseif ($tipo === 'registoParceiro') {
         // Código para o registro de parceiro
@@ -92,7 +93,7 @@ if (isset($_POST['submit'])) {
         echo "Tipo: " . $tipo . "<br>";
 
         // Processar os dados do registro de parceiro
-        registarParceiro($conn, $tipoParceiro, $enderecoParceiro, $classificacao, $link, $foto, $nome, $email, $telefone, $senha);
+        registarParceiro($tipoParceiro, $enderecoParceiro, $classificacao, $link, $foto, $telefone, $nome, $email, $senha);
 
     } elseif ($tipo === 'registoParceiro') {
         // Código para o registro de parceiro

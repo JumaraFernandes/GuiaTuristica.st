@@ -26,8 +26,10 @@
     header("Location: login.php");
     exit(); // Certifique-se de sair do script após o redirecionamento
     }
+ 
 
-    // Resto do código da página de perfil
+    require_once "connect/funcao.php";
+    $perfilUsuario = PesquisarGuia($_SESSION['email']);
 
     ?>
   
@@ -73,57 +75,30 @@
      <form class="row g-3 needs-validation" novalidate>
   <div class="col-md-4 position-relative">
     <label for="validationTooltip01" class="form-label">Nome</label>
-    <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
-    <div class="valid-tooltip">
-      Looks good!
-    </div>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Nome'] .'" readonly>'?>
   </div>
-  <div class="col-md-4 position-relative">
-    <label for="validationTooltip02" class="form-label">Apelido</label>
-    <input type="text" class="form-control" id="validationTooltip02" value="Otto" required>
-    <div class="valid-tooltip">
-      Looks good!
-    </div>
-  </div>
+
   <div class="col-md-4 position-relative">
     <label for="validationTooltipUsername" class="form-label">Email</label>
-    <div class="input-group has-validation">
-      <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-      <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-      <div class="invalid-tooltip">
-        Please choose a unique and valid username.
-      </div>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Email'] .'" readonly>'?>
     </div>
-  </div>
   <div class="col-md-6 position-relative">
     <label for="validationTooltip03" class="form-label">Morada</label>
-    <input type="text" class="form-control" id="validationTooltip03" required>
-    <div class="invalid-tooltip">
-      Please provide a valid morada.
-    </div>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Morada'] .'" required>'?>
   </div>
   <div class="col-md-6 position-relative">
     <label for="validationTooltip03" class="form-label">Data de Nascimento</label>
-    <input type="text" class="form-control" id="validationTooltip03" required>
-    <div class="invalid-tooltip">
-      Please provide a valid datanascimento.
-    </div>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['dataNascimento'] .'" readonly>'?>
   </div>
   
   <div class="col-md-3 position-relative">
     <label for="validationTooltip05" class="form-label">Telefone</label>
-    <input type="text" class="form-control" id="validationTooltip05" required>
-    <div class="invalid-tooltip">
-      Please provide a valid telefone.
-    </div>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Telefone'] .'" required>'?>
   </div>
 
   <div class="col-md-3 position-relative">
   <label for="validationTooltip05" class="form-label">Curriculo</label>
-    <input type="file" class="form-control" aria-label="file example" required>
-    <div class="invalid-tooltip">
-      Please provide a valid cv.
-    </div>
+  <?php echo ' <input type="file" class="form-control" aria-label="file example"'. $perfilUsuario['Telefone'] .'" required>'?>
   </div>
 
   <div class="col-12">
