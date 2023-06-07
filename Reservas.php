@@ -17,7 +17,10 @@
 </head>
 <body>
   <!--cabeçalho-->
-  <?php include 'includes/header.php' ?>
+  <?php include 'includes/header.php' ;
+    require_once "connect/funcao.php";
+    $guias = PesquisarTodosGuias();
+    ?>
   <main> 
     <div class="corpo">
       <h1>Reserva</h1>
@@ -36,17 +39,16 @@
                         <option value="museu">Museu do café</option>
                       </select>
                     </label>
-                    <label for="Guia">Escolher o Guia:                   
-                      <select id="Guia" name="Guia">
-                        <option value="Carlos">Carlos Amaro</option>
-                        <option value="joao">Jão Gomes</option>
-                        <option value="Miguel">Miguel Monteiro</option>
-                        <option value="Pedro">Pedro Santana</option>
-                      </select>
-                    </label>
-                    
-
-
+                      <?php if (!empty($guias)) { ?>
+                  <label for="Guia">Escolher o Guia:</label>
+                  <select id="Guia" name="Guia">
+                      <?php foreach ($guias as $guia) { ?>
+                          <option value="<?php echo $guia['ID']; ?>"><?php echo $guia['ID']; ?></option>
+                      <?php } ?>
+                  </select>
+              <?php } else { ?>
+              <p>Nenhum guia encontrado.</p>
+              <?php } ?>
                 </div> 
                 <label for="check"><input type="checkbox" name="" id="check"> Aceito os termos de lincença</label>
                 <input type="submit" name="submit" value="Enviar">

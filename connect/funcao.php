@@ -304,6 +304,48 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         return $perfilUsuario;
     }
 
+    function PesquisarTodosGuias() {
+        $conn = conetarBD();
+        
+        // Chama o procedimento armazenado para obter todos os guias
+        $sql = "CALL PesquisarTodosGuias()";
+        $result = $conn->query($sql);
+    
+        // Verifica se a chamada foi bem-sucedida e obtém os dados
+        if ($result) {
+            $guias = array();
+    
+            // Loop através dos resultados para obter cada guia
+            while ($row = $result->fetch_assoc()) {
+                // Armazena os dados do guia em um array
+                $guia = array(
+                    'ID' => $row['id'],
+                    'Nome' => $row['nome'],
+                    'Email' => $row['email'],
+                    'Telefone' => $row['telefone'],
+                    'dataNascimento' => $row['dataNascimento'],
+                    'Morada' => $row['endereco'],
+                    'Experiencias' => $row['experiencia'],
+                    'cv' => $row['cv']
+                );
+    
+                // Adiciona o guia ao array de guias
+                $guias[] = $guia;
+            }
+    
+            // Fecha o resultado da consulta
+            $result->close();
+    
+            // Retorna o array de guias
+            return $guias;
+        } else {
+            echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+            // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+            return null;
+        }
+    }
+    
+
     function atualizarTelefoneAdmin($adminID, $novoTelefone) {
         $conn = conetarBD();
 
@@ -402,12 +444,6 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         }
 
     
-        
-        
-        
-
-        
-        
         
         function adicionarReserva($datainicio, $datafim, $numeropessoas, $estado, $local, $id_guia, $id_turista) {
             $conn = conetarBD();

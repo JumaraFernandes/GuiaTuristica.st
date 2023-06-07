@@ -15,14 +15,8 @@ if(isset($_POST['submit']))
     $id = $_SESSION['id'];
 
 
-    $cvNome = $_FILES['cv']['name'];
-    $cvTmp = $_FILES['cv']['tmp_name'];
-    $cvExtensao = pathinfo($cvNome, PATHINFO_EXTENSION); // Obtém a extensão do arquivo
-    $cvPath = '../cvpdf/' . uniqid() . '.' . $cvExtensao;
-    move_uploaded_file($cvTmp, $cvPath);
 
-
-    atualizarDadosGuia($id, $Endereco, $Telefone, $cvPath);
+    atualizarDadosGuia($id, $Endereco, $Telefone,  $Cv);
     
 }
 else{

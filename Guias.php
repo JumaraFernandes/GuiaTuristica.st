@@ -17,114 +17,46 @@
 </head>
 <body>
   <!--cabeçalho-->
-  <?php include 'includes/header.php' ?>
+  <?php include 'includes/header.php';
+
+  require_once "connect/funcao.php";
+  $guias = PesquisarTodosGuias();
+
+
+  ?>
+
   <main> 
       <div class="corpo">
         <h1>Nossos Guias</h1>
       </div>
       <section class="guias">
-        <div class="card">
-          <img src="imagens/guia.1.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5>Carlos Amaro</h5>
-            <ul>
-              <li>Idade:27 anos</li>
-              <li>Nacionalidade: Santomense</li>
-              <li> Especialidades :</li>
-              <li>História local e cultura</li>
-              <li> Ecoturismo e atividades ao ar livre</li>
-              <li> Gastronomia e culinária local</li>
-              <li> Idiomas falados: </li>
-              <li> Português (nativo) </li>
-              <li> Inglês (fluente) </li>
-              <li> Francês (intermediário) </li>
-              <li>Experiências:</li>
-              <li>Guia turístico em São Tomé e Príncipe há 5 anos</li>
-              <li> Trabalhou com turistas de diferentes nacionalidades</li>
-              <li> Certificado em Primeiros Socorros e Segurança em Turismo</li>
-            </ul>
-          </div>
-          <div class="button-container">
-            
-            <button class="my-button" onclick="window.location.href = 'Reservas.php'">Reserva</button>
-            
-          </div>
-        </div>
-          <div class="card">
-            <img src="imagens/guia.2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>Jão Gomes</h5>
-              <ul>
-                <li>Idade:27 anos</li>
-                <li>Nacionalidade: Santomense</li>
-                <li> Especialidades :</li>
-                <li>História local e cultura</li>
-                <li> Ecoturismo e atividades ao ar livre</li>
-                <li> Gastronomia e culinária local</li>
-                <li> Idiomas falados: </li>
-                <li> Português (nativo) </li>
-                <li> Inglês (fluente) </li>
-                <li> Francês (intermediário) </li>
-                <li>Experiências:</li>
-                <li>Guia turístico em São Tomé e Príncipe há 5 anos</li>
-                <li> Trabalhou com turistas de diferentes nacionalidades</li>
-                <li> Certificado em Primeiros Socorros e Segurança em Turismo</li>
-              </ul>
-            </div>
-            <div class="button-container">
-              <button class="my-button" onclick="window.location.href = 'Reservas.php'">Reserva</button>
-            </div>
-          </div>
-          <div class="card">
-            <img src="imagens/guia.3.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>Miguel Monteiro</h5>
-              <ul>
-                <li>Idade:27 anos</li>
-                <li>Nacionalidade: Santomense</li>
-                <li> Especialidades :</li>
-                <li>História local e cultura</li>
-                <li> Ecoturismo e atividades ao ar livre</li>
-                <li> Gastronomia e culinária local</li>
-                <li> Idiomas falados: </li>
-                <li> Português (nativo) </li>
-                <li> Inglês (fluente) </li>
-                <li> Francês (intermediário) </li>
-                <li>Experiências:</li>
-                <li>Guia turístico em São Tomé e Príncipe há 5 anos</li>
-                <li> Trabalhou com turistas de diferentes nacionalidades</li>
-                <li> Certificado em Primeiros Socorros e Segurança em Turismo</li>
-              </ul>
-            </div>
-            <div class="button-container">
-              <button class="my-button" onclick="window.location.href = 'Reservas.php'">Reserva</button>
-            </div>
-          </div>
-          <div class="card">
-            <img src="imagens/guia4.avif" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>Pedro Santana</h5>
-              <ul>
-                <li>Idade:27 anos</li>
-                <li>Nacionalidade: Santomense</li>
-                <li> Especialidades :</li>
-                <li>História local e cultura</li>
-                <li> Ecoturismo e atividades ao ar livre</li>
-                <li> Gastronomia e culinária local</li>
-                <li> Idiomas falados: </li>
-                <li> Português (nativo) </li>
-                <li> Inglês (fluente) </li>
-                <li> Francês (intermediário) </li>
-                <li>Experiências:</li>
-                <li>Guia turístico em São Tomé e Príncipe há 5 anos</li>
-                <li> Trabalhou com turistas de diferentes nacionalidades</li>
-                <li> Certificado em Primeiros Socorros e Segurança em Turismo</li>
-              </ul>
-            </div>
-            <div class="button-container">
-              <button class="my-button" onclick="window.location.href = 'Reservas.php'">Reserva</button>
-            </div>
-          </div>
+        <?php 
+          if (!empty($guias)) {?>
+          
+            <?php foreach ($guias as $guia) {
+              
+                echo '<div class="card">
+                <img src="imagens/guia.1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5>'. $guia['Nome'] .'</h5>
+                  <ul>
+                    <li>Idade:'. $guia['dataNascimento'] .' anos</li>
+                    <li>Telefone:'. $guia['Telefone'] .' </li>
+                    <li>Experiências: '. $guia['Experiencias'] .' </li>
+                  </ul>
+                </div>
+                <div class="button-container">
+                <a class="my-button" href="Reservas.php">Reserva</a>
+                  
+                  
+                </div>
+              </div>';
+            }
+        } else {
+            echo "Nenhum guia encontrado.";
+        }
+        ?>
+        
       </section>
     </div>
     </main>

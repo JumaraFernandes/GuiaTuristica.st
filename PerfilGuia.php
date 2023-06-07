@@ -95,11 +95,13 @@
     <label for="validationTooltip05" class="form-label">Telefone</label>
     <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" name="telefone" value="'. $perfilUsuario['Telefone'] .'" required>'?>
   </div>
-
   <div class="col-md-3 position-relative">
   <label for="validationTooltip05" class="form-label">Curriculo</label>
-  <a href="cvpdf/<?php echo $perfilUsuario['cv']; ?>" download>baixar</a>
-  <?php echo ' <input type="file" class="form-control" aria-label="file example"  name="cv" accept="application/pdf"'. $perfilUsuario['cv'] .'">'?>
+  <?php echo '<input type="file" class="form-control" aria-label="file example"  name="cv" accept="application/pdf"'. $perfilUsuario['cv'] .'">'?>
+  <a href="cvpdf/<?php echo $perfilUsuario['cv']; ?>" download>baixarpdf</a>
+</div>
+  <div class="col-md-3 position-relative">
+  
   </div>
 
   <div class="col-12">
@@ -117,7 +119,7 @@
                             // Faça o que desejar com os registros pendentes
                             foreach ($reservasPendentes as $reservas) {
                                 echo '<div class="card pendentes">
-                                        <h5 class="card-header">' . $registo['nome'] . '</h5>
+                                        <h5 class="card-header">' . $reservas['nome'] . '</h5>
                                         <p>'. $reservas['Local'] .'</p>
                                         <p>'. $reservas['Data Inicio'] .'</p>
                                         <p>'. $reservas['Data Fim<'] .'</p>

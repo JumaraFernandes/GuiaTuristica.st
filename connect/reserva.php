@@ -1,6 +1,6 @@
 <?php
 
-echo 'entrou na reserva';
+
 if(isset($_POST['submit']))
 {
     //echo "está a funcionar";
@@ -11,20 +11,14 @@ if(isset($_POST['submit']))
     $numeropessoas=$_POST['numeropessoas'];
     $local=$_POST['local'];
      $id_guia=$_POST['Guia'];
+     $estado=$_POST['$estado'];
+     $$id_turista=$_POST['$turista'];
 
-     echo 'guia'.$id_guia;
-
-
-
+     echo 'entrou na reserva';
      require_once "funcao.php";
-
-     
-    
-
-
    
      // Processar os dados do registro de turista
-     //adicionarReserva($datainicio, $datafim, $numeropessoas, null,$local, $id_guia, null);
+     adicionarReserva($datainicio, $datafim, $numeropessoas, "pendente",$local, $id_guia, $id_turista);
 
     
     
