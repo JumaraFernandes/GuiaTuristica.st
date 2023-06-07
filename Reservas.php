@@ -22,15 +22,12 @@
     <div class="corpo">
       <h1>Reserva</h1>
       <section id="form">
-            <form>
+            <form action="connect/reserva.php" method="post">
                 <h3>Faça a sua Reserva</h3>
                 <div>
-                    <label for="nome">Nome: <input type="text" id="nome" placeholder="Nome"></label>
-                    <label for="email">Email: <input type="email" id="email" placeholder="Email" onblur="validarEmail()"></label>
-                    <div id="valEmail"></div>
-                    <label for="dataEntrada">Data Inicio: <input type="date" id="dataEntrada"></label>
-                    <label for="dataSaida">Data Fim: <input type="date" id="dataSaida"></label>
-                    <label for="Pessoas">Nº Pessoas: <input type="number" name="" id="adulto" placeholder="Número de Adultos" min="1"></label>
+                    <label for="dataEntrada">Data Inicio: <input type="date" id="dataEntrada" name="datainicio"></label>
+                    <label for="dataSaida" >Data Fim: <input type="date" id="dataSaida" name="datafim"></label>
+                    <label for="Pessoas">Nº Pessoas: <input type="number" id="adulto" name="numeropessoas" placeholder="Número de Adultos" min="1"></label>
                     <label for="Local">Local:                   
                       <select id="Local" name="local">
                         <option value="Parquue">Parque Natural de Obó</option>
@@ -52,7 +49,7 @@
 
                 </div> 
                 <label for="check"><input type="checkbox" name="" id="check"> Aceito os termos de lincença</label>
-                <input type="button" value="Enviar" onclick="enviar()">
+                <input type="submit" name="submit" value="Enviar">
                 <div id="res"></div>
             </form>
     </section>

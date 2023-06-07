@@ -346,6 +346,61 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             }
         }
 
+
+        function obterReservasPendentes(){
+
+            $conn = conetarBD();
+            // Chama o procedimento ListarReservasPendentes
+            $sql = "CALL ListarReservasPendentes()";
+            $result = $conn->query($sql);
+
+            // Verifica se houve algum erro na execução do procedimento
+            if (!$result) {
+                die("Erro ao chamar o procedimento: " . $conn->error);
+            }
+            // Verifica se a chamada foi bem-sucedida e obtém os resultados
+            if ($result) {
+                $reservasPendentes  = array();
+
+                // Loop pelos resultados e armazenamento em um array
+                while ($row = $result->fetch_assoc()) {
+                    $rreservasPendentes [] = $row;
+                }
+
+                // Retorna os reservass pendentes
+                return $reservasPendentes ;
+            } else {
+                echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+                return false;
+            }
+        }
+
+    
+        
+        
+        
+
+        
+        
+        
+        function adicionarReserva($datainicio, $datafim, $numeropessoas, $estado, $local, $id_guia, $id_turista) {
+            $conn = conetarBD();
+            // Chama o procedimento AdicionarReserva
+            $sql = "CALL AdicionarReserva('$datainicio', '$datafim', $numeropessoas, '$estado', '$local', $id_guia, $id_turista)";
+            $result = $conn->query($sql);
+        
+            // Verifica se houve algum erro na execução do procedimento
+            if (!$result) {
+                die("Erro ao chamar o procedimento: " . $conn->error);
+            }
+        
+            // Chamada da função para adicionar uma reserva
+        adicionarReserva('2023-06-10', '2023-06-15', 5, 'pendente', 'Local da reserva', 1, 1);
+        }
+        
+       
+        
+    
      
         function ativarPerfil( $utilizadorID) {
             $conn = conetarBD();

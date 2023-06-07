@@ -117,7 +117,7 @@
                     <option value="R">Restaurante</option>
                   </select>
                 </label>
-                <label for="foto">Foto: <input type="file" id="foto" name="foto" accept="image/jpeg, image/png, image/gif"></label>
+                <label for="foto">Foto: <input type="file" id="foto" name="fotoparceiro" accept="image/jpeg, image/png, image/gif"></label>
               </div>
 
               <label for="senha">Senha: <input type="password" id="senha" name="senha" placeholder="Senha"></label>

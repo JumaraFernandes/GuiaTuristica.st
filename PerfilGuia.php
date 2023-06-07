@@ -108,15 +108,32 @@
                 </div>
                 <div class="" id="reservas" >
                     <h2>Minhas reservas</h2>
-                    <div class="card">
-                        <h5 class="card-header">Guia - Tatiana Silva</h5>
-                        <div class="card-body">
-                            <p class="card-text">Local</p>
-                            <p class="card-text">Data Inicio</p>
-                            <p class="card-text">Data Fim</p>
-                            <a href="#" class="btn btn-primary btCancelar">Cancelar</a>
-                        </div>
-                    </div>
+                    <?php 
+                        $reservasPendentes = obterReservasPendentes();
+
+                        // Verifica se houve registros pendentes retornados
+                        if ($reservasPendentes) {
+                            // Faça o que desejar com os registros pendentes
+                            foreach ($reservasPendentes as $reservas) {
+                                echo '<div class="card pendentes">
+                                        <h5 class="card-header">' . $registo['nome'] . '</h5>
+                                        <p>'. $reservas['Local'] .'</p>
+                                        <p>'. $reservas['Data Inicio'] .'</p>
+                                        <p>'. $reservas['Data Fim<'] .'</p>
+                                        <p>'. $reservas['Nª Pessoas'] .'</p>
+                                        <div class="card-body">
+                                        <a href="connect/cancelarpedido.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Cancela</a>
+                                        <a href="connect/aceitarPedido.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Aceita</a>
+                                        </div>
+                                    </div>';
+                                
+                            }
+                        } else {
+                            echo "Não há registros pendentes.";
+                        } 
+  
+                    ?>
+                
                 </div>
                 <div class="" id="msg" >
                     <h2>Chat - Reserva nº18334</h2>

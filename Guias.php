@@ -46,7 +46,7 @@
           </div>
           <div class="button-container">
             
-            <button class="my-button" onclick="window.location.href = 'Reservas.html'">Reserva</button>
+            <button class="my-button" onclick="window.location.href = 'Reservas.php'">Reserva</button>
             
           </div>
         </div>
@@ -72,7 +72,7 @@
               </ul>
             </div>
             <div class="button-container">
-              <button class="my-button" onclick="window.location.href = 'Reservas.html'">Reserva</button>
+              <button class="my-button" onclick="window.location.href = 'Reservas.php'">Reserva</button>
             </div>
           </div>
           <div class="card">
@@ -97,7 +97,7 @@
               </ul>
             </div>
             <div class="button-container">
-              <button class="my-button" onclick="window.location.href = 'Reservas.html'">Reserva</button>
+              <button class="my-button" onclick="window.location.href = 'Reservas.php'">Reserva</button>
             </div>
           </div>
           <div class="card">
@@ -122,7 +122,7 @@
               </ul>
             </div>
             <div class="button-container">
-              <button class="my-button" onclick="window.location.href = 'Reservas.html'">Reserva</button>
+              <button class="my-button" onclick="window.location.href = 'Reservas.php'">Reserva</button>
             </div>
           </div>
       </section>
