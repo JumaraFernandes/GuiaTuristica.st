@@ -72,10 +72,10 @@
                 <div class="" id="perfil" >
                     <h2>DadosPessois</h2>
                     
-     <form class="row g-3 needs-validation" novalidate>
+ <form class="row g-3 needs-validation" action="connect/atualizardadosguias.php" method="post">
   <div class="col-md-4 position-relative">
     <label for="validationTooltip01" class="form-label">Nome</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Nome'] .'" readonly>'?>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['Nome'] .'" readonly>'?>
   </div>
 
   <div class="col-md-4 position-relative">
@@ -84,25 +84,26 @@
     </div>
   <div class="col-md-6 position-relative">
     <label for="validationTooltip03" class="form-label">Morada</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Morada'] .'" required>'?>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  name="Endereco" value="'. $perfilUsuario['Morada'] .'" required>'?>
   </div>
   <div class="col-md-6 position-relative">
     <label for="validationTooltip03" class="form-label">Data de Nascimento</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['dataNascimento'] .'" readonly>'?>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['dataNascimento'] .'" readonly>'?>
   </div>
   
   <div class="col-md-3 position-relative">
     <label for="validationTooltip05" class="form-label">Telefone</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Telefone'] .'" required>'?>
+    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" name="telefone" value="'. $perfilUsuario['Telefone'] .'" required>'?>
   </div>
 
   <div class="col-md-3 position-relative">
   <label for="validationTooltip05" class="form-label">Curriculo</label>
-  <?php echo ' <input type="file" class="form-control" aria-label="file example" accept="application/pdf"'. $perfilUsuario['Telefone'] .'" required>'?>
+  <a href="cvpdf/<?php echo $perfilUsuario['cv']; ?>" download>baixar</a>
+  <?php echo ' <input type="file" class="form-control" aria-label="file example"  name="cv" accept="application/pdf"'. $perfilUsuario['cv'] .'">'?>
   </div>
 
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Guardar Alterações</button>
+    <button class="btn btn-primary" type="submit" name="submit">Guardar Alterações</button>
   </div>
     </form>
                 </div>

@@ -284,7 +284,11 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
                 'Email' => $row['email'],
                 'Telefone' => $row['telefone'],
                 'dataNascimento' => $row['dataNascimento'],
-                'Morada' => $row['endereco']
+                'Morada' => $row['endereco'],
+                'cv' => $row['cv']
+
+
+
             );
             
             // Fecha o resultado da consulta
@@ -316,7 +320,29 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             header("location: ../PerfilAdmin.php#ERRO!!!");
         }
     }
+      
+    function atualizarDadosGuia($guiaID, $novoEndereco, $novoTelefone, $novoCV) {
+        $conn = conetarBD();
+        // Prepara a chamada do procedimento armazenado
+        $sql = "CALL AtualizarDadosGuia($guiaID, '$novoEndereco', '$novoTelefone', '$novoCV')";
 
+        echo 'ID: ' .$guiaID . '<br>';
+        echo 'endereço: '. $novoEndereco . '<br>';
+        echo 'telefone: '. $novoTelefone . '<br>';
+        echo 'cv: ' .$novoCV . '<br>';
+
+    
+        // Executa a chamada do procedimento armazenado
+        if ($conn->query($sql)) {
+            echo "Dados do guia atualizados com sucesso.";
+            //header("location: ../PerfilGuia.php");
+        } else {
+            echo "Erro ao atualizar os dados do guia: " . $conn->error;
+            return false;
+            //header("location: ../PerfilGuia.php#ERRO!!!");
+        }
+    }
+    
 
 
 
