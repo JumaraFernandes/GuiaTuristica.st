@@ -447,7 +447,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             $conn = conetarBD();
             // Chama o procedimento AdicionarReserva
             $sql = "CALL AdicionarReserva('$datainicio', '$datafim', $numeropessoas, '$estado', '$local', $id_guia, $id_turista)";
-            $result = $conn->query($sql);
+            $result = $conn->query($sql);   
         
             // Verifica se houve algum erro na execução do procedimento
             if ($result) {
@@ -460,7 +460,6 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         
         }
         
-       
      
         function ativarPerfil( $utilizadorID) {
             $conn = conetarBD();

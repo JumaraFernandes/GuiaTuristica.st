@@ -119,11 +119,11 @@
                             // Faça o que desejar com os registros pendentes
                             foreach ($reservasPendentes as $reservas) {
                                 echo '<div class="card pendentes">
-                                        <h5 class="card-header"></h5>
-                                        <p>'. $reservas['local'] .'</p>
-                                        <p>'. $reservas['datainicio'] .'</p>
-                                        <p>'. $reservas['datafim'] .'</p>
-                                        <p>'. $reservas['numeropessoas'] .'</p>
+                                        <h5 class="card-header">'. $reservas['nome'] .'</h5>
+                                        <p>Local: '. $reservas['local'] .'</p>
+                                        <p>Data Inicio: '. $reservas['datainicio'] .'</p>
+                                        <p>Data Fim: '. $reservas['datafim'] .'</p>
+                                        <p>Nº pessoas: '. $reservas['numeropessoas'] .'</p>
                                         <div class="card-body">
                                         <a href="connect/cancelarpedido.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Cancela</a>
                                         <a href="connect/aceitarPedido.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Aceita</a>

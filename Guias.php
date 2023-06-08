@@ -1,6 +1,11 @@
 <?php
     session_start();
-    $tipo = $_SESSION['tipo'];
+    
+    if (isset($_SESSION['nome'])) {
+      $tipo = $_SESSION['tipo'];
+    } else{
+      $tipo = 'NOBODY';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt">
