@@ -50,8 +50,7 @@
               <label for="nome">Nome: <input type="text" id="nome" name="nome" placeholder="Nome"></label>
               <label for="email">Email: <input type="email" id="email" name="email" placeholder="Email" onblur="validarEmail()"></label>
               <div id="valEmail"></div>
-              <label for="telefone">Telefone: <input type="text" id="telefone" name="telefone"  placeholder="telefone"></label>
-              
+        
 
               <input type="hidden" name="tipo" id="tipo" value="registoTurista">
               <div id="registoTurista">
@@ -65,6 +64,7 @@
 
               </div>
               <div id="registoGuia" >
+              <label for="telefone">Telefone: <input type="text" id="telefone" name="telefoneguia"  placeholder="telefone"></label>
               <label for="numIdentificacao">Nº Identificação: <input type="text" id="numIdentificacao" name="numIdentificacao" placeholder="Insira o seu Nº de Identificação"></label>
                 <label for="dataNascimento">Data Nacimento: <input type="date" id="dataNascimentoguia" name="dataNascimento"></label>
                 <label for="localidade">Endereço <input type="text" id="enderecoGuia" name="enderecoGuia" placeholder="endereco"></label>
@@ -90,6 +90,7 @@
               </div>
 
               <div id="registoParceiro">
+              <label for="telefone">Telefone: <input type="text" id="telefone" name="telefoneparceiro"  placeholder="telefone"></label>
                 <label for="endereco">Endereço<input type="text" id="enderecoParceiro" name="enderecoParceiro" placeholder="endereco"></label>
                 <label for="link">Link: <input type="text" id="link" name="link" placeholder="Insira o link"></label>
                 <label for="Estrelas">Classificação: <br>

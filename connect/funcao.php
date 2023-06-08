@@ -116,10 +116,11 @@ function login($email, $senha)
  
         } else {
             echo "Credenciais inválidas. Senha incorreta.";
-            echo 'Senha: '.$senha . "<br>";
-            echo 'Encriptada: '.$hashedPassword . "<br>";
-            echo 'Encriptada: '. password_verify($senha, $hashedPassword) . "<br>";
-            var_dump(password_verify($senha, $hashedPassword));
+            echo 'Senha: -'.$senha . "-<br>";
+            echo 'Encriptada: -'.$hashedPassword . "-<br>";
+            echo 'Encriptada: '. password_verify($hashedPassword, $senha) . "<br>";
+            echo var_dump(password_verify($senha, $hashedPassword));
+            
 
         }
     } else {
@@ -168,7 +169,6 @@ function registarGuia($numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv,
     // Feche o statement
     mysqli_stmt_close($stmt);
 } 
-
 
 
 function registarTurista( $dataNascimento, $sexo, $nome, $email, $senha)
@@ -386,8 +386,6 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     }
     
 
-
-
         function obterRegistosPendentes() {
             $conn = conetarBD();
 
@@ -432,14 +430,14 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
 
                 // Loop pelos resultados e armazenamento em um array
                 while ($row = $result->fetch_assoc()) {
-                    $rreservasPendentes [] = $row;
+                    $reservasPendentes [] = $row;
                 }
 
                 // Retorna os reservass pendentes
                 return $reservasPendentes ;
             } else {
                 echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
-                return false;
+                return null;
             }
         }
 
@@ -452,17 +450,17 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             $result = $conn->query($sql);
         
             // Verifica se houve algum erro na execução do procedimento
-            if (!$result) {
-                die("Erro ao chamar o procedimento: " . $conn->error);
+            if ($result) {
+                echo 'reservado com sucesso';
+                return true;
+            } else{
+                echo 'errro ao reservar';
+                return false;
             }
         
-            // Chamada da função para adicionar uma reserva
-        adicionarReserva('2023-06-10', '2023-06-15', 5, 'pendente', 'Local da reserva', 1, 1);
         }
         
        
-        
-    
      
         function ativarPerfil( $utilizadorID) {
             $conn = conetarBD();

@@ -70,7 +70,7 @@
             </div>
             <div class="col">
                 <div class="" id="perfil" >
-                    <h2>DadosPessois</h2>
+                    <h2>DadosPessoais</h2>
                     
  <form class="row g-3 needs-validation" action="connect/atualizardadosguias.php" method="post">
   <div class="col-md-4 position-relative">
@@ -115,21 +115,20 @@
                         $reservasPendentes = obterReservasPendentes();
 
                         // Verifica se houve registros pendentes retornados
-                        if ($reservasPendentes) {
+                        if ($reservasPendentes !== null) {
                             // Faça o que desejar com os registros pendentes
                             foreach ($reservasPendentes as $reservas) {
                                 echo '<div class="card pendentes">
-                                        <h5 class="card-header">' . $reservas['nome'] . '</h5>
-                                        <p>'. $reservas['Local'] .'</p>
-                                        <p>'. $reservas['Data Inicio'] .'</p>
-                                        <p>'. $reservas['Data Fim<'] .'</p>
-                                        <p>'. $reservas['Nª Pessoas'] .'</p>
+                                        <h5 class="card-header"></h5>
+                                        <p>'. $reservas['local'] .'</p>
+                                        <p>'. $reservas['datainicio'] .'</p>
+                                        <p>'. $reservas['datafim'] .'</p>
+                                        <p>'. $reservas['numeropessoas'] .'</p>
                                         <div class="card-body">
                                         <a href="connect/cancelarpedido.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Cancela</a>
                                         <a href="connect/aceitarPedido.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Aceita</a>
                                         </div>
                                     </div>';
-                                
                             }
                         } else {
                             echo "Não há registros pendentes.";

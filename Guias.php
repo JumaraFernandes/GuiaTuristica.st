@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $tipo = $_SESSION['tipo'];
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -44,13 +45,13 @@
                     <li>Telefone:'. $guia['Telefone'] .' </li>
                     <li>Experiências: '. $guia['Experiencias'] .' </li>
                   </ul>
-                </div>
-                <div class="button-container">
-                <a class="my-button" href="Reservas.php">Reserva</a>
-                  
-                  
-                </div>
-              </div>';
+                </div>';
+                if($tipo === 'turista'){
+                  echo '<div class="button-container">
+                  <a class="my-button" href="Reservas.php">Reserva</a>
+                  </div>';
+                }
+                echo '</div>';
             }
         } else {
             echo "Nenhum guia encontrado.";

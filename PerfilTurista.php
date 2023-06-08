@@ -18,7 +18,9 @@
 </head>
 <body>
     <!--cabeçalho-->
-    <?php
+     <!--cabeçalho-->
+     <?php include 'includes/header.php' ;
+
     // Verificar se o usuário está logado
     if (!isset($_SESSION['nome'])) {
     // Redirecionar o usuário para a página de login
@@ -68,7 +70,7 @@
             </div>
             <div class="col">
                 <div class="" id="perfil" >
-                    <h2>DadosPessois</h2>
+                    <h2>Dados Pessoais</h2>
                     <form action="" method="post">
 
 

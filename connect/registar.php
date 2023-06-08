@@ -5,7 +5,6 @@ require_once "funcao.php";
 if (isset($_POST['submit'])) {
      $nome = $_POST['nome'];
     $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
     $senha = $_POST['senha'];
     $confsenha = $_POST['confsenha'];
     $tipo = $_POST['tipo'];
@@ -19,7 +18,6 @@ if (isset($_POST['submit'])) {
 
         echo "Nome: " . $nome . "<br>";
         echo "Email: " . $email . "<br>";
-        echo "Telefone: " . $telefone . "<br>";
         echo "Senha: " . $senha . "<br>";
         echo "Confirmação de Senha: " . $confsenha . "<br>";
         echo "Tipo: " . $tipo . "<br>";
@@ -27,10 +25,11 @@ if (isset($_POST['submit'])) {
         echo "sEXO do Guia: " . $sexo . "<br>";
 
         // Processar os dados do registro de turista
-        registarTurista( $dataNascimento, $sexo, $nome, $email, $telefone, $senha); 
+        registarTurista($dataNascimento, $sexo, $nome, $email, $senha); 
 
     } elseif ($tipo === 'registoGuia') {
-        // Código para o registro de guia
+        // Código para o registro de 
+        $telefone = $_POST['telefoneguia'];
         $numIdentificacao = $_POST['numIdentificacao'];
         $enderecoGuia = $_POST['enderecoGuia'];
         $experiencias = $_POST['experiencias'];
@@ -74,16 +73,14 @@ if (isset($_POST['submit'])) {
         echo "Senha: " . $senha . "<br>";
         echo "Confirmação de Senha: " . $confsenha . "<br>";
         echo "Tipo: " . $tipo . "<br>";
-
-
         
-    
         // Processar os dados do registro de guia
         registarGuia($numIdentificacao, $sexo, $experiencias, $enderecoGuia, $cvPath, $dataNascimento, $fotoPath, $nome, $email, $telefone, $senha, $idiomasSelecionados);
     }
     
      elseif ($tipo === 'registoParceiro') {
         // Código para o registro de parceiro
+        $telefone = $_POST['telefoneparceiro'];
         $enderecoParceiro = $_POST['enderecoParceiro'];
         $link = $_POST['link'];
         $classificacao = $_POST['rate'];

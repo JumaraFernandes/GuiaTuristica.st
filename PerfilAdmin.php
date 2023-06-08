@@ -77,7 +77,7 @@
             </div>
             <div class="col">
                 <div class="" id="perfil" >
-                    <h2>DadosPessois</h2>
+                    <h2>DadosPessoais</h2>
                     
                     <form class="row g-3 needs-validation" action="connect/atualizarAdmin.php" method="post">
                         <div class="col-md-4 position-relative">

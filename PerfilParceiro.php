@@ -52,7 +52,7 @@
             </div>
             <div class="col">
                 <div class="" id="perfil" >
-                    <h2>DadosPessois</h2>
+                    <h2>DadosPessoais</h2>
                                     
      <form class="row g-3 needs-validation" novalidate>
         <div class="col-md-4 position-relative">
@@ -102,13 +102,6 @@
             </div>
         </div>
 
-        <div class="col-md-3 position-relative">
-        <label for="validationTooltip05" class="form-label">Curriculo</label>
-            <input type="file" class="form-control" aria-label="file example" required>
-            <div class="invalid-tooltip">
-            Please provide a valid cv.
-            </div>
-        </div>
 </div>
 
 

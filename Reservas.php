@@ -1,5 +1,11 @@
 <?php
     session_start();
+    $tipo = $_SESSION['tipo'];
+
+    if($tipo !== 'turista'){
+      header("location: guias.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">
