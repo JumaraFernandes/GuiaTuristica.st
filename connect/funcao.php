@@ -413,11 +413,11 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         }
 
 
-        function obterReservasPendentes(){
+        function obterReservasPendentes($id){
 
             $conn = conetarBD();
             // Chama o procedimento ListarReservasPendentes
-            $sql = "CALL ListarReservasPendentes()";
+            $sql = "CALL ListarReservasPendentes($id)";
             $result = $conn->query($sql);
 
             // Verifica se houve algum erro na execução do procedimento

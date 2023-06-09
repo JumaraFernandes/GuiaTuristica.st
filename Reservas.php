@@ -49,7 +49,7 @@
                   <label for="Guia">Escolher o Guia:</label>
                   <select id="Guia" name="Guia">
                       <?php foreach ($guias as $guia) { ?>
-                          <option value="<?php echo $guia['ID']; ?>"><?php echo $guia['ID']; ?></option>
+                          <option value="<?php echo $guia['ID']; ?>"><?php echo $guia['Nome']; ?></option>
                       <?php } ?>
                   </select>
               <?php } else { ?>

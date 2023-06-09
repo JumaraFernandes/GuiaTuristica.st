@@ -112,7 +112,9 @@
                 <div class="" id="reservas" >
                     <h2>Minhas reservas</h2>
                     <?php 
-                        $reservasPendentes = obterReservasPendentes();
+                        $id = $_SESSION['id'];
+                        
+                        $reservasPendentes = obterReservasPendentes($id);
 
                         // Verifica se houve registros pendentes retornados
                         if ($reservasPendentes !== null) {
