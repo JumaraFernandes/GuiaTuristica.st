@@ -28,7 +28,8 @@
     exit(); // Certifique-se de sair do script após o redirecionamento
     }
 
-    // Resto do código da página de perfil
+    require_once "connect/funcao.php";
+    $perfilUsuario = PesquisarTurista ($_SESSION['email']);
 
     ?>
     
@@ -71,48 +72,114 @@
             <div class="col">
                 <div class="" id="perfil" >
                     <h2>Dados Pessoais</h2>
-                    <form action="" method="post">
+                    <form class= "row g-3 needs-validation"action="" method="post">
+                       <div class="col-md-4 position-relative">
+                            <label for="validationTooltip01" class="form-label">Nome</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['Nome'] .'" readonly>'?>
+                        </div>
 
+                        <div class="col-md-4 position-relative">
+                            <label for="validationTooltipUsername" class="form-label">Email</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Email'] .'" readonly>'?>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="validationTooltip03" class="form-label">sexo</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"   value="'. $perfilUsuario['sexo'] .'" readonly>'?>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="validationTooltip03" class="form-label">Data de Nascimento</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['dataNascimento'] .'" readonly>'?>
+                        </div>
+                        
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit" name="submit">Guardar Alterações</button>
+                        </div>
 
                     </form>
                 </div>
                 <div class="" id="reservas" >
                     <h2>Minhas reservas</h2>
-                    <div class="card">
-                        <h5 class="card-header">Guia - Tatiana Silva</h5>
-                        <div class="card-body">
-                            <p class="card-text">Local</p>
-                            <p class="card-text">Data Inicio</p>
-                            <p class="card-text">Data Fim</p>
-                            <a href="#" class="btn btn-primary btCancelar">Cancelar</a>
-                        </div>
-                    </div>
+                    <?php 
+                       $id = $_SESSION['id'];
+                       $reserva = ListarReservasPorTurista($id);
+                    
+                        // Verifica se houve registros pendentes retornados
+                       if ($reserva!== null) {
+                            // Faça o que desejar com os registros pendentes
+                            foreach ($reserva as $reservas) {
+                                echo '<div class="card pendentes">
+                                        <h5 class="card-header">Nome Guia:'. $reservas['Nome do Guia'] .'</h5>
+                                        <p>Local: '. $reservas['Local'] .'</p>
+                                        <p>Data Inicio: '. $reservas['Data de Início'] .'</p>
+                                        <p>Data Fim: '. $reservas['Data de Fim'] .'</p>
+                                        <p>Nº pessoas: '. $reservas['Número de Pessoas'] .'</p>
+                                        <div class="card-body">
+                                        <a href="connect/cancelarPedidoReserTu.php?id='. $reservas['ID'] .'" class="btn btn-primary btCancelar">Cancela</a>
+                                        </div>
+                                    </div>';
+                            }
+                        } else {
+                            echo "Não há reservas pendentes.";
+                        } 
+  
+                    ?>
                 </div>
                 <div class="" id="msg" >
-                    <h2>Chat - Reserva nº18334</h2>
+                    <h2 id="idReserva" name="idChat"></h2>
                     <div class="container chat-container">
                         <div id="chatbox">
-                            <div class="message user-message">Usuário: Olá!</div>
-                            <div class="message bot-message">ChatBot: Olá! Como posso ajudar?</div>
+                            <?php 
+
+                                $minhasmsg = receberMsg(465);
+                                if ($minhasmsg  !== null) {
+                                    // Faça o que desejar com os registros pendentes
+                                    foreach ($minhasmsg as $reservas) {
+                                        if($reservas['autor'] == '1'){
+                                            echo '<div class="message user-message">Guia: '. $reservas['msg'] .'</div>';
+
+                                        } else {
+                                            echo '<div class="message bot-message">Turista: '. $reservas['msg'] .'</div>';
+                                        }
+                                    }
+                                } else {
+                                    echo "Não há reservas pendentes.";
+                                } 
+                            ?>
+                            
                         </div>
                         <input type="text" class="form-control" id="userInput" placeholder="Digite sua mensagem...">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" onclick="sendMessage()">Enviar</button>
+                        <a href="connect/enviarTurista.php?id=<?php echo $idReserva; ?>">
+                       <button class="btn btn-primary" type="button" onclick="sendMessage()">Enviar</button>
+                     </a>
                         </div>
                     </div>
                 </div>
                 <div class="" id="listMsg" onclick="changeCard('msg')">
                     <h2>Lista de mensagens</h2>
-                     <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Guia - Joana Santos</h5>
-                            <p class="card-text">Reserva nº.18173</p>
-                            <a href="#" class="btn btn-primary">Abrir mensagem</a>
-                        </div>
-                        <div class="card-footer text-body-secondary">
-                            2 days ago
-                        </div>
-                    </div>
+                    <?php
+                    $minhasmsg =ListarReservasPorTurista($id);
+                    
+                    // Verifica se houve registros pendentes retornados
+                   if ($minhasmsg  !== null) {
+                        // Faça o que desejar com os registros pendentes
+                        foreach ($minhasmsg as $msg) {
+                            
+                            echo '<div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Guia: - '.$msg['Nome do Guia'].'</h5>
+                                <p class="card-text">Reserva nº.'.$msg['ID'].'</p>
+                                <a href="#456" class="btn btn-primary" data-id="'.$msg['ID'].'">Abrir mensagem</a>
+                            </div>
+                            <div class="card-footer text-body-secondary">
+                                2 days ago
+                            </div>
+                        </div>';
+                        }
+                    } else {
+                        echo "Não há reservas pendentes.";
+                    } 
+                    ?>
                 </div>
             </div>
         </div>
@@ -121,24 +188,48 @@
     </section>
 
     <script>
-    // Script JavaScript para o chat
-    function sendMessage() {
-      const userInput = document.getElementById('userInput');
-      const message = userInput.value;
 
-      if (message.trim() !== '') {
-        const chatbox = document.getElementById('chatbox');
-        const chatMessage = document.createElement('div');
-        chatMessage.classList.add('message', 'user-message');
-        chatMessage.textContent = 'Utilizador: ' + message;
-        chatbox.appendChild(chatMessage);
+    // Função para atualizar o conteúdo da div com o ID da reserva
+    function atualizarIDReserva() {
+        // Obtém o fragmento da URL
+        var fragmento = window.location.hash.substring(1);
 
-        userInput.value = '';
-      }
+        // Verifica se o fragmento existe
+        if (fragmento) {
+            // Atualiza o conteúdo da div com o ID da reserva
+            document.getElementById("idReserva").textContent = "Chat - Reserva nº " + fragmento;
+        }
     }
 
-    
-  </script>
+    // Função para enviar uma mensagem
+    function sendMessage() {
+        const userInput = document.getElementById('userInput');
+        const message = userInput.value;
+
+        if (message.trim() !== '') {
+            const chatbox = document.getElementById('chatbox');
+            const chatMessage = document.createElement('div');
+            chatMessage.classList.add('message', 'user-message');
+            chatMessage.textContent = 'Utilizador: ' + message;
+            chatbox.appendChild(chatMessage);
+
+            userInput.value = '';
+        }
+    }
+
+    // Função para abrir uma mensagem
+    function abrirMensagem(idReserva) {
+        // Atualiza o fragmento da URL com o ID da reserva
+        window.location.hash = idReserva;
+
+        // Atualiza o conteúdo da div com o ID da reserva
+        atualizarIDReserva();
+    }
+
+    // Chama a função para atualizar o conteúdo da div com o ID da reserva
+    atualizarIDReserva();
+</script>
+
 
 
       

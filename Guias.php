@@ -41,22 +41,23 @@
           
             <?php foreach ($guias as $guia) {
               
-                echo '<div class="card">
+                echo ' <div class="col-md-4"> <div class="card">
                 <img src="imagens/guia.1.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5>'. $guia['Nome'] .'</h5>
                   <ul>
-                    <li>Idade:'. $guia['dataNascimento'] .' anos</li>
-                    <li>Telefone:'. $guia['Telefone'] .' </li>
-                    <li>Experiências: '. $guia['Experiencias'] .' </li>
+                    <li class="card-text">Idade:'. $guia['idade'] .' anos</li>
+                    <li class="card-text">Telefone:'. $guia['Telefone'] .' </li>
+                    <li class="card-text">Experiências: '. $guia['Experiencias'] .' </li>
                   </ul>
+                  </div>
                 </div>';
                 if($tipo === 'turista'){
                   echo '<div class="button-container">
                   <a class="my-button" href="Reservas.php">Reserva</a>
                   </div>';
                 }
-                echo '</div>';
+                echo '</div>' ;
             }
         } else {
             echo "Nenhum guia encontrado.";

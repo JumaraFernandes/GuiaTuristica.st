@@ -170,7 +170,6 @@ function registarGuia($numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv,
     mysqli_stmt_close($stmt);
 } 
 
-
 function registarTurista( $dataNascimento, $sexo, $nome, $email, $senha)
 {
     $conn = conetarBD();
@@ -234,7 +233,6 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     mysqli_stmt_close($stmt);
 }
 
-
     function PesquisarAdmin( $emailP) {
         $conn = conetarBD();
 
@@ -287,8 +285,76 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
                 'Morada' => $row['endereco'],
                 'cv' => $row['cv']
 
+          );
+            
+            // Fecha o resultado da consulta
+            $result->close();
+        } else {
+            echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+            // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+            return null;
+        }
 
+    
+        // Retorna o perfil do usuário
+        return $perfilUsuario;
+    }
+    function PesquisarTurista( $emailP) {
+        $conn = conetarBD();
+        // Chama o procedimento armazenado
+        $sql = "CALL PesquisarTurista('$emailP')";
+        $result = $conn->query($sql);
+    
+        // Verifica se a chamada foi bem-sucedida e obtém os dados
+        if ($result) {
+            $row = $result->fetch_assoc();
+            
+            // Armazena os dados do administrador em um array
+            $perfilUsuario = array(
+                'ID' => $row['id'],
+                'Nome' => $row['nome'],
+                'Email' => $row['email'],
+                'dataNascimento' => $row['dataNascimento'],
+                'sexo' => $row['sexo'],
+                
 
+          );
+            
+            // Fecha o resultado da consulta
+            $result->close();
+        } else {
+            echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+            // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+            return null;
+        }
+
+    
+        // Retorna o perfil do usuário
+        return $perfilUsuario;
+    } 
+
+    function PesquisarParceiro( $emailP) {
+        $conn = conetarBD();
+        // Chama o procedimento armazenado
+        $sql = "CALL PesquisarParceiro('$emailP')";
+        $result = $conn->query($sql);
+    
+        // Verifica se a chamada foi bem-sucedida e obtém os dados
+        if ($result) {
+            $row = $result->fetch_assoc();
+            
+            //armazer os dados
+            $perfilUsuario = array(
+                'ID' => $row['id'],
+                'Nome' => $row['nome'],
+                'Email' => $row['email'],
+                'tipo' => $row['tipo'],
+                'endereco' => $row['endereco'],
+                'estrelas' => $row['estrelas'],
+                'link' => $row['link'],
+                'foto' => $row['foto'],
+                'Telefone' => $row['telefone']
+                
             );
             
             // Fecha o resultado da consulta
@@ -303,7 +369,6 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         // Retorna o perfil do usuário
         return $perfilUsuario;
     }
-
     function PesquisarTodosGuias() {
         $conn = conetarBD();
         
@@ -323,7 +388,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
                     'Nome' => $row['nome'],
                     'Email' => $row['email'],
                     'Telefone' => $row['telefone'],
-                    'dataNascimento' => $row['dataNascimento'],
+                    'idade' => $row['idade'],
                     'Morada' => $row['endereco'],
                     'Experiencias' => $row['experiencia'],
                     'cv' => $row['cv']
@@ -344,8 +409,89 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             return null;
         }
     }
+   
+    function PesquisarHosteis() {
+        $conn = conetarBD();
     
-
+        // Chama o procedimento armazenado para pesquisar hosteis
+        $sql = "CALL PesquisarHosteis()";
+        $result = $conn->query($sql);
+    
+        // Verifica se a chamada foi bem-sucedida e obtém os dados
+        if ($result) {
+            $hosteis = array();
+    
+            // Loop através dos resultados para obter cada hostel
+            while ($row = $result->fetch_assoc()) {
+                // Armazena os dados do hostel em um array
+                $hostel = array(
+                    'Tipo' => $row['tipo'],
+                    'Endereco' => $row['endereco'],
+                    'Estrelas' => $row['estrelas'],
+                    'Link' => $row['link'],
+                    'Telefone' => $row['telefone'],
+                    'Foto' => $row['foto'],
+                    'Nome' => $row['nome'],
+                    'Email' => $row['email']
+                );
+    
+                // Adiciona o hostel ao array de hosteis
+                $hosteis[] = $hostel;
+            }
+    
+            // Fecha o resultado da consulta
+            $result->close();
+    
+            // Retorna o array de hosteis
+            return $hosteis;
+        } else {
+            echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+            // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+            return null;
+        }
+    }
+    
+    function PesquisarRestaurantes() {
+        $conn = conetarBD();
+    
+        // Chama o procedimento armazenado para pesquisar restaurantes
+        $sql = "CALL PesquisarRestaurantes()";
+        $result = $conn->query($sql);
+    
+        // Verifica se a chamada foi bem-sucedida e obtém os dados
+        if ($result) {
+            $restaurantes = array();
+    
+            // Loop através dos resultados para obter cada restaurante
+            while ($row = $result->fetch_assoc()) {
+                // Armazena os dados do restaurante em um array
+                $restaurante = array(
+                    'Tipo' => $row['tipo'],
+                    'Endereco' => $row['endereco'],
+                    'Estrelas' => $row['estrelas'],
+                    'Link' => $row['link'],
+                    'Telefone' => $row['telefone'],
+                    'Foto' => $row['foto'],
+                    'Nome' => $row['nome'],
+                    'Email' => $row['email']
+                );
+    
+                // Adiciona o restaurante ao array de restaurantes
+                $restaurantes[] = $restaurante;
+            }
+    
+            // Fecha o resultado da consulta
+            $result->close();
+    
+            // Retorna o array de restaurantes
+            return $restaurantes;
+        } else {
+            echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+            // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+            return null;
+        }
+    }
+    
     function atualizarTelefoneAdmin($adminID, $novoTelefone) {
         $conn = conetarBD();
 
@@ -367,26 +513,37 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         $conn = conetarBD();
         // Prepara a chamada do procedimento armazenado
         $sql = "CALL AtualizarDadosGuia($guiaID, '$novoEndereco', '$novoTelefone', '$novoCV')";
-
-        echo 'ID: ' .$guiaID . '<br>';
-        echo 'endereço: '. $novoEndereco . '<br>';
-        echo 'telefone: '. $novoTelefone . '<br>';
-        echo 'cv: ' .$novoCV . '<br>';
+        // Executa a chamada do procedimento armazenado
+        if ($conn->query($sql)) {
+            echo "Dados do guia atualizados com sucesso.";
+            header("location: ../PerfilGuia.php");
+        } else {
+            echo "Erro ao atualizar os dados do guia: " . $conn->error;
+            return false;
+            header("location: ../PerfilGuia.php#ERRO!!!");
+        }
+    }
+    
+    function atualizarDadosParceiro($parceiroID, $novolink,$novoestrelas, $novoTelefone, $novofoto) {
+        $conn = conetarBD();
+        // Prepara a chamada do procedimento armazenado
+        $sql = "CALL AtualizarDadosParceiro($parceiroID, '$novolink','$novoestrelas ','$novoTelefone', '$novofoto')";
 
     
         // Executa a chamada do procedimento armazenado
         if ($conn->query($sql)) {
-            echo "Dados do guia atualizados com sucesso.";
-            //header("location: ../PerfilGuia.php");
+            echo "Dados do parceiro atualizados com sucesso.";
+            header("location: ../PerfilParceiro.php");
+           
         } else {
-            echo "Erro ao atualizar os dados do guia: " . $conn->error;
+            echo "Erro ao atualizar os dados do parceiro: " . $conn->error;
             return false;
-            //header("location: ../PerfilGuia.php#ERRO!!!");
+            header("location: ../PerfilParceiro.php#ERRO!!!");
+          
         }
     }
     
-
-        function obterRegistosPendentes() {
+    function obterRegistosPendentes() {
             $conn = conetarBD();
 
             // Prepara a chamada do procedimento armazenado
@@ -409,6 +566,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             } else {
                 echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
                 return false;
+                
             }
         }
 
@@ -452,10 +610,12 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             // Verifica se houve algum erro na execução do procedimento
             if ($result) {
                 echo 'reservado com sucesso';
+                header("location: ../Reservas.php");
                 return true;
             } else{
                 echo 'errro ao reservar';
                 return false;
+                header("location: ../Reservas.php#ERRO!!!");
             }
         
         }
@@ -602,10 +762,6 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             
             return $reservas; // Retorna o vetor de reservas confirmadas
         }
-        
-        
-
-    
 
             function obterTotalGuiasRegistrados()
             {
@@ -627,7 +783,124 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
                 echo 'Total guia: ' .$totalGuias; 
                 return $totalGuias;
             }
+          
+            function ListarReservasPorTurista($utilizadorID) {
+                $conn = conetarBD();
+            
+                // Chama o procedimento armazenado para listar as reservas por turista
+                $sql = "CALL ListarReservasPorTurista($utilizadorID)";
+                $result = $conn->query($sql);
+            
+                // Verifica se a chamada foi bem-sucedida e obtém os dados
+                if ($result) {
+                    $reservas = array();
+            
+                    // Loop através dos resultados para obter cada reserva
+                    while ($row = $result->fetch_assoc()) {
+                        // Armazena os dados da reserva em um array
+                        $reserva = array(
+                            'ID' => $row['id'],
+                            'Data de Início' => $row['datainicio'],
+                            'Data de Fim' => $row['datafim'],
+                            'Número de Pessoas' => $row['numeropessoas'],
+                            'Local' => $row['local'],
+                            'Nome do Guia' => $row['Nome do Guia']
+                        );
+            
+                        // Adiciona a reserva ao array de reservas
+                        $reservas[] = $reserva;
+                    }
+            
+                    // Fecha o resultado da consulta
+                    $result->close();
+            
+                    // Retorna o array de reservas
+                    return $reservas;
+                } else {
+                    echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+                    // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+                    return null;
+                }
+            }
 
+            function enviarMsgGuia($idReserva, $msg) {
+                $conn = conetarBD();
+                $sql = "CALL enviarMsgGuia(?, ?)";
+            
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt, "is", $idReserva, $msg);
+                mysqli_stmt_execute($stmt);
+            
+                if (mysqli_stmt_affected_rows($stmt) > 0) {
+                    echo "Mensagem enviada com sucesso!";
+                } else {
+                    echo "Erro ao enviar a mensagem.";
+                }
+            
+                mysqli_stmt_close($stmt);
+                mysqli_close($conn);
+            }
+            
+            
+
+            function enviarMsgTurista($idReserva, $msg) {
+                $conn = conetarBD();
+                $sql = "CALL enviarMsgTurista(?, ?)";
+            
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt, "is", $idReserva, $msg);
+                mysqli_stmt_execute($stmt);
+            
+                if (mysqli_stmt_affected_rows($stmt) > 0) {
+                    echo "Mensagem enviada com sucesso!";
+                } else {
+                    echo "Erro ao enviar a mensagem.";
+                }
+            
+                mysqli_stmt_close($stmt);
+                mysqli_close($conn);
+            }
+            
+
+            function receberMsg($idReserva) {
+                $conn = conetarBD();
+                $sql = "CALL receberMsg(?)";
+            
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt, "i", $idReserva);
+                mysqli_stmt_execute($stmt);
+            
+                $result = mysqli_stmt_get_result($stmt);
+                $mensagens = []; // Vetor para armazenar as mensagens
+            
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $mensagem = [
+                            'id' => $row['id'],
+                            'msg' => $row['msg'],
+                            'datamsg' => $row['datamsg'],
+                            'autor' => $row['autor']
+                        ];
+            
+                        $mensagens[] = $mensagem; // Adiciona a mensagem ao vetor
+                    }
+                } else {
+                    echo "Nenhuma mensagem encontrada.";
+                }
+            
+                mysqli_stmt_close($stmt);
+                mysqli_close($conn);
+            
+                return $mensagens; // Retorna o vetor de mensagens
+            }
+            
+            
+            
+            
+            
+            
+            
+            
 
 
 ?>

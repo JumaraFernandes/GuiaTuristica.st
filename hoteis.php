@@ -17,7 +17,11 @@
 </head>
 <body>
   <!--cabeçalho-->
-  <?php include 'includes/header.php' ?>
+  <?php include 'includes/header.php';
+   require_once "connect/funcao.php";
+   $hosteis =  PesquisarHosteis();
+  
+  ?>
     <div class="posicao">
     <h4>Hotéis e Resorts na ilha de São Tomé e Principe</h4>
     </div>
@@ -35,7 +39,33 @@
              <p>
              O Omali Lodge e o Hotel praia são outros refúgios de qualidade inquestionável: localizados na praia Lagarto. Ao extremo sul  encontra-se o Resort Inhame Ecolodge situado a 7 minutos de barco do marco do equador.
              </p>
-             <div class="row">
+
+             <?php 
+          if (!empty( $hosteis )) {?>
+          
+            <?php foreach ( $hosteis  as $hotel) {
+              
+                echo '  <div class="row"> <div class="col-md-4"> <div class="card">
+                <img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5>'. $hotel['Nome'] .'</h5>
+                  <ul>
+                    <li class="card-text">Telefone:'. $hotel['Telefone'] .' anos</li>
+                    <li class="card-text">E-mail:'. $hotel['Email'] .' </li>
+                    <li class="card-text">Link: '. $hotel['Link'] .' </li>
+                    <li class="card-text">Endereço: '. $hotel['Endereco'] .' </li>
+                    <li class="card-text">Estrelas: '. $hotel['Estrelas'] .' </li>
+                  </ul>
+                  </div>
+                  </div>
+                </div>';
+                echo '</div>' ;
+            }
+        } else {
+            echo "Nenhum hotel encontrado.";
+        }
+        ?>
+   <!--           <div class="row">
   <div class="col-md-4">
     <div class="card">
       <img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">
@@ -48,8 +78,8 @@
       </div>
     </div>
   </div>
-  
-  <div class="col-md-4">
+   -->
+  <!-- <div class="col-md-4">
     <div class="card">
       <img src="imagens/hotelpraia.jpg" class="card-img-top" alt="...">
       <div class="card-body">
@@ -196,7 +226,7 @@
               </div>
 
            </div>
-         </div>
+         </div> -->
 
          </section>
      </div>

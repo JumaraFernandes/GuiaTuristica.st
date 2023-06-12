@@ -26,6 +26,8 @@
     require_once "connect/funcao.php";
     $perfilUsuario = PesquisarGuia($_SESSION['email']);
 
+    $idReserva = '-1';
+
     ?>
   
     <section> 
@@ -38,8 +40,8 @@
                         <p>Minha Conta</p>
                         <i class="bi bi-chevron-right"></i>
                     </div>
-
                 </div>
+
                 <div onclick="changeCardGuia('reservas')">
                     <div class="opcao">
                     <i class="bi bi-exclamation-octagon"></i>
@@ -47,6 +49,7 @@
                         <i class="bi bi-chevron-right"></i>
                     </div>
                     </div>
+
                     <div onclick="changeCardGuia('minhasRerserva')">
                     <div class="opcao">
                         <i class="bi bi-x-diamond-fill"></i>
@@ -54,6 +57,7 @@
                         <i class="bi bi-chevron-right"></i>
                     </div>
                     </div>
+
                 <div onclick="changeCardGuia('listMsg')">
                     <div class="opcao">
                         <i class="bi bi-chat-left-dots"></i>
@@ -61,6 +65,7 @@
                         <i class="bi bi-chevron-right"></i>
                     </div>
                 </div>
+
                 <div>
                     <a href="connect/logout.php" class="opcao">
                         <i class="bi bi-box-arrow-right"></i>
@@ -145,7 +150,7 @@
 
                       <?php 
                        
-                       $minhasreserva =listarReservasConfirmadas();
+                       $minhasreserva = listarReservasConfirmadas();
                     
                         // Verifica se houve registros pendentes retornados
                        if ($minhasreserva  !== null) {
@@ -169,18 +174,37 @@
                 </div>
                 
                 <div class="" id="msg" >
-                    <h2>Chat - Reserva nº18334</h2>
+                    <h2 id="idReserva" name="idChat"></h2>
                     <div class="container chat-container">
                         <div id="chatbox">
-                            <div class="message user-message">Usuário: Olá!</div>
-                            <div class="message bot-message">ChatBot: Olá! Como posso ajudar?</div>
+                            <?php 
+
+                                $minhasmsg = receberMsg(465);
+                                if ($minhasmsg  !== null) {
+                                    // Faça o que desejar com os registros pendentes
+                                    foreach ($minhasmsg as $reservas) {
+                                        if($reservas['autor'] == '1'){
+                                            echo '<div class="message user-message">Guia: '. $reservas['msg'] .'</div>';
+
+                                        } else {
+                                            echo '<div class="message bot-message">Turista: '. $reservas['msg'] .'</div>';
+                                        }
+                                    }
+                                } else {
+                                    echo "Não há reservas pendentes.";
+                                } 
+                            ?>
+                            
                         </div>
                         <input type="text" class="form-control" id="userInput" placeholder="Digite sua mensagem...">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" onclick="sendMessage()">Enviar</button>
+                        <a href="connect/enviarGuia.php?id=<?php echo $idReserva; ?>">
+                       <button class="btn btn-primary" type="button" onclick="sendMessage()">Enviar</button>
+                     </a>
                         </div>
                     </div>
                 </div>
+                <div id="idReserva"></div>
                 <div class="" id="listMsg" onclick="changeCardGuia('msg')">
                     <h2>Lista de mensagens</h2>
                     <?php
@@ -190,11 +214,12 @@
                    if ($minhasmsg  !== null) {
                         // Faça o que desejar com os registros pendentes
                         foreach ($minhasmsg as $msg) {
+                            
                             echo '<div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Cliente - '.$msg['nome'].'</h5>
                                 <p class="card-text">Reserva nº.'.$msg['id'].'</p>
-                                <a href="#" class="btn btn-primary">Abrir mensagem</a>
+                                <a href="#456" class="btn btn-primary" data-id="'.$msg['id'].' data-id="'.$idReserva.'">Abrir mensagem</a>
                             </div>
                             <div class="card-footer text-body-secondary">
                                 2 days ago
@@ -214,24 +239,48 @@
     </section>
 
     <script>
-    // Script JavaScript para o chat
-    function sendMessage() {
-      const userInput = document.getElementById('userInput');
-      const message = userInput.value;
 
-      if (message.trim() !== '') {
-        const chatbox = document.getElementById('chatbox');
-        const chatMessage = document.createElement('div');
-        chatMessage.classList.add('message', 'user-message');
-        chatMessage.textContent = 'Utilizador: ' + message;
-        chatbox.appendChild(chatMessage);
+    // Função para atualizar o conteúdo da div com o ID da reserva
+    function atualizarIDReserva() {
+        // Obtém o fragmento da URL
+        var fragmento = window.location.hash.substring(1);
 
-        userInput.value = '';
-      }
+        // Verifica se o fragmento existe
+        if (fragmento) {
+            // Atualiza o conteúdo da div com o ID da reserva
+            document.getElementById("idReserva").textContent = "Chat - Reserva nº " + fragmento;
+        }
     }
 
-    
-  </script>
+    // Função para enviar uma mensagem
+    function sendMessage() {
+        const userInput = document.getElementById('userInput');
+        const message = userInput.value;
+
+        if (message.trim() !== '') {
+            const chatbox = document.getElementById('chatbox');
+            const chatMessage = document.createElement('div');
+            chatMessage.classList.add('message', 'user-message');
+            chatMessage.textContent = 'Utilizador: ' + message;
+            chatbox.appendChild(chatMessage);
+
+            userInput.value = '';
+        }
+    }
+
+    // Função para abrir uma mensagem
+    function abrirMensagem(idReserva) {
+        // Atualiza o fragmento da URL com o ID da reserva
+        window.location.hash = idReserva;
+
+        // Atualiza o conteúdo da div com o ID da reserva
+        atualizarIDReserva();
+    }
+
+    // Chama a função para atualizar o conteúdo da div com o ID da reserva
+    atualizarIDReserva();
+</script>
+
 
       
   

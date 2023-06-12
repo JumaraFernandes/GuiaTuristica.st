@@ -27,7 +27,9 @@
     exit(); // Certifique-se de sair do script após o redirecionamento
     }
 
-    // Resto do código da página de perfil
+    
+      require_once "connect/funcao.php";
+      $perfilUsuario =PesquisarParceiro($_SESSION['email']);
 
     ?>
     <section> 
@@ -54,55 +56,46 @@
                 <div class="" id="perfil" >
                     <h2>DadosPessoais</h2>
                                     
-     <form class="row g-3 needs-validation" novalidate>
-        <div class="col-md-4 position-relative">
-            <label for="validationTooltip01" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="validationTooltip01" required>
-            <div class="valid-tooltip">
-            Looks good!
-            </div>
-        </div>
-        <div class="col-md-4 position-relative">
-            <label for="validationTooltip02" class="form-label">Link</label>
-            <input type="text" class="form-control" id="validationTooltip02" required>
-            <div class="valid-tooltip">
-            Looks good!
-            </div>
-        </div>
-        <div class="col-md-4 position-relative">
-            <label for="validationTooltipUsername" class="form-label">Email</label>
-            <div class="input-group has-validation">
-            <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-            <div class="invalid-tooltip">
-                Please choose a unique and valid username.
-            </div>
-            </div>
-        </div>
-        <div class="col-md-6 position-relative">
-            <label for="validationTooltip03" class="form-label">Endereço</label>
-            <input type="text" class="form-control" id="validationTooltip03" required>
-            <div class="invalid-tooltip">
-            Please provide a valid Endereço.
-            </div>
-        </div>
-        <div class="col-md-6 position-relative">
-            <label for="validationTooltip03" class="form-label">Classificação</label>
-            <input type="text" class="form-control" id="validationTooltip03" required>
-            <div class="invalid-tooltip">
-            Please provide a valid Estrelas.
-            </div>
-        </div>
-        
-        <div class="col-md-3 position-relative">
-            <label for="validationTooltip05" class="form-label">Telefone</label>
-            <input type="text" class="form-control" id="validationTooltip05" required>
-            <div class="invalid-tooltip">
-            Please provide a valid telefone.
-            </div>
-        </div>
+     <form class="row g-3 needs-validation" novalidate action="connect/atualizardadosParceiros.php" method="post">
+          <div class="col-md-4 position-relative">
+                   <label for="validationTooltip01" class="form-label">Nome</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['Nome'] .'" readonly>'?>
+                        </div>
 
-</div>
+                        <div class="col-md-4 position-relative">
+                            <label for="validationTooltipUsername" class="form-label">Email</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Email'] .'" readonly>'?>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="validationTooltip03" class="form-label">Link</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  name="link" value="'. $perfilUsuario['link'] .'" required>'?>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="validationTooltip03" class="form-label">Telefone</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  name="telefone" value="'. $perfilUsuario['Telefone'] .'" required>'?>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="validationTooltip03" class="form-label">Endereco</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['endereco'] .'" readonly>'?>
+                        </div>
+                        
+                        <div class="col-md-3 position-relative">
+                            <label for="validationTooltip05" class="form-label">Estrelas</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" name="estrelas" value="'. $perfilUsuario['estrelas'] .'" required>'?>
+                        </div>
+                        <div class="col-md-3 position-relative">
+                        <label for="validationTooltip05" class="form-label">Foto</label>
+                        <?php echo '<input type="file" class="form-control" aria-label="file example"  name="foto" accept="application/pdf"'. $perfilUsuario['foto'] .'">'?>
+                        <a href="cvpdf/<?php echo $perfilUsuario['foto']; ?>" download>baixarpdf</a>
+                        </div>
+                        <div class="col-md-3 position-relative">
+                        
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit" name="submit">Guardar Alterações</button>
+                        </div>
+                        </form>
 
 
     </section>

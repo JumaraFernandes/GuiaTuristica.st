@@ -49,6 +49,7 @@
                 <li><a class="dropdown-item" href="Hl.php">Historias e Línguas</a></li>
                 <li><a class="dropdown-item" href="Galeria.php">Galeria</a></li>
                 <li><a class="dropdown-item" href="VistoseMigracao.php">Visto e Migração</a></li>
+                <li><a class="dropdown-item" href="GastronomiaEclima.php">Gastronomia e Clima</a></li>
               </ul>
             </li>
 

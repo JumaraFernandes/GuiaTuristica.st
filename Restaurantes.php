@@ -29,7 +29,7 @@
              <p>
                 No restaurante Cacau que todas as quintas feiras realizam noites tradicionais gastronómicas com músicas e dança onde apresentam um leque dos pratos típicos das ilhas. Existe também o workshop gastronómico que se realiza na famosa Roça São João em angolares, com certeza desfrutarás de uma explosão de sabores.
              </p>
-             <div class="row">
+      <div class="row">
   <div class="col-md-4">
     <div class="card">
       <img src="imagens/Sres1.jpeg" class="card-img-top" alt="...">
