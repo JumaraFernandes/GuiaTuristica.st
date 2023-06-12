@@ -488,6 +488,32 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             mysqli_stmt_close($stmt);
         }
 
+        function aceitarReserva( $reservaID) {
+            $conn = conetarBD();
+
+            // Prepara a chamada do procedimento armazenado
+            $sql = "CALL AceitarReserva(?)";
+            $stmt = mysqli_stmt_init($conn);
+            
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                echo "Erro ao preparar a declaração.";
+                return false;
+            }
+            
+            mysqli_stmt_bind_param($stmt, "i", $reservaID);
+            
+            // Executa o procedimento armazenado
+            if (mysqli_stmt_execute($stmt)) {
+                echo "Procedimento armazenado executado com sucesso.";
+                return true;
+            } else {
+                echo "Erro ao executar o procedimento armazenado: " . mysqli_error($conn);
+                return false;
+            }
+            
+            mysqli_stmt_close($stmt);
+        }
+
 
         function CancelarPerfil($utilizadorID) {
             $conn = conetarBD();
@@ -515,6 +541,68 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             
             mysqli_stmt_close($stmt);
         }
+        
+        function CancelarReserva($ReservaID) {
+            $conn = conetarBD();
+            
+            // Prepara a chamada do procedimento armazenado
+            $sql = "CALL CancelarReserva(?)";
+            $stmt = mysqli_stmt_init($conn);
+            
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                echo "Erro ao preparar a declaração.";
+                return false;
+            }
+            
+            mysqli_stmt_bind_param($stmt, "i", $ReservaID);
+            
+            // Executa o procedimento armazenado
+            if (mysqli_stmt_execute($stmt)) {
+                echo "Procedimento armazenado executado com sucesso.";
+                return true;
+            } else {
+                echo "Erro ao executar o procedimento armazenado: " . mysqli_error($conn);
+                return false;
+            }
+            
+            mysqli_stmt_close($stmt);
+        }
+        
+
+        function listarReservasConfirmadas() {
+            $conn = conetarBD();
+            
+            // Prepara a chamada do procedimento armazenado
+            $sql = "CALL ListarReservasConfirmadas()";
+            $result = mysqli_query($conn, $sql);
+            
+            $reservas = array(); // Vetor para armazenar as reservas confirmadas
+            
+            if ($result) {
+                // Processa os resultados
+                while ($row = mysqli_fetch_assoc($result)) {
+                    // Armazena as informações da reserva no vetor
+                    $reserva = array(
+                        'id' => $row['id'],
+                        'datainicio' => $row['datainicio'],
+                        'datafim' => $row['datafim'],
+                        'local' => $row['local'],
+                        'numeropessoas' => $row['numeropessoas'],
+                        'nome' => $row['nome'],
+                        // Adicione mais campos, se necessário
+                    );
+                    $reservas[] = $reserva;
+                }
+                mysqli_free_result($result);
+            } else {
+                echo "Erro ao executar o procedimento armazenado: " . mysqli_error($conn);
+            }
+            
+            mysqli_close($conn);
+            
+            return $reservas; // Retorna o vetor de reservas confirmadas
+        }
+        
         
 
     

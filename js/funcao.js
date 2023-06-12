@@ -114,28 +114,66 @@ function setMinimumDate() {
 
     }
 
-
-    function changeCardAdmin(tipo) {
-      
-      if (tipo === 'perfil') {
-          document.getElementById('perfil').style.display = 'block';
-            document.getElementById('pedidos').style.display = 'none';
-            document.getElementById('totalGuias').style.display = 'none';
+  function changeCardGuia(tipo) {
+    
+    if (tipo === 'perfil') {
+        document.getElementById('perfil').style.display = 'block';
+          document.getElementById('reservas').style.display = 'none';
+          document.getElementById('msg').style.display = 'none';
+          document.getElementById('listMsg').style.display = 'none';
+          document.getElementById('minhasRerserva').style.display = 'none';
+          
             
-              
-          } else if (tipo === 'pedidos') {
-              document.getElementById('perfil').style.display = 'none';
-              document.getElementById('pedidos').style.display = 'block';
-              document.getElementById('totalGuias').style.display = 'none';
-          } 
-          else {
+        } else if (tipo === 'reservas') {
             document.getElementById('perfil').style.display = 'none';
-              document.getElementById('pedidos').style.display = 'none';
-              document.getElementById('totalGuias').style.display = 'block';
-        } 
+            document.getElementById('reservas').style.display = 'block';
+            document.getElementById('msg').style.display = 'none';
+            document.getElementById('listMsg').style.display = 'none';
+            document.getElementById('minhasRerserva').style.display = 'none';
+        } else if (tipo === 'msg') {
+            document.getElementById('perfil').style.display = 'none';
+            document.getElementById('reservas').style.display = 'none';
+            document.getElementById('msg').style.display = 'block';
+            document.getElementById('listMsg').style.display = 'none';
+            document.getElementById('minhasRerserva').style.display = 'none';
+          } else if (tipo === 'minhasRerserva') {
+            document.getElementById('perfil').style.display = 'none';
+            document.getElementById('reservas').style.display = 'none';
+            document.getElementById('msg').style.display = 'none';
+            document.getElementById('minhasRerserva').style.display = 'block';
+            document.getElementById('listMsg').style.display = 'none';
+        } else if (tipo === 'listMsg') {
+            document.getElementById('perfil').style.display = 'none';
+            document.getElementById('reservas').style.display = 'none';
+            document.getElementById('msg').style.display = 'none';
+            document.getElementById('minhasRerserva').style.display = 'none';
+            document.getElementById('listMsg').style.display = 'block';
+        }
 
-  
-      }
+    }
+
+
+  function changeCardAdmin(tipo) {
+    
+    if (tipo === 'perfil') {
+        document.getElementById('perfil').style.display = 'block';
+          document.getElementById('pedidos').style.display = 'none';
+          document.getElementById('totalGuias').style.display = 'none';
+          
+            
+        } else if (tipo === 'pedidos') {
+            document.getElementById('perfil').style.display = 'none';
+            document.getElementById('pedidos').style.display = 'block';
+            document.getElementById('totalGuias').style.display = 'none';
+        } 
+        else {
+          document.getElementById('perfil').style.display = 'none';
+            document.getElementById('pedidos').style.display = 'none';
+            document.getElementById('totalGuias').style.display = 'block';
+      } 
+
+
+    }
 
    
  

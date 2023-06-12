@@ -20,12 +20,7 @@
 
     <?php include 'includes/header.php' ?>
     <?php
-    // Verificar se o usuário está logado
-    if (!isset($_SESSION['nome'])) {
-    // Redirecionar o usuário para a página de login
-    header("Location: login.php");
-    exit(); // Certifique-se de sair do script após o redirecionamento
-    }
+
  
 
     require_once "connect/funcao.php";
@@ -37,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-sm-4">
-                <div onclick="changeCard('perfil')">
+                <div onclick="changeCardGuia('perfil')">
                     <div class="opcao">
                         <i class="bi bi-person-circle"></i>
                         <p>Minha Conta</p>
@@ -45,15 +40,21 @@
                     </div>
 
                 </div>
-                <div onclick="changeCard('reservas')">
+                <div onclick="changeCardGuia('reservas')">
                     <div class="opcao">
-                        <i class="bi bi-x-diamond-fill"></i>
-                        <p>Minhas reservas</p>
+                    <i class="bi bi-exclamation-octagon"></i>
+                        <p>Pedidos da reservas</p>
                         <i class="bi bi-chevron-right"></i>
                     </div>
-
-                </div>
-                <div onclick="changeCard('listMsg')">
+                    </div>
+                    <div onclick="changeCardGuia('minhasRerserva')">
+                    <div class="opcao">
+                        <i class="bi bi-x-diamond-fill"></i>
+                        <p>Minhas Reservas</p>
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
+                    </div>
+                <div onclick="changeCardGuia('listMsg')">
                     <div class="opcao">
                         <i class="bi bi-chat-left-dots"></i>
                         <p>Mensagens</p>
@@ -72,45 +73,45 @@
                 <div class="" id="perfil" >
                     <h2>DadosPessoais</h2>
                     
- <form class="row g-3 needs-validation" action="connect/atualizardadosguias.php" method="post">
-  <div class="col-md-4 position-relative">
-    <label for="validationTooltip01" class="form-label">Nome</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['Nome'] .'" readonly>'?>
-  </div>
+                    <form class="row g-3 needs-validation" action="connect/atualizardadosguias.php" method="post">
+                        <div class="col-md-4 position-relative">
+                            <label for="validationTooltip01" class="form-label">Nome</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['Nome'] .'" readonly>'?>
+                        </div>
 
-  <div class="col-md-4 position-relative">
-    <label for="validationTooltipUsername" class="form-label">Email</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Email'] .'" readonly>'?>
-    </div>
-  <div class="col-md-6 position-relative">
-    <label for="validationTooltip03" class="form-label">Morada</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  name="Endereco" value="'. $perfilUsuario['Morada'] .'" required>'?>
-  </div>
-  <div class="col-md-6 position-relative">
-    <label for="validationTooltip03" class="form-label">Data de Nascimento</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['dataNascimento'] .'" readonly>'?>
-  </div>
-  
-  <div class="col-md-3 position-relative">
-    <label for="validationTooltip05" class="form-label">Telefone</label>
-    <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" name="telefone" value="'. $perfilUsuario['Telefone'] .'" required>'?>
-  </div>
-  <div class="col-md-3 position-relative">
-  <label for="validationTooltip05" class="form-label">Curriculo</label>
-  <?php echo '<input type="file" class="form-control" aria-label="file example"  name="cv" accept="application/pdf"'. $perfilUsuario['cv'] .'">'?>
-  <a href="cvpdf/<?php echo $perfilUsuario['cv']; ?>" download>baixarpdf</a>
-</div>
-  <div class="col-md-3 position-relative">
-  
-  </div>
+                        <div class="col-md-4 position-relative">
+                            <label for="validationTooltipUsername" class="form-label">Email</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Email'] .'" readonly>'?>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="validationTooltip03" class="form-label">Morada</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  name="Endereco" value="'. $perfilUsuario['Morada'] .'" required>'?>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="validationTooltip03" class="form-label">Data de Nascimento</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['dataNascimento'] .'" readonly>'?>
+                        </div>
+                        
+                        <div class="col-md-3 position-relative">
+                            <label for="validationTooltip05" class="form-label">Telefone</label>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" name="telefone" value="'. $perfilUsuario['Telefone'] .'" required>'?>
+                        </div>
+                        <div class="col-md-3 position-relative">
+                        <label for="validationTooltip05" class="form-label">Curriculo</label>
+                        <?php echo '<input type="file" class="form-control" aria-label="file example"  name="cv" accept="application/pdf"'. $perfilUsuario['cv'] .'">'?>
+                        <a href="cvpdf/<?php echo $perfilUsuario['cv']; ?>" download>baixarpdf</a>
+                        </div>
+                        <div class="col-md-3 position-relative">
+                        
+                        </div>
 
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit" name="submit">Guardar Alterações</button>
-  </div>
-    </form>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit" name="submit">Guardar Alterações</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="" id="reservas" >
-                    <h2>Minhas reservas</h2>
+                    <h2> Pedidos de reservas</h2>
                     <?php 
                         $id = $_SESSION['id'];
                         
@@ -127,18 +128,46 @@
                                         <p>Data Fim: '. $reservas['datafim'] .'</p>
                                         <p>Nº pessoas: '. $reservas['numeropessoas'] .'</p>
                                         <div class="card-body">
-                                        <a href="connect/cancelarpedido.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Cancela</a>
-                                        <a href="connect/aceitarPedido.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Aceita</a>
+                                        <a href="connect/cancelarPedidoReserva.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Cancela</a>
+                                        <a href="connect/aceitarPedidoReserva.php?id='. $reservas['id'] .'" class="btn btn-primary btCancelar">Aceita</a>
                                         </div>
                                     </div>';
                             }
                         } else {
-                            echo "Não há registros pendentes.";
+                            echo "Não há reservas pendentes.";
                         } 
   
                     ?>
                 
                 </div>
+                <div class="" id="minhasRerserva" >
+                    <h2> Minhas Reservas</h2>
+
+                      <?php 
+                       
+                       $minhasreserva =listarReservasConfirmadas();
+                    
+                        // Verifica se houve registros pendentes retornados
+                       if ($minhasreserva  !== null) {
+                            // Faça o que desejar com os registros pendentes
+                            foreach ($minhasreserva as $reservas) {
+                                echo '<div class="card pendentes">
+                                        <h5 class="card-header">'. $reservas['nome'] .'</h5>
+                                        <p>Local: '. $reservas['local'] .'</p>
+                                        <p>Data Inicio: '. $reservas['datainicio'] .'</p>
+                                        <p>Data Fim: '. $reservas['datafim'] .'</p>
+                                        <p>Nº pessoas: '. $reservas['numeropessoas'] .'</p>
+                                        <div class="card-body">
+                                        </div>
+                                    </div>';
+                            }
+                        } else {
+                            echo "Não há reservas pendentes.";
+                        } 
+  
+                    ?>
+                </div>
+                
                 <div class="" id="msg" >
                     <h2>Chat - Reserva nº18334</h2>
                     <div class="container chat-container">
@@ -152,18 +181,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="" id="listMsg" onclick="changeCard('msg')">
+                <div class="" id="listMsg" onclick="changeCardGuia('msg')">
                     <h2>Lista de mensagens</h2>
-                     <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Cliente - Jumara Santos</h5>
-                            <p class="card-text">Reserva nº.18173</p>
-                            <a href="#" class="btn btn-primary">Abrir mensagem</a>
-                        </div>
-                        <div class="card-footer text-body-secondary">
-                            2 days ago
-                        </div>
-                    </div>
+                    <?php
+                    $minhasmsg =listarReservasConfirmadas();
+                    
+                    // Verifica se houve registros pendentes retornados
+                   if ($minhasmsg  !== null) {
+                        // Faça o que desejar com os registros pendentes
+                        foreach ($minhasmsg as $msg) {
+                            echo '<div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Cliente - '.$msg['nome'].'</h5>
+                                <p class="card-text">Reserva nº.'.$msg['id'].'</p>
+                                <a href="#" class="btn btn-primary">Abrir mensagem</a>
+                            </div>
+                            <div class="card-footer text-body-secondary">
+                                2 days ago
+                            </div>
+                        </div>';
+                        }
+                    } else {
+                        echo "Não há reservas pendentes.";
+                    } 
+                    ?>
+                     
                 </div>
             </div>
         </div>
