@@ -16,7 +16,10 @@
 </head>
 <body>
   <!--cabeçalho-->
-  <?php include 'includes/header.php' ?>
+  <?php include 'includes/header.php';
+  require_once "connect/funcao.php";
+  $restaurantes =PesquisarRestaurantes();
+  ?>
   <main> 
     <div class="corpo">
 
@@ -29,7 +32,34 @@
              <p>
                 No restaurante Cacau que todas as quintas feiras realizam noites tradicionais gastronómicas com músicas e dança onde apresentam um leque dos pratos típicos das ilhas. Existe também o workshop gastronómico que se realiza na famosa Roça São João em angolares, com certeza desfrutarás de uma explosão de sabores.
              </p>
-      <div class="row">
+               
+             <?php 
+          if (!empty( $restaurantes )) {?>
+          
+            <?php foreach ( $restaurantes  as  $restaurante) {
+              
+                echo '  <div class="row"> <div class="col-md-4"> <div class="card">
+                <img src="imagens/Sres1.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5>'.$restaurante['Nome'] .'</h5>
+                  <ul>
+                    <li class="card-text">Telefone:'.$restaurante['Telefone'] .' anos</li>
+                    <li class="card-text">E-mail:'.$restaurante['Email'] .' </li>
+                    <li class="card-text">Link: '.$restaurante['Link'] .' </li>
+                    <li class="card-text">Endereço: '.$restaurante['Endereco'] .' </li>
+                    <li class="card-text">Estrelas: '. $restaurante['Estrelas'] .' </li>
+                  </ul>
+                  </div>
+                  </div>
+                </div>';
+                echo '</div>' ;
+            }
+        } else {
+            echo "Nenhum hotel encontrado.";
+        }
+        ?>
+
+   <!--    <div class="row">
   <div class="col-md-4">
     <div class="card">
       <img src="imagens/Sres1.jpeg" class="card-img-top" alt="...">
@@ -97,8 +127,8 @@
   </div>
  </div>   
 
-         </div>
-
+         </div> -->
+<!-- 
       </section>
 
       <section class="pricinpe">
@@ -147,7 +177,7 @@
          </div>
        </div>
 
-       </section>
+       </section> -->
        </div>
     </main>
     <?php include 'includes/footer.php' ?>
