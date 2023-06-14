@@ -27,7 +27,7 @@
      margin-top: 70px;
  }
 
-
+ 
  .transportes h3{
      text-align: center;
      color: #ffff;
@@ -80,6 +80,16 @@
  .card{
   margin-top: 20px;
  }
+
+ .card a{
+  color:  #8bc34a;
+ }
+
+ .tr h3{
+  color:#8bc34a;
+ }
+
+
 
 
 

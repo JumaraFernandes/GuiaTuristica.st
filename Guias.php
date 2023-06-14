@@ -36,35 +36,38 @@
         <h1>Nossos Guias</h1>
       </div>
       <section class="guias">
-        <?php 
-          if (!empty($guias)) {?>
-          
-            <?php foreach ($guias as $guia) {
-              
-                echo ' <div class="col-md-4"> <div class="card">
-                <img src="imagens/guia.1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5>'. $guia['Nome'] .'</h5>
-                  <ul>
-                    <li class="card-text">Idade:'. $guia['idade'] .' anos</li>
-                    <li class="card-text">Telefone:'. $guia['Telefone'] .' </li>
-                    <li class="card-text">Experiências: '. $guia['Experiencias'] .' </li>
-                  </ul>
-                  </div>
-                </div>';
-                if($tipo === 'turista'){
-                  echo '<div class="button-container">
-                  <a class="my-button" href="Reservas.php">Reserva</a>
-                  </div>';
-                }
-                echo '</div>' ;
-            }
-        } else {
-            echo "Nenhum guia encontrado.";
-        }
-        ?>
+  <?php 
+    if (!empty($guias)) {
+      echo '<div class="row">';
+      
+      foreach ($guias as $guia) {
+        echo '<div class="col-md-4">';
+        echo '<div class="card">';
+        echo '<img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">';
+        echo '<div class="card-body">';
+        echo '<h5>'.$guia['Nome'].'</h5>';
+        echo '<p class="card-text">Idade: '.$guia['idade'].' anos</p>';
+        echo '<p class="card-text">Telefone: '.$guia['Telefone'].'</p>';
+        echo '<p class="card-text">Experiências: '.$guia['Experiencias'].'</p>';
+        echo '</div>';
         
-      </section>
+        if ($tipo === 'turista') {
+          echo '<div class="button-container">';
+          echo '<a class="my-button" href="Reservas.php">Reserva</a>';
+          echo '</div>';
+        }
+        
+        echo '</div>'; // fechando a div com a classe "card"
+        echo '</div>'; // fechando a div com a classe "col-md-4"
+      }
+      
+      echo '</div>'; // fechando a div com a classe "row"
+    } else {
+      echo "Nenhum guia encontrado.";
+    }
+  ?>
+</section>
+
     </div>
     </main>
   <!--Rodapé-->

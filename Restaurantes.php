@@ -20,44 +20,50 @@
   require_once "connect/funcao.php";
   $restaurantes =PesquisarRestaurantes();
   ?>
+
   <main> 
     <div class="corpo">
+  
+      <section class="saotome">
+          <div>
+              <h1>RESTAURANTES E BARES EM S. TOMÉ</h1>
+            <p>
+                Os restaurantes em São Tomé estão concentrados a maioria no distrito de Àgua-Grande, as grandes quantidades de refeições são confeccionados a base de peixe sendo que somos um país rodeado pelo mar, com uma costa rica pela quantidade e a qualidade de peixe existente.
+            </p>
+              <p>
+                  No restaurante Cacau que todas as quintas feiras realizam noites tradicionais gastronómicas com músicas e dança onde apresentam um leque dos pratos típicos das ilhas. Existe também o workshop gastronómico que se realiza na famosa Roça São João em angolares, com certeza desfrutarás de uma explosão de sabores.
+              </p>
+              <a href="http://d">fsdcx</a>
+                
+              <?php 
+      if (!empty($restaurantes)) {
+        echo '<div class="row">';
+    
+      foreach ($restaurantes as $restaurante) {
+        echo '<div class="col-md-4">
+                <div class="card">
+                  <img src="imagens/Sres1.jpeg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5>'. $restaurante['Nome'] .'</h5>
+                      <p class="card-text">Telefone: '. $restaurante['Telefone'] .'</p>
+                      <p><a  class="card-text"href="mailto:'. $restaurante['Email'] .'>E-mail: '. $restaurante['Email'] .'</p></a>
+                      <p><a  class="card-text"href="'. $restaurante['Link'] .'">Link: '. $restaurante['Link'] .'</p></a>
+                      <p class="card-text">Endereço: '. $restaurante['Endereco'] .'</p>
+                      <p class="card-text">Estrelas: '. $restaurante['Estrelas'] .'</p>
+                    
+                  </div>
+                </div>
+              </div>';
+      }
+    
+      echo '</div>';
+    } else {
+      echo "Nenhum restaurante encontrado.";
+    }
+    ?>
 
-    <section class="saotome">
-         <div>
-             <h1>RESTAURANTES E BARES EM S. TOMÉ</h1>
-           <p>
-              Os restaurantes em São Tomé estão concentrados a maioria no distrito de Àgua-Grande, as grandes quantidades de refeições são confeccionados a base de peixe sendo que somos um país rodeado pelo mar, com uma costa rica pela quantidade e a qualidade de peixe existente.
-           </p>
-             <p>
-                No restaurante Cacau que todas as quintas feiras realizam noites tradicionais gastronómicas com músicas e dança onde apresentam um leque dos pratos típicos das ilhas. Existe também o workshop gastronómico que se realiza na famosa Roça São João em angolares, com certeza desfrutarás de uma explosão de sabores.
-             </p>
-               
-             <?php 
-          if (!empty( $restaurantes )) {?>
-          
-            <?php foreach ( $restaurantes  as  $restaurante) {
-              
-                echo '  <div class="row"> <div class="col-md-4"> <div class="card">
-                <img src="imagens/Sres1.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5>'.$restaurante['Nome'] .'</h5>
-                  <ul>
-                    <li class="card-text">Telefone:'.$restaurante['Telefone'] .' anos</li>
-                    <li class="card-text">E-mail:'.$restaurante['Email'] .' </li>
-                    <li class="card-text">Link: '.$restaurante['Link'] .' </li>
-                    <li class="card-text">Endereço: '.$restaurante['Endereco'] .' </li>
-                    <li class="card-text">Estrelas: '. $restaurante['Estrelas'] .' </li>
-                  </ul>
-                  </div>
-                  </div>
-                </div>';
-                echo '</div>' ;
-            }
-        } else {
-            echo "Nenhum hotel encontrado.";
-        }
-        ?>
+    </section>
+
 
    <!--    <div class="row">
   <div class="col-md-4">
@@ -129,7 +135,7 @@
 
          </div> -->
 <!-- 
-      </section>
+     
 
       <section class="pricinpe">
          

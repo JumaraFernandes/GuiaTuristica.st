@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-sm-4">
-                <div onclick="changeCardGuia('perfil')">
+                <div onclick="changeCardGuia('perfil', 0)">
                     <div class="opcao">
                         <i class="bi bi-person-circle"></i>
                         <p>Minha Conta</p>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <div onclick="changeCardGuia('reservas')">
+                <div onclick="changeCardGuia('reservas', 0)">
                     <div class="opcao">
                     <i class="bi bi-exclamation-octagon"></i>
                         <p>Pedidos da reservas</p>
@@ -50,7 +50,7 @@
                     </div>
                     </div>
 
-                    <div onclick="changeCardGuia('minhasRerserva')">
+                    <div onclick="changeCardGuia('minhasRerserva', 0)">
                     <div class="opcao">
                         <i class="bi bi-x-diamond-fill"></i>
                         <p>Minhas Reservas</p>
@@ -58,7 +58,7 @@
                     </div>
                     </div>
 
-                <div onclick="changeCardGuia('listMsg')">
+                <div onclick="changeCardGuia('listMsg', 0)">
                     <div class="opcao">
                         <i class="bi bi-chat-left-dots"></i>
                         <p>Mensagens</p>
@@ -175,6 +175,11 @@
                 
                 <div class="" id="msg" >
                     <h2 id="idReserva" name="idChat"></h2>
+                    <p id="idReservaInput"></p>
+
+
+
+
                     <div class="container chat-container">
                         <div id="chatbox">
                             <?php 
@@ -205,7 +210,7 @@
                     </div>
                 </div>
                 <div id="idReserva"></div>
-                <div class="" id="listMsg" onclick="changeCardGuia('msg')">
+                <div class="" id="listMsg">
                     <h2>Lista de mensagens</h2>
                     <?php
                     $minhasmsg =listarReservasConfirmadas();
@@ -216,15 +221,16 @@
                         foreach ($minhasmsg as $msg) {
                             
                             echo '<div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Cliente - '.$msg['nome'].'</h5>
-                                <p class="card-text">Reserva nº.'.$msg['id'].'</p>
-                                <a href="#456" class="btn btn-primary" data-id="'.$msg['id'].' data-id="'.$idReserva.'">Abrir mensagem</a>
-                            </div>
-                            <div class="card-footer text-body-secondary">
-                                2 days ago
-                            </div>
-                        </div>';
+                                <div class="card-body">
+                                    <h5 class="card-title">Cliente - '.$msg['nome'].'</h5>
+                                    <p class="card-text">Reserva nº.'.$msg['id'].'</p>
+                                    <a href="#" class="btn btn-primary" onclick="changeCardGuia(\'msg\', \''.$msg['id'].'\')">Abrir mensagem</a>
+                                </div>
+                                <div class="card-footer text-body-secondary">
+                                    2 days ago
+                                </div>
+                            </div>';
+
                         }
                     } else {
                         echo "Não há reservas pendentes.";

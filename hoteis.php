@@ -39,32 +39,32 @@
              <p>
              O Omali Lodge e o Hotel praia são outros refúgios de qualidade inquestionável: localizados na praia Lagarto. Ao extremo sul  encontra-se o Resort Inhame Ecolodge situado a 7 minutos de barco do marco do equador.
              </p>
-
              <?php 
-          if (!empty( $hosteis )) {?>
-          
-            <?php foreach ( $hosteis  as $hotel) {
-              
-                echo '  <div class="row"> <div class="col-md-4"> <div class="card">
-                <img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5>'. $hotel['Nome'] .'</h5>
-                  <ul>
-                    <li class="card-text">Telefone:'. $hotel['Telefone'] .' anos</li>
-                    <li class="card-text">E-mail:'. $hotel['Email'] .' </li>
-                    <li class="card-text">Link: '. $hotel['Link'] .' </li>
-                    <li class="card-text">Endereço: '. $hotel['Endereco'] .' </li>
-                    <li class="card-text">Estrelas: '. $hotel['Estrelas'] .' </li>
-                  </ul>
-                  </div>
-                  </div>
-                </div>';
-                echo '</div>' ;
-            }
-        } else {
-            echo "Nenhum hotel encontrado.";
-        }
-        ?>
+   if (!empty($hosteis)) {
+   echo '<div class="row">';
+  
+    foreach ($hosteis as $hotel) {
+    echo '<div class="col-md-4">
+            <div class="card">
+              <img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5>'. $hotel['Nome'] .'</h5>
+                <p class="card-text">Telefone: '. $hotel['Telefone'] .'</p>
+                <p><a class="card-text" href="mailto:'. $hotel['Email'] .'">E-mail: '. $hotel['Email'] .'</a></p>
+                <p><a class="card-text" href="'. $hotel['Link'] .'" target="_blank">Link: '. $hotel['Link'] .'</a></p>
+                <p class="card-text">Endereço: '. $hotel['Endereco'] .'</p>
+                <p class="card-text">Estrelas: '. $hotel['Estrelas'] .'</p>
+              </div>
+            </div>
+          </div>';
+  }
+  
+  echo '</div>';
+  } else {
+  echo "Nenhum hotel encontrado.";
+ }
+ ?>
+
    <!--           <div class="row">
   <div class="col-md-4">
     <div class="card">

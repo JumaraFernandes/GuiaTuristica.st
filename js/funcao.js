@@ -114,7 +114,7 @@ function setMinimumDate() {
 
     }
 
-  function changeCardGuia(tipo) {
+  function changeCardGuia(tipo, id) {
     
     if (tipo === 'perfil') {
         document.getElementById('perfil').style.display = 'block';
@@ -136,6 +136,13 @@ function setMinimumDate() {
             document.getElementById('msg').style.display = 'block';
             document.getElementById('listMsg').style.display = 'none';
             document.getElementById('minhasRerserva').style.display = 'none';
+            document.getElementById('idReservaInput').innerHTML = "Seu id" + tipo;
+            // Obtém o elemento de parágrafo pelo ID
+            var paragrafo = document.getElementById("idReservaInput");
+            
+            // Altera o conteúdo do parágrafo
+            paragrafo.innerHTML = parseInt(id);
+
           } else if (tipo === 'minhasRerserva') {
             document.getElementById('perfil').style.display = 'none';
             document.getElementById('reservas').style.display = 'none';
@@ -175,6 +182,11 @@ function setMinimumDate() {
 
     }
 
+
+    function minhaFuncao() {
+      return "Funcionoi";
+    }
+    
    
  
 

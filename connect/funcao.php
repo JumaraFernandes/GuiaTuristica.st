@@ -391,6 +391,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
                     'idade' => $row['idade'],
                     'Morada' => $row['endereco'],
                     'Experiencias' => $row['experiencia'],
+                    'foto' => $row['foto'],
                     'cv' => $row['cv']
                 );
     
@@ -423,6 +424,9 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     
             // Loop através dos resultados para obter cada hostel
             while ($row = $result->fetch_assoc()) {
+                 // Depura o valor da foto
+                var_dump($row['foto']);
+
                 // Armazena os dados do hostel em um array
                 $hostel = array(
                     'Tipo' => $row['tipo'],
@@ -544,6 +548,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     }
     
     function obterRegistosPendentes() {
+
             $conn = conetarBD();
 
             // Prepara a chamada do procedimento armazenado
@@ -898,6 +903,74 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             
             
             
+            function InserirExperiencia($idTurista, $titulo, $conteudo) {
+                $conn = conetarBD();
+              
+                try {
+                    $stmt = $conn->prepare("CALL InserirExperiencia(?, ?, ?)");
+                    $stmt->bind_param("iss", $idTurista, $titulo, $conteudo);
+                    $stmt->execute();
+            
+                    echo "Procedimento armazenado executado com sucesso!";
+                } catch (mysqli_sql_exception $e) {
+                    echo "Erro ao chamar o procedimento armazenado: " . $e->getMessage();
+                }
+            
+            }
+
+            
+            function PesquisarExperiencias() {
+                $conn = conetarBD();
+                $sql = "CALL PesquisarExperiencias()";
+                
+                $result = $conn->query($sql);
+                $experiencias = []; // Vetor para armazenar as experiências
+                
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $experiencia = [
+                            'id' => $row['id'],
+                            'titulo' => $row['titulo'],
+                            'conteudo' => $row['conteudo'],
+                            'data' => $row['data'],
+                            'nome' => $row['nome']
+                        ];
+                
+                        $experiencias[] = $experiencia; // Adiciona a experiência ao vetor
+                    }
+                } else {
+                    echo "Nenhuma experiência encontrada.";
+                    
+                }
+                
+               
+                return $experiencias; // Retorna o vetor de experiências
+
+
+            }
+
+            function ExcluirExperiencia($experienciaID) {
+                $conn = conetarBD();
+              
+                try {
+                    $stmt = $conn->prepare("CALL ExcluirExperiencia(?)");
+                    $stmt->bind_param("i", $experienciaID);
+                    $stmt->execute();
+            
+                    echo "Procedimento armazenado executado com sucesso!";
+                } catch (mysqli_sql_exception $e) {
+                    echo "Erro ao chamar o procedimento armazenado: " . $e->getMessage();
+                }
+              
+            }
+            
+            
+            
+            
+            
+              
+
+
             
             
             
