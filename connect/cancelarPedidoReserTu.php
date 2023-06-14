@@ -13,9 +13,9 @@
      echo 'id: '.$id;
     
 
-     CancelarReserva( $id);
+     CancelarReserva($id);
     
-    header("location: ../PerfilTurista.php");
+   // header("location: ../PerfilTurista.php");
 
 
 ?>

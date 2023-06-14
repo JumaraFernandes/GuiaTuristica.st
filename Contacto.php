@@ -54,14 +54,14 @@
               </div>
           </aside>
           <aside id="enviar">
-              <form action="">
+            <form action="connect/enviarEmail.php" method="POST">
                   <h3>Sua Mensagem</h3>
                   <div>
                       <label for="nome">Nome: <input type="text" id="nome" placeholder="Nome Completo"></label>
                       <label for="email">Email: <input type="email" id ="email" onblur="validarEmail()" placeholder="Email"></label>
                       <div id="valEmail"></div>
                       <label for="msg">Digite sua mensagem: <textarea name="" id="msg" cols="30" rows="3" placeholder="Sua Mensagem"></textarea></label>
-                      <input type="button" value="Submeter" onclick="submeter()">
+                      <input type="submit" value="Submeter">
                       <div id="res"></div>
                   </div>
               </form>

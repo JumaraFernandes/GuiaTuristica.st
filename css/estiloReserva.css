@@ -21,6 +21,7 @@
     font-size: 14pt;
     background-color: #8bc34a;
     display: block;
+   margin: auto;
 }
 input::placeholder,
 textarea
@@ -28,11 +29,11 @@ textarea
     font-style: italic;
 }
 #form div input,
-form input[type="button"],
+form input[type="submit"],
 form select,
 #enviar input,
 #enviar textarea,
-#enviar input[type="button"],
+#enviar input[type="submit"],
 #enviar select
 {
     outline: none;
@@ -52,8 +53,8 @@ form select {
   }
   
 
-form input[type="button"],
-#enviar input[type="button"]
+form input[type="submit"],
+#enviar input[type="submit"]
 {
     background-color: #1B88A2;
     font-weight: 700;
@@ -61,7 +62,7 @@ form input[type="button"],
     cursor: pointer;
     margin-left: 10px;
 }
-form input[type="button"]:hover
+form input[type="submit"]:hover
 {
     opacity: .8;
 }

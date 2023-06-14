@@ -48,7 +48,9 @@
 <!-- Lista de tópicos -->
 <form class="excluir-form" action="connect/excluirExperiencias.php" method="POST">
   <?php 
-    foreach ($resultados as $experiencia) {
+     $totalExperiencias = count($resultados);
+     for ($i = $totalExperiencias - 1; $i >= 0; $i--) {
+       $experiencia = $resultados[$i];
       echo '<input type="hidden" name="experienciaID" value="'. $experiencia['id'] .'">';
       echo '<p><i class="bi bi-person-circle"></i> ' . $experiencia['nome'] . '</p>';
       echo '<h3>Título do Tópico: ' . $experiencia['titulo'] . '</h3>';
@@ -59,8 +61,10 @@
         echo '<button type="submit" name="submit">Excluir</button>';
       }
     }
+  
   ?>
 </form>
+
 
     </div>
   </main>

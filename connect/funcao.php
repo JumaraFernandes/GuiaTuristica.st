@@ -940,15 +940,11 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
                     }
                 } else {
                     echo "Nenhuma experiência encontrada.";
-                    
                 }
                 
-               
                 return $experiencias; // Retorna o vetor de experiências
-
-
             }
-
+            
             function ExcluirExperiencia($experienciaID) {
                 $conn = conetarBD();
               

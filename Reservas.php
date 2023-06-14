@@ -20,6 +20,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/estilogeral.css">
   <link rel="stylesheet" href="css/estiloReserva.css">
+  <script src="../js/funcao.js"></script>
 </head>
 <body>
   <!--cabeçalho-->
@@ -34,7 +35,7 @@
             <form action="connect/reserva.php" method="post">
                 <h3>Faça a sua Reserva</h3>
                 <div>
-                    <label for="dataEntrada">Data Inicio: <input type="date" id="dataEntrada" name="datainicio"></label>
+                    <label for="dataEntrada">Data Inicio: <input type="date" id="dataEntrada" name="datainicio" onchange="validarData()"></label>
                     <label for="dataSaida" >Data Fim: <input type="date" id="dataSaida" name="datafim"></label>
                     <label for="Pessoas">Nº Pessoas: <input type="number" id="adulto" name="numeropessoas" placeholder="Número de Adultos" min="1"></label>
                     <label for="Local">Local:                   
@@ -66,6 +67,17 @@
 
     <?php include 'includes/footer.php' ?>
   
+    <script>
+     var dataAtual = new Date();
+
+    // Formata a data atual no formato necessário (ano-mês-dia)
+    var dataAtualFormatada = dataAtual.toISOString().split('T')[0];
+
+    // Atribui a data atual ao atributo min do campo de entrada de data
+    document.getElementById("dataEntrada").min = dataAtualFormatada;
+
+
+    </script>
   
 </body>
 </html>

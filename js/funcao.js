@@ -183,11 +183,20 @@ function setMinimumDate() {
     }
 
 
-    function minhaFuncao() {
-      return "Funcionoi";
+    function validarData() {
+      
+      var dataInicio = document.getElementById("dataEntrada").value;
+      var dataFimInput = document.getElementById("dataSaida");
+      
+      var dataMinima = new Date(dataInicio);
+      dataMinima.setDate(dataMinima.getDate() + 1);
+      
+      var diaMinimo = dataMinima.toISOString().split("T")[0];
+      dataFimInput.min = diaMinimo;
+      dataFimInput.value = diaMinimo;
+
     }
-    
    
  
 
-
+    

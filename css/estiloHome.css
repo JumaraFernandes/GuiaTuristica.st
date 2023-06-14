@@ -8,6 +8,15 @@
   background-size: cover;
  }
 
+ #cabecalho a:hover,
+ .ativo {
+    padding-bottom: 0;
+    border-bottom: 2px solid #7BF1A8;
+    color:  #7BF1A8;
+    transition: .5s;
+
+ }
+
 video{
   position: absolute;
   width: 100%;
@@ -76,7 +85,14 @@ video{
      color: #7BF1A8 ;
    }
       
-
+   .topo ul a:hover,
+   .ativo {
+      padding-bottom: 0;
+      border-bottom: 2px solid #7BF1A8;
+      color: #7BF1A8;
+      transition: .5s;
+  
+   }
 
 
 main{

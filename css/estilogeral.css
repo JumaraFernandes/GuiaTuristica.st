@@ -7,6 +7,15 @@
  background-position: center ;
  background-color: #7BF1A8;
 }
+
+#cabecalho a:hover,
+ .ativo {
+    padding-bottom: 0;
+    border-bottom: 2px solid  #4CC9F0;
+    color:  #4CC9F0;
+    transition: .5s;
+
+ }
  .topo {
     max-width: 80%;
 
@@ -29,6 +38,7 @@
     transition: .5s;
 
  }
+
 
   .esquerda {
     float: left;

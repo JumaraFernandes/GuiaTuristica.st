@@ -151,7 +151,7 @@ form label{
 
 #enviar input,
 #enviar textarea,
-#enviar input[type="button"]
+#enviar input[type="submit"]
 {
     outline: none;
     font-size: 13pt;
@@ -165,8 +165,8 @@ form label{
     background-color: rgba(13, 138, 161, 0.2);
 }
 
-form input[type="button"],
-#enviar input[type="button"]
+form input[type="submit"],
+#enviar input[type="submit"]
 {
     background-color: #1B88A2;
     font-weight: 700;
@@ -174,7 +174,7 @@ form input[type="button"],
     cursor: pointer;
     margin-left: 10px;
 }
-form input[type="button"]:hover
+form input[type="submit"]:hover
 {
     opacity: .8;
 }
