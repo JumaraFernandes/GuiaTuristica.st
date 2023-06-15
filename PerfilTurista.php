@@ -169,7 +169,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Guia: - '.$msg['Nome do Guia'].'</h5>
                                 <p class="card-text">Reserva nº.'.$msg['ID'].'</p>
-                                <a href="#456" class="btn btn-primary" data-id="'.$msg['ID'].'">Abrir mensagem</a>
+                                <a href="chat.php?id='.$msg['ID'].'" class="btn btn-primary">Abrir mensagem</a>
                             </div>
                             <div class="card-footer text-body-secondary">
                                 2 days ago

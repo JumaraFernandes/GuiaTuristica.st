@@ -57,10 +57,11 @@
             <form action="connect/enviarEmail.php" method="POST">
                   <h3>Sua Mensagem</h3>
                   <div>
-                      <label for="nome">Nome: <input type="text" id="nome" placeholder="Nome Completo"></label>
-                      <label for="email">Email: <input type="email" id ="email" onblur="validarEmail()" placeholder="Email"></label>
+  
+                      <label for="nome">Nome: <input type="text" name="nome"  id="nome"  placeholder="Nome Completo"></label>
+                      <label for="email">Email: <input type="email" name="email" id ="email" onblur="validarEmail()" placeholder="Email"></label>
                       <div id="valEmail"></div>
-                      <label for="msg">Digite sua mensagem: <textarea name="" id="msg" cols="30" rows="3" placeholder="Sua Mensagem"></textarea></label>
+                      <label for="msg">Digite sua mensagem: <textarea name="mensagem" id="msg" cols="30" rows="3" placeholder="Sua Mensagem"></textarea></label>
                       <input type="submit" value="Submeter">
                       <div id="res"></div>
                   </div>

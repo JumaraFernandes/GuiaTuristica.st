@@ -768,198 +768,214 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             return $reservas; // Retorna o vetor de reservas confirmadas
         }
 
-            function obterTotalGuiasRegistrados()
-            {
-                $conn = conetarBD();
-                // Chama o procedimento armazenado
-                $sql = "CALL ListarTotalGuias()";
-                $result1 = $conn->query($sql);
-                
-                // Verifica se a chamada do procedimento obteve sucesso
-                if ($result1 === false) {
-                    die("Erro ao chamar o procedimento: " . $conn->error);
-                }
-                
-                // Obtém o resultado da contagem de guias
-                $row = $result1->fetch_assoc();
-                $totalGuias = $row["total_guias"]; 
-                // Retorna o total de guias
+        function obterTotalGuiasRegistrados()
+        {
+            $conn = conetarBD();
+            // Chama o procedimento armazenado
+            $sql = "CALL ListarTotalGuias()";
+            $result1 = $conn->query($sql);
+            
+            // Verifica se a chamada do procedimento obteve sucesso
+            if ($result1 === false) {
+                die("Erro ao chamar o procedimento: " . $conn->error);
+            }
+            
+            // Obtém o resultado da contagem de guias
+            $row = $result1->fetch_assoc();
+            $totalGuias = $row["total_guias"]; 
+            // Retorna o total de guias
 
-                echo 'Total guia: ' .$totalGuias; 
-                return $totalGuias;
-            }
-          
-            function ListarReservasPorTurista($utilizadorID) {
-                $conn = conetarBD();
-            
-                // Chama o procedimento armazenado para listar as reservas por turista
-                $sql = "CALL ListarReservasPorTurista($utilizadorID)";
-                $result = $conn->query($sql);
-            
-                // Verifica se a chamada foi bem-sucedida e obtém os dados
-                if ($result) {
-                    $reservas = array();
-            
-                    // Loop através dos resultados para obter cada reserva
-                    while ($row = $result->fetch_assoc()) {
-                        // Armazena os dados da reserva em um array
-                        $reserva = array(
-                            'ID' => $row['id'],
-                            'Data de Início' => $row['datainicio'],
-                            'Data de Fim' => $row['datafim'],
-                            'Número de Pessoas' => $row['numeropessoas'],
-                            'Local' => $row['local'],
-                            'Nome do Guia' => $row['Nome do Guia']
-                        );
-            
-                        // Adiciona a reserva ao array de reservas
-                        $reservas[] = $reserva;
-                    }
-            
-                    // Fecha o resultado da consulta
-                    $result->close();
-            
-                    // Retorna o array de reservas
-                    return $reservas;
-                } else {
-                    echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
-                    // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
-                    return null;
+            echo 'Total guia: ' .$totalGuias; 
+            return $totalGuias;
+        }
+        
+        function ListarReservasPorTurista($utilizadorID) {
+            $conn = conetarBD();
+        
+            // Chama o procedimento armazenado para listar as reservas por turista
+            $sql = "CALL ListarReservasPorTurista($utilizadorID)";
+            $result = $conn->query($sql);
+        
+            // Verifica se a chamada foi bem-sucedida e obtém os dados
+            if ($result) {
+                $reservas = array();
+        
+                // Loop através dos resultados para obter cada reserva
+                while ($row = $result->fetch_assoc()) {
+                    // Armazena os dados da reserva em um array
+                    $reserva = array(
+                        'ID' => $row['id'],
+                        'Data de Início' => $row['datainicio'],
+                        'Data de Fim' => $row['datafim'],
+                        'Número de Pessoas' => $row['numeropessoas'],
+                        'Local' => $row['local'],
+                        'Nome do Guia' => $row['Nome do Guia']
+                    );
+        
+                    // Adiciona a reserva ao array de reservas
+                    $reservas[] = $reserva;
                 }
+        
+                // Fecha o resultado da consulta
+                $result->close();
+        
+                // Retorna o array de reservas
+                return $reservas;
+            } else {
+                echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+                // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+                return null;
             }
+        }
+        
+        function enviarMsgGuia($idReserva, $msg) {
+            $conn = conetarBD();
+            $sql = "CALL enviarMsgGuia(?, ?)";
+        
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "is", $idReserva, $msg);
+            mysqli_stmt_execute($stmt);
+        
+            if (mysqli_stmt_affected_rows($stmt) > 0) {
+                echo "Mensagem enviada com sucesso!";
+            } else {
+                echo "Erro ao enviar a mensagem.";
+            }
+        
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+        }
+        
 
-            function enviarMsgGuia($idReserva, $msg) {
-                $conn = conetarBD();
-                $sql = "CALL enviarMsgGuia(?, ?)";
-            
-                $stmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($stmt, "is", $idReserva, $msg);
-                mysqli_stmt_execute($stmt);
-            
-                if (mysqli_stmt_affected_rows($stmt) > 0) {
-                    echo "Mensagem enviada com sucesso!";
-                } else {
-                    echo "Erro ao enviar a mensagem.";
-                }
-            
-                mysqli_stmt_close($stmt);
-                mysqli_close($conn);
+        function enviarMsgTurista($idReserva, $msg) {
+            $conn = conetarBD();
+            $sql = "CALL enviarMsgTurista(?, ?)";
+        
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "is", $idReserva, $msg);
+            mysqli_stmt_execute($stmt);
+        
+            if (mysqli_stmt_affected_rows($stmt) > 0) {
+                echo "Mensagem enviada com sucesso!";
+            } else {
+                echo "Erro ao enviar a mensagem.";
             }
-            
-            
+        
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+        }
 
-            function enviarMsgTurista($idReserva, $msg) {
-                $conn = conetarBD();
-                $sql = "CALL enviarMsgTurista(?, ?)";
-            
-                $stmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($stmt, "is", $idReserva, $msg);
-                mysqli_stmt_execute($stmt);
-            
-                if (mysqli_stmt_affected_rows($stmt) > 0) {
-                    echo "Mensagem enviada com sucesso!";
-                } else {
-                    echo "Erro ao enviar a mensagem.";
-                }
-            
-                mysqli_stmt_close($stmt);
-                mysqli_close($conn);
-            }
-            
+        
+        function enviarMsg($idReserva, $msg, $id) {
+            $conn = conetarBD();
 
-            function receberMsg($idReserva) {
-                $conn = conetarBD();
-                $sql = "CALL receberMsg(?)";
-            
-                $stmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($stmt, "i", $idReserva);
-                mysqli_stmt_execute($stmt);
-            
-                $result = mysqli_stmt_get_result($stmt);
-                $mensagens = []; // Vetor para armazenar as mensagens
-            
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $mensagem = [
-                            'id' => $row['id'],
-                            'msg' => $row['msg'],
-                            'datamsg' => $row['datamsg'],
-                            'autor' => $row['autor']
-                        ];
-            
-                        $mensagens[] = $mensagem; // Adiciona a mensagem ao vetor
-                    }
-                } else {
-                    echo "Nenhuma mensagem encontrada.";
-                }
-            
-                mysqli_stmt_close($stmt);
-                mysqli_close($conn);
-            
-                return $mensagens; // Retorna o vetor de mensagens
+            $sql = "CALL enviarMsg(?, ?, ?)";
+        
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "isi", $idReserva, $msg, $id);
+            mysqli_stmt_execute($stmt);
+        
+            if (mysqli_stmt_affected_rows($stmt) > 0) {
+                echo "Mensagem enviada com sucesso!";
+                
+            } else {
+                echo "Erro ao enviar a mensagem.";
             }
-            
-            
-            
-            
-            
-            function InserirExperiencia($idTurista, $titulo, $conteudo) {
-                $conn = conetarBD();
-              
-                try {
-                    $stmt = $conn->prepare("CALL InserirExperiencia(?, ?, ?)");
-                    $stmt->bind_param("iss", $idTurista, $titulo, $conteudo);
-                    $stmt->execute();
-            
-                    echo "Procedimento armazenado executado com sucesso!";
-                } catch (mysqli_sql_exception $e) {
-                    echo "Erro ao chamar o procedimento armazenado: " . $e->getMessage();
-                }
-            
-            }
+        
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+        }
+        
 
-            
-            function PesquisarExperiencias() {
-                $conn = conetarBD();
-                $sql = "CALL PesquisarExperiencias()";
-                
-                $result = $conn->query($sql);
-                $experiencias = []; // Vetor para armazenar as experiências
-                
-                if ($result && $result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $experiencia = [
-                            'id' => $row['id'],
-                            'titulo' => $row['titulo'],
-                            'conteudo' => $row['conteudo'],
-                            'data' => $row['data'],
-                            'nome' => $row['nome']
-                        ];
-                
-                        $experiencias[] = $experiencia; // Adiciona a experiência ao vetor
-                    }
-                } else {
-                    echo "Nenhuma experiência encontrada.";
+        function receberMsg($idReserva) {
+            $conn = conetarBD();
+            $sql = "CALL receberMsg(?)";
+        
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "i", $idReserva);
+            mysqli_stmt_execute($stmt);
+        
+            $result = mysqli_stmt_get_result($stmt);
+            $mensagens = []; // Vetor para armazenar as mensagens
+        
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $mensagem = [
+                        'id' => $row['id'],
+                        'msg' => $row['msg'],
+                        'datamsg' => $row['datamsg'],
+                        'autor' => $row['autor']
+                    ];
+        
+                    $mensagens[] = $mensagem; // Adiciona a mensagem ao vetor
                 }
-                
-                return $experiencias; // Retorna o vetor de experiências
+            } else {
+                echo "Nenhuma mensagem encontrada.";
+            }
+        
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+        
+            return $mensagens; // Retorna o vetor de mensagens
+        }
+            
+        function InserirExperiencia($idTurista, $titulo, $conteudo) {
+            $conn = conetarBD();
+            
+            try {
+                $stmt = $conn->prepare("CALL InserirExperiencia(?, ?, ?)");
+                $stmt->bind_param("iss", $idTurista, $titulo, $conteudo);
+                $stmt->execute();
+        
+                echo "Procedimento armazenado executado com sucesso!";
+            } catch (mysqli_sql_exception $e) {
+                echo "Erro ao chamar o procedimento armazenado: " . $e->getMessage();
+            }
+        
+        }
+
+        
+        function PesquisarExperiencias() {
+            $conn = conetarBD();
+            $sql = "CALL PesquisarExperiencias()";
+            
+            $result = $conn->query($sql);
+            $experiencias = []; // Vetor para armazenar as experiências
+            
+            if ($result && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $experiencia = [
+                        'id' => $row['id'],
+                        'titulo' => $row['titulo'],
+                        'conteudo' => $row['conteudo'],
+                        'data' => $row['data'],
+                        'nome' => $row['nome']
+                    ];
+            
+                    $experiencias[] = $experiencia; // Adiciona a experiência ao vetor
+                }
+            } else {
+                echo "Nenhuma experiência encontrada.";
             }
             
-            function ExcluirExperiencia($experienciaID) {
-                $conn = conetarBD();
-              
-                try {
-                    $stmt = $conn->prepare("CALL ExcluirExperiencia(?)");
-                    $stmt->bind_param("i", $experienciaID);
-                    $stmt->execute();
+            return $experiencias; // Retorna o vetor de experiências
+        }
+        
+        function ExcluirExperiencia($experienciaID) {
+            $conn = conetarBD();
             
-                    echo "Procedimento armazenado executado com sucesso!";
-                } catch (mysqli_sql_exception $e) {
-                    echo "Erro ao chamar o procedimento armazenado: " . $e->getMessage();
-                }
-              
+            try {
+                $stmt = $conn->prepare("CALL ExcluirExperiencia(?)");
+                $stmt->bind_param("i", $experienciaID);
+                $stmt->execute();
+        
+                echo "Procedimento armazenado executado com sucesso!";
+            } catch (mysqli_sql_exception $e) {
+                echo "Erro ao chamar o procedimento armazenado: " . $e->getMessage();
             }
             
+        }
+        
             
             
             

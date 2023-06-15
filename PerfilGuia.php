@@ -221,15 +221,15 @@
                         foreach ($minhasmsg as $msg) {
                             
                             echo '<div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Cliente - '.$msg['nome'].'</h5>
-                                    <p class="card-text">Reserva nº.'.$msg['id'].'</p>
-                                    <a href="#" class="btn btn-primary" onclick="changeCardGuia(\'msg\', \''.$msg['id'].'\')">Abrir mensagem</a>
-                                </div>
-                                <div class="card-footer text-body-secondary">
-                                    2 days ago
-                                </div>
-                            </div>';
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cliente - '.$msg['nome'].'</h5>
+                                        <p class="card-text">Reserva nº.'.$msg['id'].'</p>
+                                        <a href="chat.php?id='.$msg['id'].'" class="btn btn-primary" onclick="changeCardGuia(\'msg\', \''.$msg['id'].'\')">Abrir mensagem</a>
+                                    </div>
+                                    <div class="card-footer text-body-secondary">
+                                        2 days ago
+                                    </div>
+                                </div>';
 
                         }
                     } else {
@@ -243,6 +243,10 @@
     </div>
 
     </section>
+
+    
+
+    </form>
 
     <script>
 
