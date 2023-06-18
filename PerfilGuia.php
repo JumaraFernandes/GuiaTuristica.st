@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if (!isset($_SESSION['nome'])) {
+        // Redirecionar o usuário para a página de login
+        header("Location: login.php");
+        exit(); // Certifique-se de sair do script após o redirecionamento
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">

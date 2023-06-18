@@ -1,5 +1,12 @@
 <?php
     session_start();
+     // Verificar se o usuário está logado
+    if (!isset($_SESSION['nome'])) {
+        // Redirecionar o usuário para a página de login
+        header("Location: login.php");
+        exit(); // Certifique-se de sair do script após o redirecionamento
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -21,12 +28,7 @@
      <!--cabeçalho-->
      <?php include 'includes/header.php' ;
 
-    // Verificar se o usuário está logado
-    if (!isset($_SESSION['nome'])) {
-    // Redirecionar o usuário para a página de login
-    header("Location: login.php");
-    exit(); // Certifique-se de sair do script após o redirecionamento
-    }
+   
 
     require_once "connect/funcao.php";
     $perfilUsuario = PesquisarTurista ($_SESSION['email']);

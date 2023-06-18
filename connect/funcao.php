@@ -185,6 +185,7 @@ function registarTurista( $dataNascimento, $sexo, $nome, $email, $senha)
     // Verifique se a consulta foi executada com sucesso
     if (mysqli_stmt_affected_rows($stmt) > 0) {
         echo "Turista registrado com sucesso!";
+        header("location: ../validarperfil.php?email=".$email);
     } else {
         echo "Erro ao registrar o turista.";
     }
@@ -382,6 +383,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     
             // Loop através dos resultados para obter cada guia
             while ($row = $result->fetch_assoc()) {
+               
                 // Armazena os dados do guia em um array
                 $guia = array(
                     'ID' => $row['id'],
@@ -977,15 +979,100 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         }
         
             
+       
+        function verificarEmailExistente($email) {
+            $conn = conetarBD();
+        
+            // Chama o procedimento armazenado
+            $sql = "CALL PesquisarEmail('$email')";
+            $result = $conn->query($sql);
+        
+            // Verifica se a chamada foi bem-sucedida e obtém os dados
+            if ($result && $result->num_rows > 0) {
+                // O email existe na base de dados
+                $result->close();
+                return true;
+            } else {
+                // O email não existe na base de dados ou ocorreu um erro
+                if ($result) {
+                    $result->close();
+                }
+                return false;
+            }
+        }
+        
+        
+        
+        function AtualizarEstado($emailValidar) {
+            $conn = conetarBD();
+            // Escapar caracteres especiais para evitar SQL injection
+            $emailValidar = mysqli_real_escape_string($conn, $emailValidar);
+            
+            // Chamar o procedimento armazenado
+            $query = "CALL AtualizarEstado('$emailValidar')";
+            $result = mysqli_query($conn, $query);
+            
+            // Verificar se a chamada do procedimento foi bem-sucedida
+            if ($result) {
+                echo "Estado atualizado com sucesso.";
+            } else {
+                echo "Erro ao chamar o procedimento armazenado: " . mysqli_error($conn);
+            }
             
             
-            
-              
+        }
 
-
+        function SubmeterMsg($nome, $email, $msg) {
+            $conn = conetarBD();
             
-            
-            
+            try {
+                $stmt = $conn->prepare("CALL submeterMsg(?, ?, ?)");
+                $stmt->bind_param("sss", $nome, $email, $msg);
+                $stmt->execute();
+        
+                echo "Procedimento armazenado executado com sucesso!";
+            } catch (mysqli_sql_exception $e) {
+                echo "Erro ao chamar o procedimento armazenado: " . $e->getMessage();
+            }
+        
+        }
+        
+        function AtualizarSenha($email, $pass) {
+            $conn = conetarBD();
+        
+            // Encriptar a senha usando bcrypt
+            $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
+        
+            // Chamar o procedimento armazenado usando uma declaração preparada
+            $query = "CALL AtualizarSenha(?, ?)";
+            $stmt = mysqli_prepare($conn, $query);
+        
+            // Verificar se a preparação da declaração foi bem-sucedida
+            if ($stmt) {
+                // Vincular os parâmetros à declaração preparada
+                mysqli_stmt_bind_param($stmt, "ss", $email, $hashedPass);
+        
+                // Executar a declaração preparada
+                $result = mysqli_stmt_execute($stmt);
+        
+                // Verificar se a chamada do procedimento foi bem-sucedida
+                if ($result) {
+                    echo "Senha atualizada com sucesso.";
+                } else {
+                    echo "Erro ao chamar o procedimento armazenado: " . mysqli_error($conn);
+                }
+        
+                // Fechar a declaração preparada
+                mysqli_stmt_close($stmt);
+            } else {
+                echo "Erro ao preparar a declaração: " . mysqli_error($conn);
+            }
+        
+            // Fechar a conexão com o banco de dados
+            mysqli_close($conn);
+        }
+        
+       
 
 
 ?>

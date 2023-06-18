@@ -1,3 +1,6 @@
+<?php
+  $email = $_GET['email'];
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -11,20 +14,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/estilogeral.css">
   <style>
-  /* Estilos para centralizar o conteúdo */
-    section {
+      main {
       height: 100%;
       margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 200px;
     }
 
-    /* Estilos para o formulário */
-    .form-container {
-      text-align: center;
-    }
-    /* Estilos para o botão enviar */
+      /* Estilos para o botão enviar */
     .submit-button {
       background-color: #4CAF50; /* Cor de fundo */
       color: white; /* Cor do texto */
@@ -33,40 +32,30 @@
       border-radius: 4px; /* Arredondamento dos cantos */
       cursor: pointer; /* Cursor de apontar */
     }
-     .corpo{
-      margin-top: 200px;
-     }
     .submit-button:hover {
       background-color: #45a049; /* Cor de fundo ao passar o mouse */
     }
-  
-  </style>
+
+    </style>
 </head>
 <body>
   <!--cabeçalho-->
   <?php include 'includes/header.php' ?>
+    
   <main> 
-   <section>
-        <div class="corpo">
-          <form action="connect/SenhaPerdida.php" method="post">
-            <div id="form-container" class="form-container">
-              <h1>Recuperação de Senha</h1>
-              <p>Informe seu endereço de e-mail para redefinir sua senha:</p>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required><br><br>
-                <input type="submit" name="submit"  value="Enviar" class="submit-button" >
-            </div>
-            <div id="reset-container" class="reset-container ">
-              <h1>Renomear Senha</h1>
-              <label for="new-password">Nova Senha:</label>
-              <input type="password" id="new-password" name="new-password" required><br><br>
-              <input type="submit" name="salvar" value="Salvar" class="submit-button">
-            </div>
-          </form>
-        </div>
-    </section>
-  </main>
+    <div class="corpo">
+      <h1>Validar Registro de Turista</h1>
+      <form action="connect/validar_registro.php" method="POST">
+        <label for="codigo">Email</label>
+        <input type="hidden" name="email" id="email" value="<?php echo $email ?>">
+        <input type="text" id="emailTurista" name="emailTurista" placeholder="Digite seu email..." required><br><br>
+        <input type="submit" name="submit" value="Validar Registro" class="submit-button">
+      </form>
+    </div>
+    </main>
+
+ 
+  
+  
 </body>
 </html>
-
-

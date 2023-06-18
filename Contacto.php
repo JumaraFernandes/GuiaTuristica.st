@@ -61,8 +61,8 @@
                       <label for="nome">Nome: <input type="text" name="nome"  id="nome"  placeholder="Nome Completo"></label>
                       <label for="email">Email: <input type="email" name="email" id ="email" onblur="validarEmail()" placeholder="Email"></label>
                       <div id="valEmail"></div>
-                      <label for="msg">Digite sua mensagem: <textarea name="mensagem" id="msg" cols="30" rows="3" placeholder="Sua Mensagem"></textarea></label>
-                      <input type="submit" value="Submeter">
+                      <label for="msg">Digite sua mensagem: <textarea name="msg" id="msg" cols="30" rows="3" placeholder="Sua Mensagem"></textarea></label>
+                      <input type="submit" name="submit" value="Submeter">
                       <div id="res"></div>
                   </div>
               </form>
