@@ -27,8 +27,7 @@
 
   require_once "connect/funcao.php";
   $guias = PesquisarTodosGuias();
-
-
+  
   ?>
 
   <main> 
@@ -47,7 +46,14 @@
         echo '<div class="card-body">';
         echo '<h5>'.$guia['Nome'].'</h5>';
         echo '<p class="card-text">Idade: '.$guia['idade'].' anos</p>';
-        echo '<p class="card-text">Telefone: '.$guia['Telefone'].'</p>';
+        echo '<p class="card-text">Idiomas falados: ';
+        $idiomas = PesquisarIdiomas($guia['ID']);
+            // Exibir a lista de idiomas do guia
+            foreach ($idiomas as $idioma) {
+                  echo ''.$idioma['Nome'].', ';
+                
+            }
+
         echo '<p class="card-text">Experiências: '.$guia['Experiencias'].'</p>';
         echo '</div>';
         

@@ -20,12 +20,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 200px;
     }
-
+     
       /* Estilos para o botão enviar */
     .submit-button {
-      background-color: #4CAF50; /* Cor de fundo */
+      background-color: #7BF1A8; /* Cor de fundo */
       color: white; /* Cor do texto */
       padding: 10px 20px; /* Espaçamento interno */
       border: none; /* Remover a borda */
@@ -35,6 +34,19 @@
     .submit-button:hover {
       background-color: #45a049; /* Cor de fundo ao passar o mouse */
     }
+    body{
+    height: 700px;
+    background: #7BF1A8;
+  }
+  form{
+    margin: auto;
+      width: 400px;
+      background-color: #fff;
+      padding: 50px;
+      border-radius: 30px;
+      margin-top: -50px;
+      text-align: center;
+  }
 
     </style>
 </head>
@@ -42,9 +54,8 @@
   <!--cabeçalho-->
   <?php include 'includes/header.php' ?>
     
-  <main> 
+  <main > 
     <div class="corpo">
-      <h1>Validar Registro de Turista</h1>
       <form action="connect/validar_registro.php" method="POST">
         <label for="codigo">Email</label>
         <input type="hidden" name="email" id="email" value="<?php echo $email ?>">

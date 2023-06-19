@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         echo "Confirmação de Senha: " . $confsenha . "<br>";
         echo "Tipo: " . $tipo . "<br>";
         echo "Data NAscimento: " . $dataNascimento . "<br>";
-        echo "sEXO do Guia: " . $sexo . "<br>";
+        echo "sEXO do Turista: " . $sexo . "<br>";
 
         // Processar os dados do registro de turista
         registarTurista($dataNascimento, $sexo, $nome, $email, $senha); 

@@ -47,11 +47,6 @@
        width: 80%; /* definir a largura */
      }
 
-body{
-    height: 700px;
-    background: #7BF1A8;
-}
-
 form{
    margin: auto;
     width: 600px;

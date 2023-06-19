@@ -13,10 +13,10 @@ if (isset($_POST['submit'])) {
         
         // Chama a função verificarEmailExistente
         if (verificarEmailExistente($email)) {
-          echo "O email existe na base de dados.";
-        } else {
-          echo "O email não existe na base de dados.";
-        }
+            header("location: ../SenhaPerdida.php?estado=true");
+            } else {
+              header("location: ../SenhaPerdida.php?estado=false");
+            }
     } else{
 
     }
@@ -42,11 +42,7 @@ if (isset($_POST['salvar'])) {
         } else {
           echo "O email não existe na base de dados.";
         }
-    } else{
-
     }
-  
-
 }
 
 ?>

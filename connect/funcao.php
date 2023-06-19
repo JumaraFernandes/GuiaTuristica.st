@@ -413,6 +413,42 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         }
     }
    
+
+    function PesquisarIdiomas($id) {
+        $conn = conetarBD();
+        
+        // Chama o procedimento armazenado para obter todos os idiomas
+        $sql = "CALL PesquisarIdiomas($id)";
+        $result = $conn->query($sql);
+    
+        // Verifica se a chamada foi bem-sucedida e obtém os dados
+        if ($result) {
+            $idioma = array();
+    
+            // Loop através dos resultados para obter cada idioma
+            while ($row = $result->fetch_assoc()) {
+               
+                // Armazena os dados do guia em um array
+                $idioma = array(
+                    'Nome' => $row['nome'],
+                    
+                );
+    
+                // Adiciona o idioma ao array de idiomas
+                $idiomas[] =  $idioma;
+            }
+    
+            // Fecha o resultado da consulta
+            $result->close();
+    
+            // Retorna o array de guias
+            return  $idiomas;
+        } else {
+            echo "Erro ao chamar o procedimento armazenado: " . $conn->error;
+            // Retorna null ou uma mensagem de erro, dependendo do que for mais adequado para o seu caso
+            return null;
+        }
+    }
     function PesquisarHosteis() {
         $conn = conetarBD();
     

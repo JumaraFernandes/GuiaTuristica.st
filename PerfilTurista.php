@@ -82,7 +82,7 @@
 
                         <div class="col-md-4 position-relative">
                             <label for="validationTooltipUsername" class="form-label">Email</label>
-                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Email'] .'" readonly>'?>
+                            <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01" value="'. $perfilUsuario['Email'] .'"   readonly>'?>
                         </div>
                         <div class="col-md-6 position-relative">
                             <label for="validationTooltip03" class="form-label">sexo</label>

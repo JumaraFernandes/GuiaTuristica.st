@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -26,7 +28,7 @@
     }
     /* Estilos para o botão enviar */
     .submit-button {
-      background-color: #4CAF50; /* Cor de fundo */
+      background-color:#7BF1A8;  /* Cor de fundo */
       color: white; /* Cor do texto */
       padding: 10px 20px; /* Espaçamento interno */
       border: none; /* Remover a borda */
@@ -39,33 +41,77 @@
     .submit-button:hover {
       background-color: #45a049; /* Cor de fundo ao passar o mouse */
     }
+
+    body{
+    height: 700px;
+    background: #7BF1A8;
+  }
+  form{
+    margin: auto;
+      width: 400px;
+      background-color: #fff;
+      padding: 50px;
+      border-radius: 30px;
+      margin-top: -50px;
+      text-align: center;
+  }
   
   </style>
 </head>
 <body>
   <!--cabeçalho-->
   <?php include 'includes/header.php' ?>
+
+
   <main> 
    <section>
         <div class="corpo">
           <form action="connect/SenhaPerdida.php" method="post">
-            <div id="form-container" class="form-container">
-              <h1>Recuperação de Senha</h1>
-              <p>Informe seu endereço de e-mail para redefinir sua senha:</p>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required><br><br>
-                <input type="submit" name="submit"  value="Enviar" class="submit-button" >
+            <div id="FormEmail">
+              <div id="form-container"  class="form-container FormEmail">
+                <h1>Recuperação de Senha</h1>
+                <p>Informe seu endereço de e-mail para redefinir sua senha:</p>
+                  <label for="email">E-mail:</label>
+                  <input type="email" id="email" name="email" required><br><br>
+                  <input type="submit" name="submit"  value="Enviar" class="submit-button" >
+              </div>
             </div>
-            <div id="reset-container" class="reset-container ">
-              <h1>Renomear Senha</h1>
-              <label for="new-password">Nova Senha:</label>
-              <input type="password" id="new-password" name="new-password" required><br><br>
-              <input type="submit" name="salvar" value="Salvar" class="submit-button">
+            <div id="FormPassword">
+              <div id="reset-container" class="reset-container FormPassword">
+                <h1>Renomear Senha</h1>
+                <label for="new-password">Nova Senha:</label>
+                <input type="password" id="new-password" name="new-password" required><br><br>
+                <input type="submit" name="salvar" value="Salvar" class="submit-button">
+              </div>
+
             </div>
           </form>
         </div>
     </section>
   </main>
+  <?php
+  if(isset($_GET['estado'])){
+    $estado = $_GET['estado'];
+    //se receber true
+    if($estado){
+      echo '  <script>
+      document.getElementById("FormEmail").style.display = "none";
+      document.getElementById("FormPassword").style.display = "block";
+    </script>';
+    } else{
+      echo '  <script>
+      document.getElementById("FormEmail").style.display = "block";
+      document.getElementById("FormPassword").style.display = "block";
+    </script>';
+    }
+    //caso receber false;
+  } else{
+    echo '  <script>
+    document.getElementById("FormEmail").style.display = "block";
+    document.getElementById("FormPassword").style.display = "none";
+  </script>';
+  }
+?>
 </body>
 </html>
 
