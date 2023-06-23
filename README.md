@@ -15,3 +15,81 @@ Haverá um administrador do site, que terá acesso a funções adicionais, como 
 
 Além disso, o site contará com um blog com artigos sobre as melhores experiências e dicas de viagem em São Tomé e Príncipe, e uma página que contará um pouco sobre a história e língua de são Tomé e príncipe geografia e gastronomia e como obter o visto para dar entrada no pais, um fórum para que os utilizadores possam compartilhar suas experiências e dúvidas e uma seção para avaliações de hotéis, atrações e guias turísticos pelos utilizadores.
 
+# Modelo Relacional
+
+Certamente! Aqui está o modelo relacional das tabelas que você criou, juntamente com alguns dados de exemplo:
+
+**Tabela: utilizador**
+
+| id | nome  | email              | senha              | ativo |
+|----|-------|--------------------|--------------------|-------|
+| 1  | Maria | maria@example.com  | hash_senha_aqui    | true  |
+| 2  | João  | joao@example.com   | hash_senha_aqui    | false |
+| 3  | Ana   | ana@example.com    | hash_senha_aqui    | true  |
+
+**Tabela: Administrador**
+
+| id | id_utilizador | telefone     |
+|----|---------------|--------------|
+| 1  | 1             | 123456789    |
+| 2  | 2             | 987654321    |
+
+**Tabela: turista**
+
+| id | dataNascimento | sexo | id_utilizador |
+|----|----------------|------|---------------|
+| 1  | 1990-05-15     | M    | 1             |
+| 2  | 1988-09-22     | F    | 3             |
+
+**Tabela: parceiro**
+
+| id | tipo | endereco          | estrelas | link                | id_utilizador | foto        | telefone    |
+|----|------|-------------------|----------|---------------------|---------------|-------------|-------------|
+| 1  | H    | Rua A, nº 123     | 4.5      | http://www.example1 | 2             | foto1.jpg   | 111111111   |
+| 2  | R    | Rua B, nº 456     | 3.8      | http://www.example2 | 4             | foto2.jpg   | 222222222   |
+
+**Tabela: guia**
+
+| id | Nidentificacao | sexo | experiencia      | salario | endereco           | telefone    | cv          | foto        | dataNascimento | id_utilizador |
+|----|----------------|------|------------------|----------|---------------------|-------------|--------------|-------------|----------------|---------------|
+| 1  | ABC123         | M    | 5 anos           | 2000.00  | Rua C, nº 789       | 333333333   | cv1.pdf      | foto3.jpg   | 1985-12-10     | 5             |
+| 2  | XYZ456         | F    | 3 anos           | 1800.00  | Rua D, nº 101112    | 444444444   | cv2.pdf      | foto4.jpg   | 1992-08-25     | 6             |
+
+**Tabela: reserva**
+
+| id | datainicio | datafim   | numeropessoas | estado       | local             | id_guia | id_turista |
+|----|------------|-----------|---------------|--------------|-------------------|---------|------------|
+| 1  | 2023-07-01 | 2023-07-05| 2             | confirmada   | Praia X           | 1       | 1          |
+| 2  | 2023-08-15 | 2023-08-18| 4             | finalizada   | Parque Y          | 2       | 2          |
+
+**Tabela: idiomasfalados**
+
+| id | nome       | id_guia |
+|----|------------|---------|
+| 1  | Inglês     | 1       |
+| 2  | Espanhol   | 1       |
+| 3  | Francês    | 2       |
+
+**Tabela: chat**
+
+| id | ativo | id_reserva |
+|----|-------|------------|
+| 1  | true  | 1          |
+| 2  | true  | 2          |
+
+**Tabela: mensagens**
+
+| id | msg                         | datamsg             | autor | id_chat |
+|----|-----------------------------|---------------------|-------|---------|
+| 1  | Olá, tudo bem?              | 2023-07-02 10:30:00 | 1     | 1       |
+| 2  | Sim, estou bem. E você?     | 2023-07-02 10:35:00 | 2     | 1       |
+| 3  | Gostaria de fazer uma reserva para a próxima semana.  | 2023-08-16 09:45:00 | 2     | 2       |
+
+**Tabela: forum**
+
+| id | id_turista | titulo             | conteudo           | data       |
+|----|------------|--------------------|--------------------|------------|
+| 1  | 1          | Dicas de viagem    | Qual o melhor período do ano para visitar a cidade X? | 2023-07-10 |
+| 2  | 2          | Avaliação de hotel | Gostei muito da minha estadia no hotel Y. Recomendo! | 2023-08-20 |
+
+Espero que isso ajude a visualizar melhor o modelo relacional e os dados nas tabelas!
