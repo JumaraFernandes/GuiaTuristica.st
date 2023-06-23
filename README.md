@@ -23,13 +23,14 @@ Certamente! Aqui está o modelo relacional das tabelas que você criou, juntamen
 
 | id | nome  | email              | senha              | ativo |
 |----|-------|--------------------|--------------------|-------|
-| 1  | Maria | maria@example.com  | hash_senha_aqui    | 1  |
-| 2  | João  | joao@example.com   | hash_senha_aqui    | 1 |
-| 3  | Ana   | ana@example.com    | hash_senha_aqui    | 1  |
-| 4 | Maria | maria@example.com  | hash_senha_aqui    | 1  |
-| 5 | João  | joao@example.com   | hash_senha_aqui    | 1 |
-| 6  | Ana   | ana@example.com    | hash_senha_aqui    | 1  |
-| 7  | Ana   | ana@example.com    | hash_senha_aqui    | 0 |
+| 1  | Maria | maria@example.com  | 1234maria.txopppppp   | 1  |
+| 2  | João  | joao@example.com   | j436bnn1234maria.t    | 1 |
+| 3  | Ana   | ana@example.com    | ha4maria.t234mssdc    | 1  |
+| 3  | Ana   | ana@example.com    | ha4maria.t234senha    | 1  |
+| 4 | Maria | maria@example.com  | ash_senha_aquiha4m    | 1  |
+| 5 | João  | joao@example.com   | ddccdsenha_aquihash    | 1 |
+| 6  | Ana   | ana@example.com    |  ha4maria.t234mssdc   | 1  |
+| 7  | Ana   | ana@example.com    | 1234maria.txopppppp    | 0 |
 
 **Tabela: Administrador**
 
