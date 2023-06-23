@@ -30,7 +30,7 @@ Certamente! Aqui está o modelo relacional das tabelas que você criou, juntamen
 | 4 | Maria | maria@example.com  | ash_senha_aquiha4m    | 1  |
 | 5 | João  | joao@example.com   | ddccdsenha_aquihash    | 1 |
 | 6  | Ana   | ana@example.com    |  ha4maria.t234mssdc   | 1  |
-| 7  | Ana   | ana@example.com    | 1234maria.txopppppp    | 0 |
+| 7  | Ana   | ana@example.com    | 1234maria.txopppppp    | 1 |
 
 **Tabela: Administrador**
 
