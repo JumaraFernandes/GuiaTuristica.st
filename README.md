@@ -23,37 +23,40 @@ Certamente! Aqui está o modelo relacional das tabelas que você criou, juntamen
 
 | id | nome  | email              | senha              | ativo |
 |----|-------|--------------------|--------------------|-------|
-| 1  | Maria | maria@example.com  | hash_senha_aqui    | true  |
-| 2  | João  | joao@example.com   | hash_senha_aqui    | false |
-| 3  | Ana   | ana@example.com    | hash_senha_aqui    | true  |
+| 1  | Maria | maria@example.com  | hash_senha_aqui    | 1  |
+| 2  | João  | joao@example.com   | hash_senha_aqui    | 1 |
+| 3  | Ana   | ana@example.com    | hash_senha_aqui    | 1  |
+| 4 | Maria | maria@example.com  | hash_senha_aqui    | 1  |
+| 5 | João  | joao@example.com   | hash_senha_aqui    | 1 |
+| 6  | Ana   | ana@example.com    | hash_senha_aqui    | 1  |
+| 7  | Ana   | ana@example.com    | hash_senha_aqui    | 0 |
 
 **Tabela: Administrador**
 
 | id | id_utilizador | telefone     |
 |----|---------------|--------------|
-| 1  | 1             | 123456789    |
-| 2  | 2             | 987654321    |
+| 1  | 2             | 987654321    |
 
 **Tabela: turista**
 
 | id | dataNascimento | sexo | id_utilizador |
 |----|----------------|------|---------------|
-| 1  | 1990-05-15     | M    | 1             |
+| 1  | 1990-05-15     | M    | 2            |
 | 2  | 1988-09-22     | F    | 3             |
 
 **Tabela: parceiro**
 
 | id | tipo | endereco          | estrelas | link                | id_utilizador | foto        | telefone    |
 |----|------|-------------------|----------|---------------------|---------------|-------------|-------------|
-| 1  | H    | Rua A, nº 123     | 4.5      | http://www.example1 | 2             | foto1.jpg   | 111111111   |
-| 2  | R    | Rua B, nº 456     | 3.8      | http://www.example2 | 4             | foto2.jpg   | 222222222   |
+| 1  | H    | Rua A, nº 123     | 4.5      | http://www.example1 | 4            | foto1.jpg   | 111111111   |
+| 2  | R    | Rua B, nº 456     | 3.8      | http://www.example2 | 5             | foto2.jpg   | 222222222   |
 
 **Tabela: guia**
 
 | id | Nidentificacao | sexo | experiencia      | salario | endereco           | telefone    | cv          | foto        | dataNascimento | id_utilizador |
 |----|----------------|------|------------------|----------|---------------------|-------------|--------------|-------------|----------------|---------------|
-| 1  | ABC123         | M    | 5 anos           | 2000.00  | Rua C, nº 789       | 333333333   | cv1.pdf      | foto3.jpg   | 1985-12-10     | 5             |
-| 2  | XYZ456         | F    | 3 anos           | 1800.00  | Rua D, nº 101112    | 444444444   | cv2.pdf      | foto4.jpg   | 1992-08-25     | 6             |
+| 1  | ABC123         | M    | 5 anos           | 2000.00  | Rua C, nº 789       | 333333333   | cv1.pdf      | foto3.jpg   | 1985-12-10     | 6            |
+| 2  | XYZ456         | F    | 3 anos           | 1800.00  | Rua D, nº 101112    | 444444444   | cv2.pdf      | foto4.jpg   | 1992-08-25     | 7             |
 
 **Tabela: reserva**
 
@@ -83,13 +86,13 @@ Certamente! Aqui está o modelo relacional das tabelas que você criou, juntamen
 |----|-----------------------------|---------------------|-------|---------|
 | 1  | Olá, tudo bem?              | 2023-07-02 10:30:00 | 1     | 1       |
 | 2  | Sim, estou bem. E você?     | 2023-07-02 10:35:00 | 2     | 1       |
-| 3  | Gostaria de fazer uma reserva para a próxima semana.  | 2023-08-16 09:45:00 | 2     | 2       |
+| 3  | Gostaria de fazer uma reserva para a próxima semana.  | 2023-08-16 09:45:00 | 2     | 2   |
 
 **Tabela: forum**
 
 | id | id_turista | titulo             | conteudo           | data       |
 |----|------------|--------------------|--------------------|------------|
-| 1  | 1          | Dicas de viagem    | Qual o melhor período do ano para visitar a cidade X? | 2023-07-10 |
-| 2  | 2          | Avaliação de hotel | Gostei muito da minha estadia no hotel Y. Recomendo! | 2023-08-20 |
+| 1  | 1          | Dicas de viagem    | Qual o melhor período do ano para visitar a cidade de Angolares? | 2023-07-10 |
+| 2  | 2          | Avaliação de hotel | Gostei muito da minha estadia no hotel Pestana. Recomendo! | 2023-08-20 |
 
 Espero que isso ajude a visualizar melhor o modelo relacional e os dados nas tabelas!
