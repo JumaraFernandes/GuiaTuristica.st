@@ -52,13 +52,15 @@ if (isset($_POST['submit'])) {
         $cvNome = $_FILES['cv']['name'];
         $cvTmp = $_FILES['cv']['tmp_name'];
         $cvExtensao = pathinfo($cvNome, PATHINFO_EXTENSION); // Obtém a extensão do arquivo
-        $cvPath = '../cvpdf/' . uniqid() . '.' . $cvExtensao;
+        $cv = uniqid() . '.' . $cvExtensao;
+        $cvPath = '../cvpdf/' . $cv;
         move_uploaded_file($cvTmp, $cvPath);
 
         $fotoNome = $_FILES['fotoGuia']['name'];
         $fotoTmp = $_FILES['fotoGuia']['tmp_name'];
         $fotoExtensao = pathinfo($fotoNome, PATHINFO_EXTENSION); // Obtém a extensão do arquivo
-        $fotoPath = '../imagensguias/' . uniqid() . '.' . $fotoExtensao;
+        $foto = uniqid() . '.' . $fotoExtensao;
+        $fotoPath = '../imagensguias/' . $foto;
         move_uploaded_file($fotoTmp, $fotoPath);
         
 
@@ -75,7 +77,7 @@ if (isset($_POST['submit'])) {
         echo "Tipo: " . $tipo . "<br>";
         
         // Processar os dados do registro de guia
-        registarGuia($numIdentificacao, $sexo, $experiencias, $enderecoGuia, $cvPath, $dataNascimento, $fotoPath, $nome, $email, $telefone, $senha, $idiomasSelecionados);
+        registarGuia($numIdentificacao, $sexo, $experiencias, $enderecoGuia, $cv, $dataNascimento, $foto, $nome, $email, $telefone, $senha, $idiomasSelecionados);
     }
     
      elseif ($tipo === 'registoParceiro') {
@@ -90,7 +92,8 @@ if (isset($_POST['submit'])) {
         $fotoNome = $_FILES['fotoparceiro']['name'];
         $fotoTmp = $_FILES['fotoparceiro']['tmp_name'];
         $fotoExtensao = pathinfo($fotoNome, PATHINFO_EXTENSION); // Obtém a extensão do arquivo
-        $fotoPath = '../imagensParceiro/' . uniqid() . '.' . $fotoExtensao;
+        $foto = uniqid() . '.' . $fotoExtensao;
+        $fotoPath = '../imagensParceiro/' . $foto;
         move_uploaded_file($fotoTmp, $fotoPath);
 
         echo "Endereço do Parceiro: " . $enderecoParceiro . "<br>";
@@ -107,7 +110,7 @@ if (isset($_POST['submit'])) {
         echo "Tipo: " . $tipo . "<br>";
 
         // Processar os dados do registro de parceiro
-        registarParceiro($tipoParceiro, $enderecoParceiro, $classificacao, $link, $fotoPath, $telefone, $nome, $email, $senha);
+        registarParceiro($tipoParceiro, $enderecoParceiro, $classificacao, $link, $foto, $telefone, $nome, $email, $senha);
 
     } elseif ($tipo === 'registoParceiro') {
         // Código para o registro de parceiro

@@ -42,7 +42,7 @@
       foreach ($guias as $guia) {
         echo '<div class="col-md-4">';
         echo '<div class="card">';
-        echo '<img src="imagens/guia.1.jpg" class="card-img-top" alt="...">';
+        echo '<img src="imagensguias/'.$guia['foto'].'" class="card-img-top" alt="...">';
         echo '<div class="card-body">';
         echo '<h5>'.$guia['Nome'].'</h5>';
         echo '<p class="card-text">Idade: '.$guia['idade'].' anos</p>';

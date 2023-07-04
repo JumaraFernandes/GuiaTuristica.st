@@ -140,7 +140,7 @@ function registarGuia($numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv,
     echo 'Comparar: '.password_verify($senha, $hashedSenha) . '<br>';
     $query = "CALL RegistrarGuia(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssssssssss", $numIdentificacao, $sexo, $experiencia, $enderecoGuia, $cv, $dataNascimento,$foto, $telefone,$nome, $email, $hashedSenha);
+    mysqli_stmt_bind_param($stmt, "sssssssssss", $numIdentificacao, $sexo, $experiencia, $enderecoGuia, $cv,$foto, $dataNascimento, $telefone,$nome, $email, $hashedSenha);
     mysqli_stmt_execute($stmt);
 
     // Verifique se o guia foi registrado com sucesso
@@ -200,7 +200,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
     $query = "CALL RegistrarParceiro(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssssssss", $tipo, $endereco, $estrelas, $link, $nome, $telefone, $email, $hashedSenha, $foto);
+    mysqli_stmt_bind_param($stmt, "sssssssss", $tipo, $endereco, $estrelas, $link, $foto, $nome, $telefone, $email, $hashedSenha);
     mysqli_stmt_execute($stmt);
     // Verifique se a consulta foi executada com sucesso
     if (mysqli_stmt_affected_rows($stmt) > 0) {
@@ -220,7 +220,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     echo 'Encriptada: ' .$hashedSenha;
     $query = "CALL RegistarAdmin(?, ?, ?,?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ssss",$telefone, $nome, $email, $hashedSenha);
+    mysqli_stmt_bind_param($stmt, "ssss",$nome,  $email, $hashedSenha, $telefone);
     mysqli_stmt_execute($stmt);
     
     // Verifique se o administrador foi registrado com sucesso
@@ -462,8 +462,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     
             // Loop através dos resultados para obter cada hostel
             while ($row = $result->fetch_assoc()) {
-                 // Depura o valor da foto
-                var_dump($row['foto']);
+
 
                 // Armazena os dados do hostel em um array
                 $hostel = array(
@@ -558,7 +557,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         // Executa a chamada do procedimento armazenado
         if ($conn->query($sql)) {
             echo "Dados do guia atualizados com sucesso.";
-            header("location: ../PerfilGuia.php");
+            header("location: ../PerfilGuia.php#".$novoCV);
         } else {
             echo "Erro ao atualizar os dados do guia: " . $conn->error;
             return false;

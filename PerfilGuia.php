@@ -84,7 +84,7 @@
                 <div class="" id="perfil" >
                     <h2>DadosPessoais</h2>
                     
-                    <form class="row g-3 needs-validation" action="connect/atualizardadosguias.php" method="post">
+                    <form class="row g-3 needs-validation" action="connect/atualizardadosguias.php" method="POST" enctype="multipart/form-data">
                         <div class="col-md-4 position-relative">
                             <label for="validationTooltip01" class="form-label">Nome</label>
                             <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['Nome'] .'" readonly>'?>

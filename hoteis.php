@@ -46,7 +46,7 @@
     foreach ($hosteis as $hotel) {
     echo '<div class="col-md-4">
             <div class="card">
-              <img src="imagens/hotelpestana.jpg" class="card-img-top" alt="...">
+              <img src="imagensParceiro/'. $hotel['Foto'] .'" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5>'. $hotel['Nome'] .'</h5>
                 <p class="card-text">Telefone: '. $hotel['Telefone'] .'</p>
