@@ -15,3 +15,81 @@ Haverá um administrador do site, que terá acesso a funções adicionais, como 
 
 Além disso, o site contará com um blog com artigos sobre as melhores experiências e dicas de viagem em São Tomé e Príncipe, e uma página que contará um pouco sobre a história e língua de são Tomé e príncipe geografia e gastronomia e como obter o visto para dar entrada no pais, um fórum para que os utilizadores possam compartilhar suas experiências e dúvidas e uma seção para avaliações de hotéis, atrações e guias turísticos pelos utilizadores.
 
+
+Aqui está o modelo relacional atualizado com as tabelas ajustadas e o campo `tipo` na tabela `utilizador` refletindo os tipos de usuários corretamente:
+
+**Tabela: utilizador**
+
+| id | nome  | email              | senha              | tipo      | ativo |
+|----|-------|--------------------|--------------------------|-------|
+| 1  | Maria | maria@example.com  | 1234   | admin     | 1     |
+| 2  | João  | joao@example.com   | 1234    | guia      | 1     |
+| 3  | Ana   | ana@example.com    | 1234     | guia      | 1     |
+| 4  | Maria | maria@example.com  | 1234    | parceiro  | 1     |
+| 5  | João  | joao@example.com   | 1234     | parceiro  | 1     |
+| 6  | Ana   | ana@example.com    | 1234     | turista   | 1     |
+| 7  | Ana   | ana@example.com    | 1234     | turista   | 0     |
+
+**Tabela: Administrador**
+
+| id | id_utilizador | telefone     |
+|----|---------------|--------------|
+| 1  | 1             | 987654321    |
+
+**Tabela: turista**
+
+| id | dataNascimento | sexo | id_utilizador |
+|----|----------------|------|---------------|
+| 1  | 1990-05-15     | M    | 6            |
+| 2  | 1988-09-22     | F    | 7            |
+
+**Tabela: parceiro**
+
+| id | tipo | endereco          | estrelas | link                | id_utilizador | foto        | telefone    |
+|----|------|-------------------|----------|---------------------|---------------|-------------|-------------|
+| 1  | H    | Rua A, nº 123     | 4.5      | http://www.example1 | 4            | foto1.jpg   | 111111111   |
+| 2  | R    | Rua B, nº 456     | 3.8      | http://www.example2 | 5            | foto2.jpg   | 222222222   |
+
+**Tabela: guia**
+
+| id | Nidentificacao | sexo | experiencia      | salario | endereco           | telefone    | cv          | foto        | dataNascimento | id_utilizador |
+|----|----------------|------|------------------|----------|---------------------|-------------|--------------|-------------|----------------|---------------|
+| 2  | XYZ456         | F    | 3 anos           | 1800.00  | Rua D, nº 101112    | 444444444   | cv2.pdf      | foto4.jpg   | 1992-08-25     | 3             |
+| 3  | XYZ789         | M    | 5 anos           | 2000.00  | Rua C, nº 789       | 333333333   | cv1.pdf      | foto3.jpg   | 1985-12-10     | 2            |
+
+**Tabela: reserva**
+
+| id | datainicio | datafim   | numeropessoas | estado       | local             | id_guia | id_turista |
+|----|------------|-----------|---------------
+
+|--------------|-------------------|---------|------------|
+| 2  | 2023-08-15 | 2023-08-18| 4             | finalizada   | Parque Y          | 2       | 1          |
+
+**Tabela: idiomasfalados**
+
+| id | nome       | id_guia |
+|----|------------|---------|
+| 2  | Espanhol   | 2       |
+| 3  | Francês    | 3       |
+
+**Tabela: chat**
+
+| id | ativo | id_reserva |
+|----|-------|------------|
+| 1  | true  | 2          |
+
+**Tabela: mensagens**
+
+| id | msg                         | datamsg             | autor | id_chat |
+|----|-----------------------------|---------------------|-------|---------|
+| 3  | Gostaria de fazer uma reserva para a próxima semana.  | 2023-08-16 09:45:00 | 2     | 2   |
+
+**Tabela: forum**
+
+| id | id_turista | titulo             | conteudo           | data       |
+|----|------------|--------------------|--------------------|------------|
+| 2  | 2          | Avaliação de hotel | Gostei muito da minha estadia no hotel Pestana. Recomendo! | 2023-08-20 |
+
+**Nota:** Foram removidas as entradas duplicadas nas tabelas `utilizador` e `turista` para evitar repetição de dados.
+
+Espero que isso ajude a visualizar melhor o modelo relacional e os dados nas tabelas!
