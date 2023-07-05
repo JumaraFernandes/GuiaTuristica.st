@@ -44,7 +44,7 @@
   require_once "connect/funcao.php";
 
 
-  $resultados = PesquisarExperiencias();
+ 
   ?>
 
 <div class="" >

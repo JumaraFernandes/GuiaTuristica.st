@@ -20,7 +20,7 @@ if(isset($_POST['submit']))
     $id_turista = $_SESSION['id'];
    
      // Processar os dados do registro de turista
-     adicionarReserva($datainicio, $datafim, $numeropessoas, "pendente",$local, $id_guia, $id_turista);
+     adicionarReserva($datainicio, $datafim, $numeropessoas,$local, $id_guia, $id_turista);
 
     
     

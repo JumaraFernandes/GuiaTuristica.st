@@ -6,6 +6,8 @@
         exit(); // Certifique-se de sair do script após o redirecionamento
     }
 
+    $id = $_SESSION['id'];
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -156,7 +158,7 @@
 
                       <?php 
                        
-                       $minhasreserva = listarReservasConfirmadas();
+                       $minhasreserva = listarReservasConfirmadas($id);
                     
                         // Verifica se houve registros pendentes retornados
                        if ($minhasreserva  !== null) {
@@ -219,7 +221,7 @@
                 <div class="" id="listMsg">
                     <h2>Lista de mensagens</h2>
                     <?php
-                    $minhasmsg =listarReservasConfirmadas();
+                    $minhasmsg =listarReservasConfirmadas($id);
                     
                     // Verifica se houve registros pendentes retornados
                    if ($minhasmsg  !== null) {
@@ -232,9 +234,7 @@
                                         <p class="card-text">Reserva nº.'.$msg['id'].'</p>
                                         <a href="chat.php?id='.$msg['id'].'" class="btn btn-primary" onclick="changeCardGuia(\'msg\', \''.$msg['id'].'\')">Abrir mensagem</a>
                                     </div>
-                                    <div class="card-footer text-body-secondary">
-                                        2 days ago
-                                    </div>
+                                
                                 </div>';
 
                         }

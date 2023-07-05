@@ -643,10 +643,10 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
 
     
         
-        function adicionarReserva($datainicio, $datafim, $numeropessoas, $estado, $local, $id_guia, $id_turista) {
+        function adicionarReserva($datainicio, $datafim, $numeropessoas, $local, $id_guia, $id_turista) {
             $conn = conetarBD();
             // Chama o procedimento AdicionarReserva
-            $sql = "CALL AdicionarReserva('$datainicio', '$datafim', $numeropessoas, '$estado', '$local', $id_guia, $id_turista)";
+            $sql = "CALL AdicionarReserva('$datainicio', '$datafim','$numeropessoas','$local', $id_guia, $id_turista)";
             $result = $conn->query($sql);   
         
             // Verifica se houve algum erro na execução do procedimento
@@ -771,11 +771,11 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
         }
         
 
-        function listarReservasConfirmadas() {
+        function listarReservasConfirmadas($id) {
             $conn = conetarBD();
             
             // Prepara a chamada do procedimento armazenado
-            $sql = "CALL ListarReservasConfirmadas()";
+            $sql = "CALL ListarReservasConfirmadas($id)";
             $result = mysqli_query($conn, $sql);
             
             $reservas = array(); // Vetor para armazenar as reservas confirmadas
@@ -791,6 +791,7 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
                         'local' => $row['local'],
                         'numeropessoas' => $row['numeropessoas'],
                         'nome' => $row['nome'],
+                
                         // Adicione mais campos, se necessário
                     );
                     $reservas[] = $reserva;
