@@ -96,7 +96,7 @@ if (isset($_POST['submit'])) {
         $fotoPath = '../imagensParceiro/' . $foto;
         move_uploaded_file($fotoTmp, $fotoPath);
 
-        echo "Endereço do Parceiro: " . $enderecoParceiro . "<br>";
+/*         echo "Endereço do Parceiro: " . $enderecoParceiro . "<br>";
         echo "Link: " . $link . "<br>";
         echo "Classificação: " . $classificacao . "<br>";
         echo "Tipo de Parceiro: " . $tipoParceiro . "<br>";
@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
         echo "Telefone: " . $telefone . "<br>";
         echo "Senha: " . $senha . "<br>";
         echo "Confirmação de Senha: " . $confsenha . "<br>";
-        echo "Tipo: " . $tipo . "<br>";
+        echo "Tipo: " . $tipo . "<br>"; */
 
         // Processar os dados do registro de parceiro
         registarParceiro($tipoParceiro, $enderecoParceiro, $classificacao, $link, $foto, $telefone, $nome, $email, $senha);
@@ -120,12 +120,12 @@ if (isset($_POST['submit'])) {
         $tipoParceiro = $_POST['tipoParceiro'];
         $foto = $_POST['foto'];
 
-        echo "Nome: " . $nome . "<br>";
+/*         echo "Nome: " . $nome . "<br>";
         echo "Email: " . $email . "<br>";
         echo "Telefone: " . $telefone . "<br>";
         echo "Senha: " . $senha . "<br>";
         echo "Confirmação de Senha: " . $confsenha . "<br>";
-        echo "Tipo: " . $tipo . "<br>";
+        echo "Tipo: " . $tipo . "<br>"; */
 
         // Processar os dados do registro de parceiro
         //registarParceiro($conn, $tipoParceiro, $enderecoParceiro, $classificacao, $link, $foto, $nome, $email, $telefone, $senha);
@@ -137,7 +137,7 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
-    echo "Está funcionando: " . $tipo; 
+    //echo "Está funcionando: " . $tipo; 
 
     //registarAdmin($conn, 'Jumara', 'a43691@ipb.pt', 'Jumara.4');
 

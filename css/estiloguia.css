@@ -30,12 +30,18 @@
     
   }
 
-  .card{
-    flex-basis: 30%; 
-    display: flex;
-     margin: 10px;
-     border: none;
+  .card {
+    margin: 10px;
+    height: 600px; /* Defina a altura desejada para todas as cards */
+    overflow: hidden; /* Para esconder qualquer conteúdo que ultrapasse a altura definida */
   }
+
+  .card-body {
+    height: 400px; /* Defina a altura desejada para o corpo da card (o texto) */
+    overflow: hidden; /* Para esconder qualquer conteúdo que ultrapasse a altura definida */
+  }
+
+ 
   .button-container {
     display: flex;
     justify-content: center;

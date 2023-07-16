@@ -1,4 +1,13 @@
+<?php
+    //caso não aconteceu
+    $res = 0;
 
+    //caso receber algum resolutado 
+    if(isset($_GET['res'])){
+      $res = $_GET['res'];
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -17,7 +26,21 @@
 </head>
 <body>
   <!--cabeçalho-->
-  <?php include 'includes/header.php' ?>
+  <?php include 'includes/header.php';
+  //caso correu tudo bem
+  if($res == 1){
+    echo '<div class="alert alert-success d-flex" role="alert" style="height: 60px;">
+    <svg style="width: 30px;" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    <div>Registo efetuado com sucesso!</div>
+  </div>';
+  } else if($res == -1){ //caso correu mal
+    echo '<div class="alert alert-danger d-flex align-items-center" role="alert" style="height: 60px;">
+    <svg style="width: 30px;" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    <div>Houve erro ao registar! Tente mais tarde!</div>
+  </div>';
+  }
+  
+  ?>
  
   <main> 
   <div class="corpo">

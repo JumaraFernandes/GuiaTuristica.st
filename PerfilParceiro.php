@@ -61,7 +61,7 @@
                 <div class="" id="perfil" >
                     <h2>DadosPessoais</h2>
                                     
-     <form class="row g-3 needs-validation" novalidate action="connect/atualizardadosParceiros.php" method="post">
+     <form class="row g-3 needs-validation" novalidate action="connect/atualizardadosParceiros.php" method="post" enctype="multipart/form-data">
           <div class="col-md-4 position-relative">
                    <label for="validationTooltip01" class="form-label">Nome</label>
                             <?php echo '<input type="text" class="form-control disabled" id="validationTooltip01"  value="'. $perfilUsuario['Nome'] .'" readonly>'?>
@@ -90,8 +90,8 @@
                         </div>
                         <div class="col-md-3 position-relative">
                         <label for="validationTooltip05" class="form-label">Foto</label>
-                        <?php echo '<input type="file" class="form-control" aria-label="file example"  name="foto" accept="application/pdf"'. $perfilUsuario['foto'] .'">'?>
-                        <a href="cvpdf/<?php echo $perfilUsuario['foto']; ?>" download>baixarpdf</a>
+                        <?php echo '<input type="file" class="form-control" aria-label="file example"  name="foto" accept="image/jpeg, image/png"'. $perfilUsuario['foto'] .'">'?>
+                        <a href="imagensParceiro/<?php echo $perfilUsuario['foto']; ?>" download>baixarfoto</a>
                         </div>
                         <div class="col-md-3 position-relative">
                         

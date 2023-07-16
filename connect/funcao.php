@@ -145,7 +145,6 @@ function registarGuia($numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv,
 
     // Verifique se o guia foi registrado com sucesso
     if (mysqli_stmt_affected_rows($stmt) > 0) {
-        echo "Guia registrado com sucesso!";
         
         // Insira os idiomas selecionados
         if (!empty($idiomas)) {
@@ -157,13 +156,10 @@ function registarGuia($numIdentificacao, $sexo, $experiencia,$enderecoGuia, $cv,
                 mysqli_stmt_close($stmtIdioma);
 
             }
-            
-            echo "Idiomas adicionados com sucesso!";
-        } else {
-            echo "Nenhum idioma selecionado.";
-        }
+        } 
+        header("location: ../Registar.php?res=1");
     } else {
-        echo "Erro ao registrar o guia.";
+        header("location: ../Registar.php?res=-1");
     }
 
     // Feche o statement
@@ -204,9 +200,9 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
     mysqli_stmt_execute($stmt);
     // Verifique se a consulta foi executada com sucesso
     if (mysqli_stmt_affected_rows($stmt) > 0) {
-        echo "Parceiro registrado com sucesso!";
+        header("location: ../Registar.php?res=1");
     } else {
-        echo "Erro ao registrar o parceiro.";
+        header("location: ../Registar.php?res=-1");
     }
     mysqli_stmt_close($stmt);
 }
@@ -641,8 +637,44 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             }
         }
 
-    
+   
+    function finalizarReservasConfirmadas($id) {
+        $conn = conetarBD();
         
+        // Prepara a chamada do procedimento armazenado
+        $sql = "CALL listarReservarFinalizadas($id)";
+        $result = mysqli_query($conn, $sql);
+        
+        $reservas = array(); // Vetor para armazenar as reservas confirmadas
+        
+        if ($result) {
+            // Processa os resultados
+            while ($row = mysqli_fetch_assoc($result)) {
+                // Armazena as informações da reserva no vetor
+                $reserva = array(
+                    'id' => $row['id'],
+                    'datainicio' => $row['datainicio'],
+                    'datafim' => $row['datafim'],
+                    'local' => $row['local'],
+                    'numeropessoas' => $row['numeropessoas'],
+                    'nome' => $row['nome'],
+            
+                    // Adicione mais campos, se necessário
+                );
+                $reservas[] = $reserva;
+            }
+            mysqli_free_result($result);
+        } else {
+            echo "Erro ao executar o procedimento armazenado: " . mysqli_error($conn);
+        }
+        
+        mysqli_close($conn);
+        
+        return $reservas; // Retorna o vetor de reservas finalizadas
+
+    }
+
+    
         function adicionarReserva($datainicio, $datafim, $numeropessoas, $local, $id_guia, $id_turista) {
             $conn = conetarBD();
             // Chama o procedimento AdicionarReserva
@@ -652,12 +684,12 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
             // Verifica se houve algum erro na execução do procedimento
             if ($result) {
                 echo 'reservado com sucesso';
-                header("location: ../Reservas.php");
+                header("location: ../Reservas.php?res=1");
                 return true;
             } else{
                 echo 'errro ao reservar';
                 return false;
-                header("location: ../Reservas.php#ERRO!!!");
+                header("location: ../Reservas.php?res=-1");
             }
         
         }
@@ -1066,9 +1098,9 @@ function registarParceiro($tipo, $endereco, $estrelas, $link, $foto, $telefone, 
                 $stmt->bind_param("sss", $nome, $email, $msg);
                 $stmt->execute();
         
-                echo "Procedimento armazenado executado com sucesso!";
+                header("location: ../Contacto.php?res=1");
             } catch (mysqli_sql_exception $e) {
-                echo "Erro ao chamar o procedimento armazenado: " . $e->getMessage();
+                header("location: ../Contacto.php?res=-1");
             }
         
         }

@@ -1,6 +1,6 @@
 #cabecalho{
     
-    background-image: url('../imagens/hotelfundo.jpg');
+    background-image: url('../imagens/hotel.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center ;
@@ -55,4 +55,15 @@
   a{
     color:  #8bc34a;
    }
-  
+
+   .card {
+    margin: 10px;
+    height: 500px; /* Defina a altura desejada para todas as cards */
+    overflow: hidden; /* Para esconder qualquer conteúdo que ultrapasse a altura definida */
+  }
+
+  .card-body {
+    height: 300px; /* Defina a altura desejada para o corpo da card (o texto) */
+    overflow: hidden; /* Para esconder qualquer conteúdo que ultrapasse a altura definida */
+  }
+ 

@@ -1,10 +1,12 @@
 #cabecalho{
     
-    background-image: url('../imagens/restaurantegeral.jpeg');
+    background-image: url('../imagens/restaurante.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center ;
-    height: 80vh;
+    height: 100vh;
+   background-color: #7BF1A8;
+    
    }
 
    .corpo{
@@ -56,5 +58,17 @@
    a{
     color:  #8bc34a;
    }
+   
+   .card {
+    margin-bottom: 20px;
+    height: 510px; /* Defina a altura desejada para todas as cards */
+    overflow: hidden; /* Para esconder qualquer conteúdo que ultrapasse a altura definida */
+  }
+
+  .card-body {
+    height: 300px; /* Defina a altura desejada para o corpo da card (o texto) */
+    overflow: hidden; /* Para esconder qualquer conteúdo que ultrapasse a altura definida */
+  }
+
 
   

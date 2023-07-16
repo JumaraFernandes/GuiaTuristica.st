@@ -87,7 +87,7 @@ function setMinimumDate() {
   
 
   
-  function changeCard(tipo) {
+  function changeCardTurista(tipo) {
     if (tipo === 'perfil') {
         document.getElementById('perfil').style.display = 'block';
           document.getElementById('reservas').style.display = 'none';
@@ -114,7 +114,7 @@ function setMinimumDate() {
 
     }
 
-  function changeCardGuia(tipo, id) {
+  function changeCardGuia(tipo) {
     
     if (tipo === 'perfil') {
         document.getElementById('perfil').style.display = 'block';
@@ -122,6 +122,7 @@ function setMinimumDate() {
           document.getElementById('msg').style.display = 'none';
           document.getElementById('listMsg').style.display = 'none';
           document.getElementById('minhasRerserva').style.display = 'none';
+          document.getElementById('Reservafinalizada').style.display = 'none';
           
             
         } else if (tipo === 'reservas') {
@@ -130,30 +131,35 @@ function setMinimumDate() {
             document.getElementById('msg').style.display = 'none';
             document.getElementById('listMsg').style.display = 'none';
             document.getElementById('minhasRerserva').style.display = 'none';
+            document.getElementById('Reservafinalizada').style.display = 'none';
         } else if (tipo === 'msg') {
             document.getElementById('perfil').style.display = 'none';
             document.getElementById('reservas').style.display = 'none';
             document.getElementById('msg').style.display = 'block';
             document.getElementById('listMsg').style.display = 'none';
             document.getElementById('minhasRerserva').style.display = 'none';
-            document.getElementById('idReservaInput').innerHTML = "Seu id" + tipo;
-            // Obtém o elemento de parágrafo pelo ID
-            var paragrafo = document.getElementById("idReservaInput");
-            
-            // Altera o conteúdo do parágrafo
-            paragrafo.innerHTML = parseInt(id);
+            document.getElementById('Reservafinalizada').style.display = 'none';
 
           } else if (tipo === 'minhasRerserva') {
             document.getElementById('perfil').style.display = 'none';
             document.getElementById('reservas').style.display = 'none';
             document.getElementById('msg').style.display = 'none';
             document.getElementById('minhasRerserva').style.display = 'block';
+            document.getElementById('Reservafinalizada').style.display = 'none';
             document.getElementById('listMsg').style.display = 'none';
-        } else if (tipo === 'listMsg') {
+          } else if (tipo === 'Reservafinalizada') {
             document.getElementById('perfil').style.display = 'none';
             document.getElementById('reservas').style.display = 'none';
             document.getElementById('msg').style.display = 'none';
             document.getElementById('minhasRerserva').style.display = 'none';
+            document.getElementById('Reservafinalizada').style.display = 'block';
+            document.getElementById('listMsg').style.display = 'none';
+        } else if (tipo === 'listMsg') {
+            document.getElementById('perfil').style.display = 'none'; 
+            document.getElementById('reservas').style.display = 'none';
+            document.getElementById('msg').style.display = 'none';
+            document.getElementById('minhasRerserva').style.display = 'none';
+            document.getElementById('Reservafinalizada').style.display = 'none';
             document.getElementById('listMsg').style.display = 'block';
         }
 
@@ -199,4 +205,8 @@ function setMinimumDate() {
    
  
 
-    
+function contarCaracteres(textarea) {
+  const maxCaracteres = 512;
+  const numCaracteres = textarea.value.length;
+  document.getElementById("contador").innerText = numCaracteres + "/" + maxCaracteres + " caracteres";
+}

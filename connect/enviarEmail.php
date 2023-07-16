@@ -4,8 +4,14 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $msg = $_POST['msg'];
 
-    require_once "funcao.php";
+    if(empty($nome) || empty($email) || empty($msg)){
+        header("location: ../Contacto.php?res=-1");
+    } else{
+        
+        require_once "funcao.php";
+         
+        SubmeterMsg($nome, $email, $msg);
+    }
 
-    SubmeterMsg($nome, $email, $msg);
 }
 ?>

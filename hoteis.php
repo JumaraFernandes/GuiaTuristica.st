@@ -39,6 +39,9 @@
              <p>
              O Omali Lodge e o Hotel praia são outros refúgios de qualidade inquestionável: localizados na praia Lagarto. Ao extremo sul  encontra-se o Resort Inhame Ecolodge situado a 7 minutos de barco do marco do equador.
              </p>
+             <h1>Hotéis e Resorts na Ilha do Príncipe</h1>
+
+             <p> Um dos resorts mais requintados encontra-se na praia Sundy, com decoração luxuosa e uma vista magnífica para o mar. Para aqueles que apreciam o glamour o edifícios emblemáticos e históricos, nada melhor do que visitar o Alojamento na Roça Belo Monte ou Sundy Roça. O Bom-Bom Island Resort foi o primeiro a ser construído na Ilha do Príncipe, onde possui características paisagística únicas, do ilhéu bombom, pode-se desfrutar de uma paisagem, de cortar respiração, para a Ilha do Príncipe.</p>
              <?php 
    if (!empty($hosteis)) {
    echo '<div class="row">';
@@ -51,7 +54,7 @@
                 <h5>'. $hotel['Nome'] .'</h5>
                 <p class="card-text">Telefone: '. $hotel['Telefone'] .'</p>
                 <p><a class="card-text" href="mailto:'. $hotel['Email'] .'">E-mail: '. $hotel['Email'] .'</a></p>
-                <p><a class="card-text" href="'. $hotel['Link'] .'" target="_blank">Link: '. $hotel['Link'] .'</a></p>
+                <p><a class="card-text" href="https://'. $hotel['Link'] .'" target="_blank">Link: '. $hotel['Link'] .'</a></p>
                 <p class="card-text">Endereço: '. $hotel['Endereco'] .'</p>
                 <p class="card-text">Estrelas: '. $hotel['Estrelas'] .'</p>
               </div>

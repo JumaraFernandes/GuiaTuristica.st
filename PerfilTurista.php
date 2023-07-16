@@ -40,7 +40,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-sm-4">
-                <div onclick="changeCard('perfil')">
+                <div onclick="changeCardTurista('perfil')">
                     <div class="opcao">
                         <i class="bi bi-person-circle"></i>
                         <p>Minha Conta</p>
@@ -48,7 +48,7 @@
                     </div>
 
                 </div>
-                <div onclick="changeCard('reservas')">
+                <div onclick="changeCardTurista('reservas')">
                     <div class="opcao">
                         <i class="bi bi-x-diamond-fill"></i>
                         <p>Minhas reservas</p>
@@ -56,7 +56,7 @@
                     </div>
 
                 </div>
-                <div onclick="changeCard('listMsg')">
+                <div onclick="changeCardTurista('listMsg')">
                     <div class="opcao">
                         <i class="bi bi-chat-left-dots"></i>
                         <p>Mensagens</p>

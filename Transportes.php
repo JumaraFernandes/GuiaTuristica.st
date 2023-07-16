@@ -117,7 +117,7 @@
           <div class="card">
               <div class="card-body">
                 <h5>MARAPA/JALÉ</h5>
-                a class="card-text">Tel: (+239) 985 3738/2222792<a>
+                <p class="card-text">Tel: (+239) 985 3738/2222792</p>
                 <a class="card-text"href="mailto:jaleecolodge@gmail.com">E-mail: jaleecolodge@gmail.com<a>
               </div>
             </div> 

@@ -6,7 +6,7 @@
         exit(); // Certifique-se de sair do script após o redirecionamento
     }
 
-    $id = $_SESSION['id'];
+   
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-sm-4">
-                <div onclick="changeCardGuia('perfil', 0)">
+                <div onclick="changeCardGuia('perfil')">
                     <div class="opcao">
                         <i class="bi bi-person-circle"></i>
                         <p>Minha Conta</p>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <div onclick="changeCardGuia('reservas', 0)">
+                <div onclick="changeCardGuia('reservas')">
                     <div class="opcao">
                     <i class="bi bi-exclamation-octagon"></i>
                         <p>Pedidos da reservas</p>
@@ -58,7 +58,7 @@
                     </div>
                     </div>
 
-                    <div onclick="changeCardGuia('minhasRerserva', 0)">
+                    <div onclick="changeCardGuia('minhasRerserva')">
                     <div class="opcao">
                         <i class="bi bi-x-diamond-fill"></i>
                         <p>Minhas Reservas</p>
@@ -66,7 +66,17 @@
                     </div>
                     </div>
 
-                <div onclick="changeCardGuia('listMsg', 0)">
+                    <div onclick="changeCardGuia('Reservafinalizada')">
+                    <div class="opcao">
+                        <i class="bi bi-x-diamond-fill"></i>
+                        <p> Reservas Finalizadas</p>
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
+                    </div>
+                   
+
+
+                <div onclick="changeCardGuia('listMsg')">
                     <div class="opcao">
                         <i class="bi bi-chat-left-dots"></i>
                         <p>Mensagens</p>
@@ -131,7 +141,7 @@
                         $reservasPendentes = obterReservasPendentes($id);
 
                         // Verifica se houve registros pendentes retornados
-                        if ($reservasPendentes !== null) {
+                        if ($reservasPendentes != null) {
                             // Faça o que desejar com os registros pendentes
                             foreach ($reservasPendentes as $reservas) {
                                 echo '<div class="card pendentes">
@@ -157,11 +167,11 @@
                     <h2> Minhas Reservas</h2>
 
                       <?php 
-                       
+                         $id = $_SESSION['id'];
                        $minhasreserva = listarReservasConfirmadas($id);
                     
                         // Verifica se houve registros pendentes retornados
-                       if ($minhasreserva  !== null) {
+                       if ($minhasreserva  != null) {
                             // Faça o que desejar com os registros pendentes
                             foreach ($minhasreserva as $reservas) {
                                 echo '<div class="card pendentes">
@@ -175,26 +185,23 @@
                                     </div>';
                             }
                         } else {
-                            echo "Não há reservas pendentes.";
+                            echo "Não há Minhas Reservas.";
                         } 
   
                     ?>
                 </div>
-                
+
                 <div class="" id="msg" >
                     <h2 id="idReserva" name="idChat"></h2>
                     <p id="idReservaInput"></p>
-
-
-
 
                     <div class="container chat-container">
                         <div id="chatbox">
                             <?php 
 
                                 $minhasmsg = receberMsg(465);
-                                if ($minhasmsg  !== null) {
-                                    // Faça o que desejar com os registros pendentes
+                                if ($minhasmsg  != null) {
+                                    
                                     foreach ($minhasmsg as $reservas) {
                                         if($reservas['autor'] == '1'){
                                             echo '<div class="message user-message">Guia: '. $reservas['msg'] .'</div>';
@@ -204,7 +211,7 @@
                                         }
                                     }
                                 } else {
-                                    echo "Não há reservas pendentes.";
+                                    echo "Não há Mensagens.";
                                 } 
                             ?>
                             
@@ -217,14 +224,41 @@
                         </div>
                     </div>
                 </div>
-                <div id="idReserva"></div>
+                <div class="" id="Reservafinalizada">
+                    <h2> Minhas Reservas Finalizadas</h2>
+
+                      <?php 
+                         $id = $_SESSION['id'];
+                       $minhasreserva = finalizarReservasConfirmadas($id);
+                    
+                        // Verifica se houve registros pendentes retornados
+                       if ($minhasreserva  != null) {
+                            // Faça o que desejar com os registros pendentes
+                            foreach ($minhasreserva as $reservas) {
+                                echo '<div class="card pendentes">
+                                        <h5 class="card-header">'. $reservas['nome'] .'</h5>
+                                        <p>Local: '. $reservas['local'] .'</p>
+                                        <p>Data Inicio: '. $reservas['datainicio'] .'</p>
+                                        <p>Data Fim: '. $reservas['datafim'] .'</p>
+                                        <p>Nº pessoas: '. $reservas['numeropessoas'] .'</p>
+                                        <div class="card-body">
+                                        </div>
+                                    </div>';
+                            }
+                        } else {
+                            echo "Não há reservas finalizadas.";
+                        } 
+  
+                    ?>
+                </div>
                 <div class="" id="listMsg">
                     <h2>Lista de mensagens</h2>
                     <?php
+                    $id = $_SESSION['id'];
                     $minhasmsg =listarReservasConfirmadas($id);
                     
                     // Verifica se houve registros pendentes retornados
-                   if ($minhasmsg  !== null) {
+                   if ($minhasmsg  != null) {
                         // Faça o que desejar com os registros pendentes
                         foreach ($minhasmsg as $msg) {
                             
@@ -232,17 +266,16 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Cliente - '.$msg['nome'].'</h5>
                                         <p class="card-text">Reserva nº.'.$msg['id'].'</p>
-                                        <a href="chat.php?id='.$msg['id'].'" class="btn btn-primary" onclick="changeCardGuia(\'msg\', \''.$msg['id'].'\')">Abrir mensagem</a>
+                                        <a href="chat.php?id='.$msg['id'].'" class="btn btn-primary" onclick="changeCardGuia(\'msg\')">Abrir mensagem</a>
                                     </div>
                                 
                                 </div>';
 
                         }
                     } else {
-                        echo "Não há reservas pendentes.";
+                        echo "Não há reservas Confirmadas.";
                     } 
                     ?>
-                     
                 </div>
             </div>
         </div>

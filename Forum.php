@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/estilogeral.css">
   <link rel="stylesheet" href="css/estiloforum.css">
+  <script src="js/funcao.js"></script>
 
 </head>
 <body>
@@ -39,7 +40,8 @@
     <h2>Compartilhe suas experiências:</h2>
     <form class="compar-form" action="connect/forum.php" method="POST">
       <input type="text" placeholder="Título do tópico" name="titulo" required><br>
-      <textarea placeholder="Digite sua mensagem..." name="conteudo" required></textarea><br>
+      <textarea placeholder="Digite sua mensagem..." name="conteudo" required oninput="contarCaracteres(this)"></textarea><br>
+      <p id="contador">0/512 carateres</p>
       <button type="submit" name="submit">Publicar</button>
     </form>
   </div>
@@ -53,9 +55,9 @@
        $experiencia = $resultados[$i];
       echo '<input type="hidden" name="experienciaID" value="'. $experiencia['id'] .'">';
       echo '<p><i class="bi bi-person-circle"></i> ' . $experiencia['nome'] . '</p>';
-      echo '<h3>Título do Tópico: ' . $experiencia['titulo'] . '</h3>';
-      echo '<p>Conteúdo do Tópico: ' . $experiencia['conteudo'] . '</p>';
-      echo '<p>Data: ' . $experiencia['data'] .'</p>';
+      echo '<h3>' . $experiencia['titulo'] . '</h3>';
+      echo '<p>' . $experiencia['conteudo'] . '</p>';
+      echo '<p> ' . $experiencia['data'] .'</p>';
       
       if ($tipo === 'admin') {
         echo '<button type="submit" name="submit">Excluir</button>';
@@ -71,6 +73,19 @@
 
   <!--Rodapé-->
   <?php include 'includes/footer.php' ?>
+  <script>
+    function contarCaracteres(textarea) {
+      const maxCaracteres = 512;
+      let conteudo = textarea.value;
+      
+      if (conteudo.length > maxCaracteres) {
+        textarea.value = conteudo.slice(0, maxCaracteres); // Limita o texto ao tamanho máximo
+      }
+
+      const numCaracteres = textarea.value.length;
+      document.getElementById("contador").innerText = numCaracteres + "/" + maxCaracteres + " caracteres";
+    }
+  </script>
   
   
 </body>

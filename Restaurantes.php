@@ -33,7 +33,10 @@
               <p>
                   No restaurante Cacau que todas as quintas feiras realizam noites tradicionais gastronómicas com músicas e dança onde apresentam um leque dos pratos típicos das ilhas. Existe também o workshop gastronómico que se realiza na famosa Roça São João em angolares, com certeza desfrutarás de uma explosão de sabores.
               </p>
-              <a href="http://d">fsdcx</a>
+              <h1>RESTAURANTES E BARES NO PRÍNCIPE</h1>
+
+           <p> A ilha do Príncipe possui a sua Gastronomia típica como por exemplo a funji maguita, molho no fogo entre outras especialidades gastronómicas que nos deixam com água na boca. Aqui o turista poderá degustar a diversidade gastronómica, durante a sua estadia na ilha, num dos restaurantes existentes sobretudo na capital ou alternar a uma fusão de sabores apresentados nos restaurante das unidades hoteleiras existentes</p>
+            
                 
               <?php 
       if (!empty($restaurantes)) {
@@ -42,12 +45,11 @@
       foreach ($restaurantes as $restaurante) {
         echo '<div class="col-md-4">
                 <div class="card">
-                  <img src="imagens/Sres1.jpeg" class="card-img-top" alt="...">
+                <img src="imagensParceiro/'. $restaurante['Foto'] .'" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5>'. $restaurante['Nome'] .'</h5>
                       <p class="card-text">Telefone: '. $restaurante['Telefone'] .'</p>
-                      <p><a  class="card-text"href="mailto:'. $restaurante['Email'] .'>E-mail: '. $restaurante['Email'] .'</p></a>
-                      <p><a  class="card-text"href="'. $restaurante['Link'] .'">Link: '. $restaurante['Link'] .'</p></a>
+                      <p><a  class="card-text"href="mailto:'. $restaurante['Email'] .'">E-mail: '. $restaurante['Email'] .'</a></p>
                       <p class="card-text">Endereço: '. $restaurante['Endereco'] .'</p>
                       <p class="card-text">Estrelas: '. $restaurante['Estrelas'] .'</p>
                     
